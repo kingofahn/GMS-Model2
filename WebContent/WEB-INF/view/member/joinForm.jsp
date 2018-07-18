@@ -10,7 +10,6 @@
 <body>
 <form action= "<%= ctx %>/member.do">
 	<h1> 회원 가입 </h1>
-
 	<table>
 		<tr>
 			<td>NAME</td>
@@ -30,7 +29,7 @@
 			<td><input type="text" name="ssn" placeholder="생년월일 입력(ex900115-1)" /></td>
 		</tr>
 	</table>
-	<input type="hidden" name="action" value="move" />
+	<input type="hidden" name="action" value="join" />
 	<input type="hidden" name="page" value="joinResult" />
 	<input type="submit" value="join">
 	

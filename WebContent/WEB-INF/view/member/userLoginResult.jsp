@@ -13,20 +13,7 @@
 </head>
 <body>
 	<%
-	MemberBean m = new MemberBean();
-	m.setUserId(request.getParameter("userid"));
-	m.setPassword(request.getParameter("password"));
-	
-	if(MemberServiceImpl.getInstance().login(m)){
-		%>
-		<h3> 로그인 성공 
-		</h3>
-		<%
-	} else{
-		%>
-		<h3> 로그인 실패</h3>
-		<%		
-	}
+
 %>
 </body>
 </html>

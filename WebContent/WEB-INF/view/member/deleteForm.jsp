@@ -14,7 +14,7 @@
 		PASSWORD : <br>
 		<input type="text" name = "password"> <br>
 		<input type="submit" value="Delete">
-		<input type="hidden" name="action" value="move" />
+		<input type="hidden" name="action" value="delete" />
 		<input type="hidden" name="page" value="deleteResult" />
 
 	</form>

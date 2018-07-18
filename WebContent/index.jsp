@@ -29,11 +29,11 @@
 			<ul>
 				<li> <a href="<%=ctx%>/member.do?action=move&page=joinForm">  Join  </a> </li>
 				<li> <a href="<%=ctx%>/member.do?action=move&page=userLoginForm">  User Login </a> </li>
-				<li> <a href="<%=ctx%>/member.do?action=move&page=memberlist">  Member List  </a> </li>
+				<li> <a href="<%=ctx%>/member.do?action=LIST&page=memberlist">  Member List  </a> </li>
+				<li> <a href="<%=ctx%>/member.do?action=COUNT&page=memberCount">  Member Count  </a> </li>
 				<li> <a href="<%=ctx%>/member.do?action=move&page=searchTeamForm">  Search Team List  </a> </li>
 				<li> <a href="<%=ctx%>/member.do?action=move&page=deleteForm">  Delete Member  </a> </li>
 				<li> <a href="<%=ctx%>/member.do?action=move&page=updateForm">  Update Member  </a> </li>
-
 			</ul>
 		</td>
 	</tr>

@@ -12,7 +12,7 @@
 	<h1> Search BY ID </h1>
 	<form action= "<%= ctx %>/member.do">
 		User ID <input type="text" name="uid" />
-	<input type="hidden" name="action" value="move" />
+	<input type="hidden" name="action" value="searchMemberById" />
 	<input type="hidden" name="page" value="searchIDResult" />
 	<input type="submit" value="전송" />
 		
