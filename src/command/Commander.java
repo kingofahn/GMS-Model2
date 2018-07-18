@@ -20,7 +20,11 @@ public class Commander {
 				cmd = new DeleteCommand(domain,action,page);
 				break;
 			case UPDATE : 
-				System.out.println("----딜리트진입----");
+				System.out.println("----업데이트진입----");
+				cmd = new UpdateCommand(domain,action,page);
+				break;
+			case LOGIN : 
+				System.out.println("----로그인진입----");
 				cmd = new UpdateCommand(domain,action,page);
 				break;
 				

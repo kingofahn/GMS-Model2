@@ -15,7 +15,7 @@
 		<input type="text" name="password"> <br>
 		New password : <br>
 		<input type="text" name="newpassword"> <br>
-		<input type="hidden" name="action" value="memberUpdate" />
+		<input type="hidden" name="action" value="UPDATE" />
 		<input type="hidden" name="page" value="updateResult" />
 		<input type="submit" value="update"> <br>
 	</form>
