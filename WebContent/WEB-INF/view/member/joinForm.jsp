@@ -9,7 +9,7 @@
 </head>
 <body>
 <form action= "<%= ctx %>/member.do">
-	<h1> 회원 가입 </h1>
+	<h1> Member Join </h1>
 	<table>
 		<tr>
 			<td>NAME</td>

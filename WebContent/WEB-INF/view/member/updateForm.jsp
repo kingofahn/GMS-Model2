@@ -4,17 +4,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title> 비밀번호 변경 </title>
+	<title> Password Update </title>
 </head>
 <body>
-	<h3>비밀번호 변경</h3>
+	<h3> Password Update </h3>
 	<form action= "<%= ctx %>/member.do">
 		User ID : <br>
 		<input type="text" name="userid" > <br>
 		Old password : <br>
-		<input type="text" name="password"> <br>
+		<input type="password" name="password"> <br>
 		New password : <br>
-		<input type="text" name="newpassword"> <br>
+		<input type="password" name="newpassword"> <br>
 		<input type="hidden" name="action" value="UPDATE" />
 		<input type="hidden" name="page" value="updateResult" />
 		<input type="submit" value="update"> <br>

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="../../css/style.css">
 </head>
 <body id="login_box">
-	<h1> LOGIN </h1>
+	<h1> Login </h1>
 	<form action= "<%= ctx %>/member.do">
 		User ID : <br>
 		<input type="text" name="userid" /><br>  <!-- value를 넣지 않아도 String null ""을 갖고 있는다. -->

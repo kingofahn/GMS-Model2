@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% 	String ctx = application.getContextPath(); %>
 <%@ page import = "java.util.*" %>
 <%@ page import = "domain.*" %>
 <%@ page import = "service.*" %>
@@ -22,9 +23,7 @@
 		<th>ROLL</th> 
 		<th>SSN</th>
 		<th>PASSWORD</th>
-
 	</tr>
-
 	<%	
 		for(MemberBean m : lst){
 		%> <tr> 
@@ -38,12 +37,10 @@
 			</tr> 
 			<% }  %>
 	</table>
-	
-	
-
-	
-	
+	<form action= "<%= ctx %>/member.do">
+	<input type="hidden" name="action" value="list" />
+	<input type="hidden" name="page" value="joinResult" />
+	</form>
 	
 </body>
-
 </html>

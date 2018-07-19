@@ -1,5 +1,4 @@
 package controller;
-import domain.*;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -7,92 +6,76 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import command.Carrier;
+import command.Commander;
+import command.CountCommand;
+import command.CreateCommand;
+import command.ListCommand;
+import command.RetrieveCommand;
+import command.SearchCommand;
 import command.Sentry;
 import dao.MemberDAOImpl;
 import domain.MemberBean;
 import service.MemberServiceImpl;
-
 import enums.Action;
 
 @WebServlet("/member.do")  // URL Mapping
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberController Entered!!");
+		System.out.println("$$$$$$$$$$$$  MemberController Entered  $$$$$$$$$$$$");
 		List<MemberBean> lst = null;
 		MemberBean mem = null;
-		/*String page = request.getParameter("page");
-		String action = request.getParameter("action");*/
-		Sentry.init(request);
-	    System.out.println("액션:"+Sentry.cmd.getAction().toUpperCase());  // 결과 값 액션:move
-		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
+		Sentry.init(request,response);
+		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())){
 	    case MOVE : 
-	            try {
-	                Carrier.send(request, response);
-		            } catch (Exception e) {e.printStackTrace();} 
-	            break; 
+			System.out.println("================컨트롤러  MOVE case 진입================");
+	        Carrier.forward(request, response);
+	        break;
 		case JOIN : 
-			mem = new MemberBean();
-			mem.setName(request.getParameter("name"));
-			mem.setPassword(request.getParameter("password"));
-			mem.setSsn(request.getParameter("ssn"));
-			mem.setUserId(request.getParameter("userid"));
-			MemberServiceImpl.getInstance().createMember(mem);
-			response.sendRedirect(request.getContextPath()+"/member.do?action=move&page=userLoginForm");
-			// getContextPath -> 도메인
-			// sendRedirect 다시 나한테 돌아와  
-						
+			System.out.println("================컨트롤러 JOIN case 진입================");
+			Carrier.redirect(request, response,
+					"/member.do?action=move&page=userLoginForm");
 			break;
-		case LIST :
-			lst = MemberServiceImpl.getInstance().listMember();
-			for(MemberBean m : lst){
-				System.out.println(m);
-			}; 
-			break;
-		case SEARCH :
-			lst = MemberServiceImpl.getInstance()
-								   .findMemberByTeamName(request.getParameter("teamid"));
-			for(MemberBean m : lst){
-				System.out.println(m);
-			}; 
+		case UPDATE : case DELETE : case LOGIN :
+			System.out.println("================컨트롤러 case 진입================");
+			Carrier.redirect(request, response,"");
 			break;
 		case RETRIEVE :
-			mem = MemberServiceImpl.getInstance().findById(request.getParameter("uid"));
-					mem.getName();
-					mem.getTeamId();
-					mem.getUserId();
-					mem.getAge();
-					mem.getRoll();
-					mem.getSsn();
+			System.out.println("================컨트롤러 RETRIEVE case 진입================");
+			System.out.println("================RETRIEVE 출력 : =================");
+			/*mem = ((RetrieveCommand) Sentry.cmd).getMember();*/
+			/*request.setAttribute("member", MemberServiceImpl.getInstance().findById("uid"));*/
+			mem = ((RetrieveCommand) Sentry.cmd).getMember();
+			System.out.println(mem);
+			System.out.println("================RETRIEVE 종료 : =================");
+			Carrier.redirect(request, response,"");
+			break;
+		case LIST :
+			System.out.println("================컨트롤러 LIST case 진입================");
+			System.out.println("================list 출력 : =================");
+			lst = ((ListCommand) Sentry.cmd).getMembers();
+			System.out.println(lst);
+			System.out.println("================list 종료 : =================");
+			Carrier.redirect(request, response,"");
+			break;
+		case SEARCH :
+			System.out.println("================컨트롤러 SEARCH case 진입================");
+			System.out.println("================SEARCH 출력 : =================");
+			lst = ((SearchCommand) Sentry.cmd).getMembers();
+			System.out.println(lst);
+			System.out.println("================SEARCH 종료 : =================");
+			Carrier.redirect(request, response,"");
 			break;
 		case COUNT :
-			System.out.println(MemberDAOImpl.getInstance().countMember());
+			System.out.println("================컨트롤러 Count case 진입================");
+			System.out.println("================COUNT 출력 : =================");
+			System.out.println(request.getAttribute("count"));
+			System.out.println("================COUNT 종료 : =================");
+			Carrier.redirect(request, response,"");
 			break;
-		case UPDATE :
-			mem = new MemberBean();
-			mem.setUserId(request.getParameter("userid"));
-			mem.setPassword(request.getParameter("password"));
-			mem.setPassword(request.getParameter("newpassword"));
-			MemberServiceImpl.getInstance().updateMemberInformation(mem);
-			response.sendRedirect(request.getContextPath());
-			break;
-		case DELETE :
-			mem = new MemberBean();
-			mem.setUserId(request.getParameter("userid"));
-			mem.setPassword(request.getParameter("password"));
-			MemberServiceImpl.getInstance().deleteMemberInformation(mem);
-			response.sendRedirect(request.getContextPath());
-			
-			break;
-		case LOGIN :
-			mem = new MemberBean();
-			mem.setUserId(request.getParameter("userid"));
-			mem.setPassword(request.getParameter("password"));
-			response.sendRedirect(request.getContextPath());
-			break; 
 		default : 
+			Carrier.redirect(request, response,"");
 			break;
 		}
 	}
