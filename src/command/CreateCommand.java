@@ -12,12 +12,13 @@ public class CreateCommand extends Command {
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
 		setPage(request.getParameter("page"));
-		execute();
+		execute();  // this.execute() 인데 this가 생략됨
+		System.out.println("CreateCommand Domain.valueOf(getDomain().toUpperCase()) : " + Domain.valueOf(getDomain().toUpperCase()));
 	}
 
 	@Override
 	public void execute() {
-		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch (Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("회원가입에 들어옴!!!");
 			MemberBean mem = new MemberBean();
@@ -31,5 +32,6 @@ public class CreateCommand extends Command {
 		default:
 			break;
 		}
+		super.execute();
 	}
 }

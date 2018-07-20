@@ -14,7 +14,7 @@
 		List<MemberBean> lst = MemberServiceImpl.getInstance().listMember();
 %>
 	<h1>  Member List</h1>
-	<table border="white"> 
+	<table> 
 	<tr> 
 		<th>이름 </th>
 		<th>TEAM ID</th>  

@@ -17,20 +17,16 @@ public class LoginCommand extends Command {
 	}
 	
 	public void execute() {
-		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
-		case MEMBER :
 			System.out.println("login Command 들어옴!!!");
+			super.execute();
 			MemberBean mem = new MemberBean();
 			mem.setUserId(request.getParameter("userid"));
 			mem.setPassword(request.getParameter("password"));
 			if(MemberServiceImpl.getInstance().login(mem)) {
-				System.out.println("로그인 성공");
+				request.setAttribute("match", "TRUE");
+				request.setAttribute("user", MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
 			} else {
-				System.out.println("로그인 실패");
+				request.setAttribute("match","FALSE");
 			}
-			break;
-		default : 
-			break;
-		}
 	}
 }

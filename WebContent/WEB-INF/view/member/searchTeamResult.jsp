@@ -15,7 +15,7 @@
 		List<MemberBean> lst = MemberServiceImpl.getInstance().findMemberByTeamName(request.getParameter("teamid"));
 	%>
 	<h1>  Searched Member List by Team Name</h1>
-	<table border="white"> 
+	<table> 
 	<tr> 
 		<th>이름 </th>
 		<th>TEAM ID</th>  

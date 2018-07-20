@@ -13,7 +13,7 @@
 	<% 
 	MemberBean m = MemberServiceImpl.getInstance().findById(request.getParameter("uid"));
 	%>
-	<table border="white">
+	<table>
 		<tr> 
 			<th>이름 </th>
 			<th>TEAM ID</th>  

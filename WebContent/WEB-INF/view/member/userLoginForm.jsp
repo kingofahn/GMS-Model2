@@ -15,7 +15,7 @@
 		<br><br>
 		<input type="submit" value="전 송" /> <!--버튼을 눌러야만 값이 생성된다. -->
 		<input type="hidden" name="action" value="login" />
-		<input type="hidden" name="page" value="userLoginForm" />
+		<input type="hidden" name="page" value="mypage" />
 	</form>
 </body>
 </html>

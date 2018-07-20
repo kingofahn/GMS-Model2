@@ -7,22 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import command.Carrier;
-import command.Commander;
-import command.CountCommand;
-import command.CreateCommand;
 import command.ListCommand;
 import command.RetrieveCommand;
 import command.SearchCommand;
 import command.Sentry;
-import dao.MemberDAOImpl;
 import domain.MemberBean;
-import service.MemberServiceImpl;
 import enums.Action;
 
 @WebServlet("/member.do")  // URL Mapping
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(
+			HttpServletRequest request, 
+			HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("$$$$$$$$$$$$  MemberController Entered  $$$$$$$$$$$$");
 		List<MemberBean> lst = null;
 		MemberBean mem = null;
@@ -37,10 +34,21 @@ public class MemberController extends HttpServlet {
 			Carrier.redirect(request, response,
 					"/member.do?action=move&page=userLoginForm");
 			break;
-		case UPDATE : case DELETE : case LOGIN :
+		case UPDATE : case DELETE :
 			System.out.println("================컨트롤러 case 진입================");
 			Carrier.redirect(request, response,"");
 			break;
+		case LOGIN :
+			System.out.println("================컨트롤러 login 진입================");
+			if(request.getAttribute("match").equals("TRUE")) {
+				Carrier.forward(request, response);
+			} else {
+				Carrier.redirect(request, response,
+						"/member.do?action=move&page=userLoginForm");
+			}
+			System.out.println("================컨트롤러 login 종료================");
+			break;
+			
 		case RETRIEVE :
 			System.out.println("================컨트롤러 RETRIEVE case 진입================");
 			System.out.println("================RETRIEVE 출력 : =================");
