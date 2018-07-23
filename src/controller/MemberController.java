@@ -14,10 +14,10 @@ import command.Sentry;
 import domain.MemberBean;
 import enums.Action;
 
-@WebServlet("/member.do")  // URL Mapping
+@WebServlet({"/member.do"})  // URL Mapping
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doGet(
+	protected void service(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("$$$$$$$$$$$$  MemberController Entered  $$$$$$$$$$$$");
@@ -48,7 +48,6 @@ public class MemberController extends HttpServlet {
 			}
 			System.out.println("================컨트롤러 login 종료================");
 			break;
-			
 		case RETRIEVE :
 			System.out.println("================컨트롤러 RETRIEVE case 진입================");
 			System.out.println("================RETRIEVE 출력 : =================");
@@ -86,8 +85,5 @@ public class MemberController extends HttpServlet {
 			Carrier.redirect(request, response,"");
 			break;
 		}
-	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 }

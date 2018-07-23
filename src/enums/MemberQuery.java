@@ -19,8 +19,8 @@ public enum MemberQuery {
 		case INSERT_MEMBER : 
 			query =
 			"     INSERT INTO MEMBER "
-			+ "    (MEM_ID,PASSWORD,SSN,NAME)   "
-			+ "   VALUES ('%s','%s','%s','%s') ";		
+			+ "    (MEM_ID,PASSWORD,SSN,NAME,AGE)   "
+			+ "   VALUES ('%s','%s','%s','%s','%d') ";		
 			break;
 		case FINDBYID : 
 			query =

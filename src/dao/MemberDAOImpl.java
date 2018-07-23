@@ -26,7 +26,7 @@ public class MemberDAOImpl implements MemberDAO {
 					.createStatement()
 					.executeUpdate(
 							String.format(MemberQuery.INSERT_MEMBER.toString(),
-						              member.getUserId(),member.getPassword(), member.getSsn(),member.getName()));
+						              member.getUserId(),member.getPassword(), member.getSsn(),member.getName(),Integer.parseInt(member.getAge())));
 		} catch (Exception e) {   
 			e.printStackTrace();
 		}
