@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% 	String ctx = application.getContextPath(); %>
-<!doctype html>
-<html lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<title> Search Team Form</title>
+	<link rel="stylesheet" href="${css}/style.css"/>
 </head>	
 <body>	
 	<h1> Search BY TEAM ID </h1>

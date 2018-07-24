@@ -3,16 +3,14 @@
 <%@ page import = "java.util.*" %>
 <%@ page import = "domain.*" %>
 <%@ page import = "service.*" %>
-<!doctype html>
-<html lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<title>Member List</title>
+	<link rel="stylesheet" href="${css}/style.css"/>
 </head>
 <body>
-	<%
-		List<MemberBean> lst = MemberServiceImpl.getInstance().listMember();
-%>
+<div id="wrapper">
+	<% 	List<MemberBean> lst = MemberServiceImpl.getInstance().listMember(); %>
 	<h1>  Member List</h1>
 	<table> 
 	<tr> 
@@ -41,6 +39,6 @@
 	<input type="hidden" name="action" value="list" />
 	<input type="hidden" name="page" value="joinResult" />
 	</form>
-	
+</div>
 </body>
 </html>

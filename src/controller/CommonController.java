@@ -19,11 +19,11 @@ public class CommonController extends HttpServlet {
 			throws ServletException, IOException {
 		int i = 0;
 		for (Resources r : Resources.values()) {
-			request.getSession().setAttribute(r.toString().toString(),
+			request.getSession().setAttribute(r.toString().toLowerCase(),
 				(i==0)?
 					request.getContextPath(): 
 					request.getContextPath()+
-					"/resources/" + r.toString().toLowerCase());
+					"/resources/"+r.toString().toLowerCase());
 			i++;
 		}
 		request.getRequestDispatcher(Term.WEBPATH.toString()+Term.MAIN.toString()).forward(request, response);

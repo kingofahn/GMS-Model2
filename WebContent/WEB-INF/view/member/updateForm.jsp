@@ -5,6 +5,8 @@
 <head>
 	<meta charset="UTF-8" />
 	<title> Password Update </title>
+	<link rel="stylesheet" href="${css}/style.css"/>
+	
 </head>
 <body>
 	<h3> Password Update </h3>

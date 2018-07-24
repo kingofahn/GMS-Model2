@@ -2,12 +2,10 @@
 <% 	String ctx = application.getContextPath(); %>
 <%@ page import = "service.*" %>
 <%@ page import = "domain.*" %>
-
-<!doctype html>
-<html lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<title> Search ID Result</title>
+	<link rel="stylesheet" href="${css}/style.css"/>
 </head>
 <body>
 	<% 

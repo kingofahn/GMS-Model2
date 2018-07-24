@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<title> Member Withdrawal </title>
-	<link rel="stylesheet" href="${ctx}/resources/css/style.css"/>
+	<link rel="stylesheet" href="${css}/style.css"/>
 </head>
 <body>
 	<h1> Member Withdrawal </h1>

@@ -4,6 +4,7 @@
 <html lang="en">
 
 <head>
+		<link rel="stylesheet" href="${css}/style.css"/>
 	<meta charset="UTF-8" />
 	<title> Search BY ID</title>
 </head>
