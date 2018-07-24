@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx" value="<%=application.getContextPath() %>"/>
-
 <div id="login-box">
-	<a href="${ctx}/member.do?action=move&page=userLoginForm"> LOGIN </a> &nbsp;&nbsp;&nbsp; 
-	<a href="${ctx}/member.do?action=move&page=joinForm">JOIN</a>
+	<a onclick="move('member','move','userLoginForm')"> LOGIN </a>  <!--  ""를 하는 이유는 js에서는 attribute 속성값을 준다 --> 
+	&nbsp;&nbsp;&nbsp; 
+	<a onclick="move('member','move','joinForm')">JOIN</a>
 </div>
+
+
 		

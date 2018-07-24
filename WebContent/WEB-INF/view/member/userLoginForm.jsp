@@ -1,19 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% 	String ctx = application.getContextPath(); %>
-<html>
 <head>
+	<meta charset="UTF-8" />
 	<title>User Login</title>
-	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="${ctx}/resources/css/style.css"/>
 </head>
-<body id="login_box">
+<body>
 	<h1> Login </h1>
-	<form action= "<%= ctx %>/member.do">
-		User ID : <br>
-		<input type="text" name="userid" /><br>  <!-- value를 넣지 않아도 String null ""을 갖고 있는다. -->
-		Password : <br>
-		<input type="password" name="password" />
-		<br><br>
-		<input type="submit" value="전 송" /> <!--버튼을 눌러야만 값이 생성된다. -->
+	<form name = "userLoginForm" action="<%= ctx %>/member.do" onsubmit="return sendForm()" method="get">	
+		User ID : <input type="text" name="userid" placeholder="ID를 입력해주세요."/> <br>
+		Password : <input type="password" name="password" placeholder="비밀번호를  입력(8~20자)" />
+		<input type="submit" value="submit" />
 		<input type="hidden" name="action" value="login" />
 		<input type="hidden" name="page" value="mypage" />
 	</form>

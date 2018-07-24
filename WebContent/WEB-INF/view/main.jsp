@@ -8,13 +8,31 @@
 		<jsp:include page="common/titleBox.jsp"/>
 		<jsp:include page="common/loginBox.jsp"/>
 		<jsp:include page="common/menuBox.jsp"/>
-	</div>
+	</div> <!-- header end -->
 	<div id="content">
 		<jsp:include page="common/contentBox.jsp"/>
-	</div>
+	</div> <!-- content end -->
 	<div id="footer">
-		<jsp:include page="common/footer.jsp"/> 
-	</div>
-</div>
+		<jsp:include page="common/footerBox.jsp"/> 
+	</div> <!-- footer end -->
+</div> <!-- wrapper end -->
+
+<script>
+function move(domain,action,page) {
+	console.log('콘솔 테스트 성공!!');
+	alert('클릭 테스트 성공!!  ${ctx}' );  /* alert는 자바의 sysout 같음  */
+	location.href = 
+				"${ctx}/"+domain+
+					".do?action="+action+
+							"&page="+page;
+}
+	function sendForm() {
+        return true;
+    }
+</script>
+
 </body>
 </html>
+
+
+

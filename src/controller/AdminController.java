@@ -17,7 +17,7 @@ public class AdminController extends HttpServlet {
 		Sentry.init(request,response);
 		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())){
 	    case MOVE : 
-			System.out.println("================컨트롤러  MOVE case 진입================");
+	    	System.out.println("================Admin 컨트롤러  MOVE case 진입================");
 	        Carrier.forward(request, response);
 	        break;
 		default : 
