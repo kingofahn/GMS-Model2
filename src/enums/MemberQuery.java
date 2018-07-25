@@ -45,11 +45,11 @@ public enum MemberQuery {
 			break;		
 		case SELECT_ALL : 
 			query =
-			"	SELECT MEM_ID, TEAM_ID, NAME, AGE, ROLL, PASSWORD,SSN FROM MEMBER "; 
+			"	SELECT MEM_ID, TEAM_ID, NAME, AGE, ROLL, PASSWORD, SSN FROM MEMBER "; 
 			break;		
 		case SELECT_SOME : 
 			query =
-			"	SELECT MEM_ID, TEAM_ID, NAME, AGE, ROLL, PASSWORD,SSN FROM MEMBER "
+			"	SELECT MEM_ID, TEAM_ID, NAME, AGE, ROLL, PASSWORD, SSN FROM MEMBER "
 			+ " WHERE TEAM_ID LIKE '%s'   "; 
 			break;		
 		}

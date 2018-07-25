@@ -16,21 +16,6 @@
 		<jsp:include page="common/footerBox.jsp"/> 
 	</div> <!-- footer end -->
 </div> <!-- wrapper end -->
-
-<script>
-function move(domain,action,page) {
-	console.log('콘솔 테스트 성공!!');
-	alert('클릭 테스트 성공!!  ${ctx}' );  /* alert는 자바의 sysout 같음  */
-	location.href = 
-				"${ctx}/"+domain+
-					".do?action="+action+
-							"&page="+page;
-}
-	function sendForm() {
-        return true;
-    }
-</script>
-
 </body>
 </html>
 

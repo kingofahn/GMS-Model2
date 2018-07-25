@@ -2,7 +2,7 @@
 <div id="menu-box">
 	<ul id="menu">
 		<li><a href="${ctx}">HOME</a></li>
-		<li><a onclick="move('member','move','mypage')">ABOUT</a></li>
-		<li><a onclick="move('admin','move','main')">ADMIN</a></li>
+		<li><a onclick="common.move('member','move','mypage')">ABOUT</a></li>
+		<li><a onclick="common.move('admin','move','main')">ADMIN</a></li>
 	</ul>
 </div>
