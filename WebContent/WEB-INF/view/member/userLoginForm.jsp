@@ -16,14 +16,13 @@
 	<script>
 	document.getElementById('loginFormBtn')
 	.addEventListener('click',function(){
+		var member = new Member();
 		var form =document.getElementById('userLoginForm');
 		form.action="${ctx}/member.do";
 		form.method="post";
-		var userid = form.userid.value;
-		var password = form.password.value;
-		member.setUserid(userid);
-		member.setPassword(password);
-		if(member.loginValidation()){
+		member.setUserid(form.userid.value);
+		member.setPassword(form.password.value);
+		if(service.loginValidation(member)){
 			form.submit();
 		}
 	});
