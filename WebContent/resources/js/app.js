@@ -1,4 +1,4 @@
-var router = (()=>{ /*t,domain, action, page*/
+var router = (()=>{ /* t,domain, action, page */
 	return {move:x=>{  
 		location.href = 
 			x[0] + '/' 
@@ -10,63 +10,70 @@ var router = (()=>{ /*t,domain, action, page*/
 
 var service = (()=>{
 	return{
-		loginValidation : x=>{
-			var form = document.getElementById('userLoginForm');
-			if (x.getUserid()==='') {
-				alert("Please provide your ID");
-				return false;
-			} else if (x.getPassword() === '') {
-				alert("Please provide your Password!");
-				return false;
-			} else {
-				return true;
-			}	
-		},
-		joinValidation : x=>{
-			var form =document.getElementById('joinForm');
-			if (x.getName()==='') {
-				alert("Please provide your Name!");
-				return false;
-			} else if (x.getUserid()==='') {
-				alert("Please provide your ID!")
-				return false;
-			} else if (x.getPassword() === '') {
-				alert("Please provide your Password!")
-				return false;
-			} else if (x.getSsn() === '') {
-				alert("Please provide your Social Security Number!")
-				return false;
-			} else {
-				return true;
+		nullChecker : x=>{
+			var i = 0;
+			var j = {
+					checker : true,
+					text : 'Please provide your Information!'
+					};
+			for (i in x){
+				if(x[i]===''){
+					j.checker = false;
+				}
 			}
+			return j;
 		}
-	};
+	}
 })();
 
-function Member() {
-	var name, userid, ssn, password;
-	this.setName = function(x) {
-		this.name = x;
+var member = (()=> {
+	var _name, _userid, _ssn, _password, _gender, _age, _roll, _teamid;
+	var setName = (name)=> {this._name = name;}
+	var setUserid = (userid)=> {this._userid = userid;}
+	var setSsn = (ssn)=> {this._ssn = ssn;}
+	var setPassword = (password)=> {this._password = password;}
+	var setRoll = (roll)=> {this._roll = roll;}
+	var setTeamid = (teamid)=> {this._teamid = teamid;}
+	var setAge = x=>{
+       var date = new Date().getFullYear();
+       this._age = date - 1900 + 1 - x.substring(0,2);
+       }
+   var setGender = x=>{
+       if(x.substring(7,8) === '1'){
+           this._gender = 'man';
+       }else{
+           alert(x.substring(7,8));
+           this._gender = 'woman';
+	       }
+	   }
+	var getName = ()=> {return this._name;}
+	var getUserid = ()=> {return this._userid;}
+	var getSsn = ()=> {return this._ssn;}
+	var getPassword = ()=> {return this._password;}
+	var getGender = ()=> {return this._gender;}
+	var getAge = ()=> {return this._age;}
+	var getRoll = ()=> {return this._roll;}
+	var getTeamid = ()=> {return this._teamid;}
+	return{
+		setName : setName,
+		setUserid : setUserid,
+		setSsn : setSsn,
+		setPassword : setPassword,
+		setGender : setGender,
+		setAge : setAge,
+		setRoll : setRoll,
+		setTeamid : setTeamid,
+		getName : getName,
+		getUserid : getUserid,
+		getSsn: getSsn,
+		getPassword : getPassword,
+		getGender : getGender,
+		getAge : getAge,
+		getRoll : getRoll,
+		getTeamid : getTeamid,
+		join : x =>{
+			member.setAge(x);
+			member.setGender(x);
+		}
 	}
-	this.setUserid = function(x) {
-		this.userid = x;
-	}
-	this.setSsn = function(x) {
-		this.ssn = x;
-	}
-	this.setPassword = function(x) {
-		this.password = x;
-	}
-	this.getUserid = function(x) {
-		return this.userid;
-	}
-	this.getSsn = function(x) {
-		return this.ssn;
-	}
-	this.getPassword = function(x) {
-		return this.password;
-	}
-	this.getName = function(x) {
-		return this.name;
-	}
-}
+})();

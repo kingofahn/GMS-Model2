@@ -26,7 +26,15 @@ public class MemberDAOImpl implements MemberDAO {
 					.createStatement()
 					.executeUpdate(
 							String.format(MemberQuery.INSERT_MEMBER.toString(),
-						              member.getUserId(),member.getPassword(), member.getSsn(),member.getName(),Integer.parseInt(member.getAge())));
+						              member.getUserId(),
+						              member.getTeamid(),
+						              member.getName(),
+						              member.getAge(),
+						              member.getRoll(),
+						              member.getPassword(), 
+						              member.getSsn(),
+						              member.getGender()
+						              ));
 		} catch (Exception e) {   
 			e.printStackTrace();
 		}
@@ -45,10 +53,11 @@ public class MemberDAOImpl implements MemberDAO {
 			while(rs.next()) {
 				mem = new MemberBean();
 				mem.setUserId(rs.getString("MEM_ID"));
-				mem.setTeamId(rs.getString("TEAM_ID"));
+				mem.setTeamid(rs.getString("TEAM_ID"));
 				mem.setName(rs.getString("NAME"));
 				mem.setAge(rs.getString("AGE"));
 				mem.setRoll(rs.getString("ROLL"));
+				mem.setGender(rs.getString("GENDER"));
 				mem.setPassword(rs.getString("PASSWORD"));
 				mem.setSsn(rs.getString("SSN"));
 				lst.add(mem);
@@ -71,10 +80,11 @@ public class MemberDAOImpl implements MemberDAO {
 			while(rs.next()) {
 				mem = new MemberBean();
 				mem.setUserId(rs.getString("MEM_ID"));
-				mem.setTeamId(rs.getString("TEAM_ID"));
+				mem.setTeamid(rs.getString("TEAM_ID"));
 				mem.setName(rs.getString("NAME"));
 				mem.setAge(rs.getString("AGE"));
 				mem.setRoll(rs.getString("ROLL"));
+				mem.setGender(rs.getString("GENDER"));
 				mem.setPassword(rs.getString("PASSWORD"));
 				mem.setSsn(rs.getString("SSN"));
 				lst.add(mem);
@@ -112,7 +122,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public MemberBean selectFindById(String id) {
-		MemberBean member = null;
+		MemberBean mem = null;
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(
 					Vendor.ORACLE, 
@@ -125,19 +135,21 @@ public class MemberDAOImpl implements MemberDAO {
 						              id));
 
 			while(rs.next()) {
-				member = new MemberBean();
-                member.setUserId(rs.getString("MEM_ID"));
-                member.setTeamId(rs.getString("TEAM_ID"));
-                member.setName(rs.getString("NAME"));
-                member.setAge(rs.getString("AGE"));
-                member.setRoll(rs.getString("ROLL"));
-                member.setSsn(rs.getString("SSN"));
+				mem = new MemberBean();
+				mem.setUserId(rs.getString("MEM_ID"));
+				mem.setTeamid(rs.getString("TEAM_ID"));
+				mem.setName(rs.getString("NAME"));
+				mem.setAge(rs.getString("AGE"));
+				mem.setRoll(rs.getString("ROLL"));
+				mem.setGender(rs.getString("GENDER"));
+				mem.setPassword(rs.getString("PASSWORD"));
+				mem.setSsn(rs.getString("SSN"));
                 }
 			
 		} catch (Exception e) {   
 			e.printStackTrace();
 		}
-	return member;
+	return mem;
 	}
 	@Override
 	public void updateMemberInformation(MemberBean member) {
@@ -174,7 +186,7 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	@Override
 	public MemberBean login(MemberBean member) {
-		MemberBean m = null;
+		MemberBean mem = null;
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(
 					Vendor.ORACLE, 
@@ -187,19 +199,21 @@ public class MemberDAOImpl implements MemberDAO {
 						              member.getUserId(),member.getPassword()));
 			
 			while(rs.next()) {
-				m = new MemberBean();
-                m.setUserId(rs.getString("MEM_ID"));
-                m.setName(rs.getString("NAME"));
-                m.setTeamId(rs.getString("TEAM_ID"));
-                m.setSsn(rs.getString("SSN"));                
-                m.setRoll(rs.getString("ROLL"));
-                m.setPassword(rs.getString("PASSWORD"));
+				mem = new MemberBean();
+				mem.setUserId(rs.getString("MEM_ID"));
+				mem.setTeamid(rs.getString("TEAM_ID"));
+				mem.setName(rs.getString("NAME"));
+				mem.setAge(rs.getString("AGE"));
+				mem.setRoll(rs.getString("ROLL"));
+				mem.setGender(rs.getString("GENDER"));
+				mem.setPassword(rs.getString("PASSWORD"));
+				mem.setSsn(rs.getString("SSN"));
                 }
 			
 		} catch (Exception e) {   // 수정해준다. 
 			e.printStackTrace();
 		}
-	return m;
+	return mem;
 	}
 	
 }

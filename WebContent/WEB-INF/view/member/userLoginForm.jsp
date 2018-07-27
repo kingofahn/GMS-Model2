@@ -5,7 +5,7 @@
 <jsp:include page="../common/head.jsp" />
 <body>
 	<h1>Login</h1>
-	<form id="userLoginForm">
+	<form id="userLoginForm" name="userLoginForm">
 		User ID : <input type="text" name="userid" placeholder="ID를 입력해주세요." /><br> 
 		Password : <input type="password" name="password" placeholder="비밀번호를  입력(8~20자)" /> 
 		<input id="loginFormBtn" type="button" value="전송" /> 
@@ -16,14 +16,15 @@
 	<script>
 	document.getElementById('loginFormBtn')
 	.addEventListener('click',function(){
-		var member = new Member();
-		var form =document.getElementById('userLoginForm');
-		form.action="${ctx}/member.do";
-		form.method="post";
-		member.setUserid(form.userid.value);
-		member.setPassword(form.password.value);
-		if(service.loginValidation(member)){
+		var x = service.nullChecker(
+				[document.userLoginForm.userid.value,document.userLoginForm.password.value]);
+		if(x.checker){
+			var form =document.getElementById('userLoginForm');
+			form.action="${ctx}/member.do";
+			form.method="post";
 			form.submit();
+		} else{
+			alert(x.text);			
 		}
 	});
 	</script>

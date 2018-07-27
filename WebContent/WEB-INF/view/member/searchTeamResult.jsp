@@ -45,7 +45,7 @@
 		for(MemberBean m : lst){
 		%> <tr> 
 			<td> <%= m.getName() %> </td>
-			<td> <%= m.getTeamId() %> </td>
+			<td> <%= m.getTeamid() %> </td>
 			<td> <%= m.getUserId() %> </td>
 			<td> <%= m.getAge() %> </td>
 			<td> <%= m.getRoll() %> </td>

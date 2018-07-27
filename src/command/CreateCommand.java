@@ -1,8 +1,5 @@
 package command;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
@@ -26,13 +23,14 @@ public class CreateCommand extends Command {
 			System.out.println("회원가입에 들어옴!!!");
 			MemberBean mem = new MemberBean();
 			mem.setName(request.getParameter("name"));
+			mem.setUserId(request.getParameter("userid"));
 			mem.setPassword(request.getParameter("password"));
 			mem.setSsn(request.getParameter("ssn"));
-			mem.setUserId(request.getParameter("userid"));
-			mem.setAge(String.valueOf(
-					Integer.valueOf(new SimpleDateFormat("yyyy").format(new Date()))-1900+1
-					-
-					Integer.parseInt(mem.getSsn().substring(0, 2))));
+			mem.setGender(request.getParameter("gender"));
+			mem.setAge(request.getParameter("age"));
+			mem.setTeamid(request.getParameter("teamid"));
+			mem.setRoll(request.getParameter("roll"));
+			/*mem.setSubject(ParamMap.getValues(request,"subject"));*/
 			MemberServiceImpl.getInstance().createMember(mem);	
 			System.out.println("회원가입 성공!!");
 			break;

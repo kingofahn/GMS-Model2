@@ -21,17 +21,19 @@
 		<th>ROLL</th> 
 		<th>SSN</th>
 		<th>PASSWORD</th>
+		<th>GENDER</th>
 	</tr>
 	<%	
 		for(MemberBean m : lst){
 		%> <tr> 
 			<td> <%= m.getName() %> </td>
-			<td> <%= m.getTeamId() %> </td>
+			<td> <%= m.getTeamid() %> </td>
 			<td> <%= m.getUserId() %> </td>
 			<td> <%= m.getAge() %> </td>
 			<td> <%= m.getRoll() %> </td>
 			<td> <%= m.getSsn() %> </td>
 			<td> <%= m.getPassword() %> </td>
+			<td> <%= m.getGender() %> </td>
 			</tr> 
 			<% }  %>
 	</table>

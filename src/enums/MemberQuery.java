@@ -17,14 +17,14 @@ public enum MemberQuery {
 			+ "    WHERE MEM_ID LIKE '%s' AND PASSWORD LIKE '%s'           ";
 			break;
 		case INSERT_MEMBER : 
-			query =
+			query =	
 			"     INSERT INTO MEMBER "
-			+ "    (MEM_ID,PASSWORD,SSN,NAME,AGE)   "
-			+ "   VALUES ('%s','%s','%s','%s','%d') ";		
+			+ "    (MEM_ID,TEAM_ID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER)   "
+			+ "   VALUES ('%s','%s','%s','%s','%s','%s','%s','%s') ";		
 			break;
 		case FINDBYID : 
 			query =
-             "    SELECT MEM_ID, TEAM_ID, NAME, AGE, ROLL, PASSWORD,SSN"
+             "    SELECT MEM_ID,TEAM_ID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER"
            + "    FROM MEMBER          "
            + "    WHERE MEM_ID LIKE '%s' ";		
 			break;
@@ -45,11 +45,11 @@ public enum MemberQuery {
 			break;		
 		case SELECT_ALL : 
 			query =
-			"	SELECT MEM_ID, TEAM_ID, NAME, AGE, ROLL, PASSWORD, SSN FROM MEMBER "; 
+			"	SELECT MEM_ID,TEAM_ID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "; 
 			break;		
 		case SELECT_SOME : 
 			query =
-			"	SELECT MEM_ID, TEAM_ID, NAME, AGE, ROLL, PASSWORD, SSN FROM MEMBER "
+			"	SELECT MEM_ID,TEAM_ID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "
 			+ " WHERE TEAM_ID LIKE '%s'   "; 
 			break;		
 		}
