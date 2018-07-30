@@ -5,7 +5,7 @@
 <body>
 	<h1> Search BY ID </h1>
 	<form id= "findByid">
-	User ID <input type="text" name="uid" />
+	User ID <input type="text" name="userid" />
 	<input type="hidden" name="action" value="RETRIEVE" />
 	<input type="hidden" name="page" value="searchIDResult" />
 	<input id="findByidBtn" type="button" value="전송" />

@@ -9,14 +9,20 @@
 <script>
 document.getElementById('moveHome').addEventListener('click',
 		function() {
-		router.move(['${ctx}','common','','']);
+		router.move({context : '${ctx}'});
 		});
 document.getElementById('moveAbout').addEventListener('click',
 		function() {
-		router.move(['${ctx}','member','move','mypage']);
+		router.move({context : '${ctx}',
+					domain : 'member',
+					action : 'move',
+					page : 'mypage'});
 		});
 document.getElementById('moveAdmin').addEventListener('click',
 		function() {
-		router.move(['${ctx}','admin','move','main']);
+		router.move({context : '${ctx}',
+					domain : 'admin',
+					action : 'move',
+					page : 'main'});
 		});
 </script>

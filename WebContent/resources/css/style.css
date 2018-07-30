@@ -34,13 +34,46 @@ div#title{
 	text-align:left;
 	display:block;
 }
+
+
+table#mypage-table{
+    width:50%;
+    height:45%;
+    text-align: center;
+    font-size: 2.0em;
+    border: 1px solid black;
+}
+
+td#mypage-img{
+    width:180px;
+}
+
 div#login-box{
 	float: right;
 	margin: 10px; /*아무것도 받향 안주면 동서남북 다 적용된다.*/;
 	font-size:1.1em;	/* 감으로 수치를 잡아야 한다. */
-	display: blaock;
+	display: block;
 	color: #fff
 }
+
+div#mypage-bottom{
+	float: center;
+	margin: 10px; /*아무것도 받향 안주면 동서남북 다 적용된다.*/;
+	font-size:1.1em;	/* 감으로 수치를 잡아야 한다. */
+	display: block;
+	color: #fff
+}
+
+div#mypage-bottom a:hover{  /* 지나가면 효과를 줘라  */
+	color: #408080;
+	text-decoration:none; /* a tag 밑줄이 없어짐 */
+}
+div#mypage-bottom a:active{  /* 지나가면 효과를 줘라  */
+	color: #ff0000;
+	text-decoration:none; /* a tag 밑줄이 없어짐 */
+}
+
+
 div#login-box a:hover{  /* 지나가면 효과를 줘라  */
 	color: #408080;
 	text-decoration:none; /* a tag 밑줄이 없어짐 */
@@ -49,6 +82,9 @@ div#login-box a:active{  /* 지나가면 효과를 줘라  */
 	color: #ff0000;
 	text-decoration:none; /* a tag 밑줄이 없어짐 */
 }
+
+
+
 
 
 div#header h1{ /* overriding  */
@@ -70,6 +106,7 @@ div#content{
 div#content-box{
 	clear:both; /* default 위에서 relative에서 초기화 되서 static으로 됨 */
 	margin-top:30px;
+	text-align:center;
 }
 div#menu-box{
 	clear:both;

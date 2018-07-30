@@ -28,7 +28,7 @@
 		%> <tr> 
 			<td> <%= m.getName() %> </td>
 			<td> <%= m.getTeamid() %> </td>
-			<td> <%= m.getUserId() %> </td>
+			<td> <%= m.getUserid() %> </td>
 			<td> <%= m.getAge() %> </td>
 			<td> <%= m.getRoll() %> </td>
 			<td> <%= m.getSsn() %> </td>

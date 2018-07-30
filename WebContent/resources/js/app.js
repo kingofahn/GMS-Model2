@@ -1,11 +1,13 @@
-var router = (()=>{ /* t,domain, action, page */
+"use strict";
+var router = (()=>{
 	return {move:x=>{  
 		location.href = 
-			x[0] + '/' 
-			+ x[1]
-			+ '.do?action='+x[2]
-			+ '&page='+x[3]
-		}};  /* 이것이 클로져임, 키값:value 이 것이 JSON임 */
+			x.context + '/' 
+			+ x.domain
+			+ '.do?action='+x.action
+			+ '&page='+x.page
+		}
+	};  /* 이것이 클로져임, 키값:value 이 것이 JSON임 */
 })();
 
 var service = (()=>{

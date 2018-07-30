@@ -19,8 +19,8 @@ public class RetrieveCommand extends Command {
 
 	@Override
 	public void execute() {
-		member = MemberServiceImpl.getInstance().findById(request.getParameter("uid"));
-		request.setAttribute("member", MemberServiceImpl.getInstance().findById(request.getParameter("uid")));
+		member = MemberServiceImpl.getInstance().findById(request.getParameter("userid"));
+		request.setAttribute("member", MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
 		super.execute();
 	}
 }

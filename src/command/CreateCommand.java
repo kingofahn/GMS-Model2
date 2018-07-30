@@ -23,7 +23,7 @@ public class CreateCommand extends Command {
 			System.out.println("회원가입에 들어옴!!!");
 			MemberBean mem = new MemberBean();
 			mem.setName(request.getParameter("name"));
-			mem.setUserId(request.getParameter("userid"));
+			mem.setUserid(request.getParameter("userid"));
 			mem.setPassword(request.getParameter("password"));
 			mem.setSsn(request.getParameter("ssn"));
 			mem.setGender(request.getParameter("gender"));

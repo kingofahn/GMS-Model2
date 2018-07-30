@@ -26,7 +26,7 @@ public class MemberDAOImpl implements MemberDAO {
 					.createStatement()
 					.executeUpdate(
 							String.format(MemberQuery.INSERT_MEMBER.toString(),
-						              member.getUserId(),
+						              member.getUserid(),
 						              member.getTeamid(),
 						              member.getName(),
 						              member.getAge(),
@@ -52,7 +52,7 @@ public class MemberDAOImpl implements MemberDAO {
 			MemberBean mem =null;
 			while(rs.next()) {
 				mem = new MemberBean();
-				mem.setUserId(rs.getString("MEM_ID"));
+				mem.setUserid(rs.getString("MEM_ID"));
 				mem.setTeamid(rs.getString("TEAM_ID"));
 				mem.setName(rs.getString("NAME"));
 				mem.setAge(rs.getString("AGE"));
@@ -79,7 +79,7 @@ public class MemberDAOImpl implements MemberDAO {
 			MemberBean mem =null;
 			while(rs.next()) {
 				mem = new MemberBean();
-				mem.setUserId(rs.getString("MEM_ID"));
+				mem.setUserid(rs.getString("MEM_ID"));
 				mem.setTeamid(rs.getString("TEAM_ID"));
 				mem.setName(rs.getString("NAME"));
 				mem.setAge(rs.getString("AGE"));
@@ -136,7 +136,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 			while(rs.next()) {
 				mem = new MemberBean();
-				mem.setUserId(rs.getString("MEM_ID"));
+				mem.setUserid(rs.getString("MEM_ID"));
 				mem.setTeamid(rs.getString("TEAM_ID"));
 				mem.setName(rs.getString("NAME"));
 				mem.setAge(rs.getString("AGE"));
@@ -162,8 +162,7 @@ public class MemberDAOImpl implements MemberDAO {
 				.createStatement()
 				.executeUpdate(
 						String.format(MemberQuery.UPDATE_MEMBER.toString(),
-								member.getPassword(),member.getUserId()));		
-		
+								member.getPassword(), member.getTeamid(),member.getRoll(),member.getUserid()));		
 		} catch (Exception e) {  
 			e.printStackTrace();
 		}
@@ -178,7 +177,7 @@ public class MemberDAOImpl implements MemberDAO {
 					.getConnection()
 					.createStatement()
 					.executeUpdate(String.format(
-							MemberQuery.DELETE_MEMBER.toString(),member.getUserId()));
+							MemberQuery.DELETE_MEMBER.toString(),member.getUserid()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -196,11 +195,11 @@ public class MemberDAOImpl implements MemberDAO {
 					.createStatement()
 					.executeQuery(
 							String.format(MemberQuery.LOGIN.toString(),
-						              member.getUserId(),member.getPassword()));
+						              member.getUserid(),member.getPassword()));
 			
 			while(rs.next()) {
 				mem = new MemberBean();
-				mem.setUserId(rs.getString("MEM_ID"));
+				mem.setUserid(rs.getString("MEM_ID"));
 				mem.setTeamid(rs.getString("TEAM_ID"));
 				mem.setName(rs.getString("NAME"));
 				mem.setAge(rs.getString("AGE"));

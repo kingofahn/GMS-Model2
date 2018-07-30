@@ -35,7 +35,7 @@ public enum MemberQuery {
 		case UPDATE_MEMBER : 
 			query =
              "      UPDATE MEMBER		" 
-			+"		SET PASSWORD = '%s'	" 
+			+"		SET PASSWORD = '%s', TEAM_ID = '%s', ROLL = '%s'	" 
             +"		WHERE MEM_ID LIKE '%s'	";		
 			break;
 		case DELETE_MEMBER : 

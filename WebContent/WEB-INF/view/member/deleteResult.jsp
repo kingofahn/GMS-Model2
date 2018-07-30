@@ -10,7 +10,7 @@
 <body>
 		<%
 		MemberBean m = new MemberBean();
-		m.setUserId(request.getParameter("userid"));
+		m.setUserid(request.getParameter("userid"));
 		m.setPassword(request.getParameter("password"));
 		
 		

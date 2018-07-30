@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import command.Carrier;
 import command.ListCommand;
 import command.RetrieveCommand;
@@ -34,13 +35,21 @@ public class MemberController extends HttpServlet {
 			Carrier.redirect(request, response,
 					"/member.do?action=move&page=userLoginForm");
 			break;
-		case UPDATE : case DELETE :
+		case UPDATE : 
+			System.out.println("================컨트롤러 case 진입================");
+			Carrier.redirect(request, response,
+					"/member.do?action=move&page=userLoginForm");
+			break;
+		case DELETE :
 			System.out.println("================컨트롤러 case 진입================");
 			Carrier.redirect(request, response,"");
 			break;
 		case LOGIN :
 			System.out.println("================컨트롤러 login 진입================");
 			if(request.getAttribute("match").equals("TRUE")) {
+				request.getSession()
+						.setAttribute("user", 
+								request.getAttribute("user"));
 				Carrier.forward(request, response);
 			} else {
 				Carrier.redirect(request, response,
@@ -51,8 +60,6 @@ public class MemberController extends HttpServlet {
 		case RETRIEVE :
 			System.out.println("================컨트롤러 RETRIEVE case 진입================");
 			System.out.println("================RETRIEVE 출력 : =================");
-			/*mem = ((RetrieveCommand) Sentry.cmd).getMember();*/
-			/*request.setAttribute("member", MemberServiceImpl.getInstance().findById("uid"));*/
 			mem = ((RetrieveCommand) Sentry.cmd).getMember();
 			System.out.println(mem);
 			System.out.println("================RETRIEVE 종료 : =================");

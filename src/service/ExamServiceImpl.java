@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ExamDAOImpl;
-import dao.MemberDAOImpl;
 import dao.RecordDAOImpl;
 import dao.SubjectlDAOImpl;
 import domain.ExamBean;
-import domain.MemberBean;
 import domain.RecordBean;
-import domain.SubjectBean;
 
 public class ExamServiceImpl implements ExamService {
 	private static ExamService instance = new ExamServiceImpl();

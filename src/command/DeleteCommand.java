@@ -22,7 +22,7 @@ public class DeleteCommand extends Command {
 		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
 		case MEMBER :
 			MemberBean mem = new MemberBean();
-			mem.setUserId(request.getParameter("userid"));
+			mem.setUserid(request.getParameter("userid"));
 			mem.setPassword(request.getParameter("password"));
 			if(MemberServiceImpl.getInstance().login(mem)) {
 				MemberServiceImpl.getInstance().deleteMemberInformation(mem);				

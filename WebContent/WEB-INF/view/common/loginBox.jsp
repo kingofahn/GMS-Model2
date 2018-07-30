@@ -4,14 +4,21 @@
 	&nbsp;&nbsp;&nbsp; 
 	<a id="moveJoinForm">JOIN</a>
 </div>
+
 <script>
 	document.getElementById('moveLoginForm').addEventListener('click',
 			function() {
-				router.move(['${ctx}','member','move','userLoginForm']);
+				router.move({context : '${ctx}',
+							domain : 'member',
+							action : 'move',
+							page : 'userLoginForm'});
 			});
 
 	document.getElementById('moveJoinForm').addEventListener('click',
 			function() {
-				router.move(['${ctx}','member', 'move', 'joinForm']);
+				router.move({context : '${ctx}',
+							domain : 'member',
+							action : 'move', 
+							page : 'joinForm'});
 			});
 </script>
