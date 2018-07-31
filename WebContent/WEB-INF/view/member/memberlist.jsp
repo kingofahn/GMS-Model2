@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% 	String ctx = application.getContextPath(); %>
 <%@ page import = "java.util.*" %>
 <%@ page import = "domain.*" %>
 <%@ page import = "service.*" %>
-<head>
-	<meta charset="UTF-8" />
-	<title>Member List</title>
-	<link rel="stylesheet" href="${css}/style.css"/>
-</head>
+<jsp:include page="../common/head.jsp" />
 <body>
 <div id="wrapper">
+	<div id="header">
+	<jsp:include page="../common/titleBox.jsp" />
+	<jsp:include page="../common/menuBox.jsp" />
+</div>
+	<div id="content">
 	<% 	List<MemberBean> lst = MemberServiceImpl.getInstance().listMember(); %>
 	<h1>  Member List</h1>
 	<table> 
@@ -37,10 +37,12 @@
 			</tr> 
 			<% }  %>
 	</table>
-	<form action= "<%= ctx %>/member.do">
 	<input type="hidden" name="action" value="list" />
 	<input type="hidden" name="page" value="joinResult" />
 	</form>
-</div>
+		</div></div>
+	<div id="footer">
+		<jsp:include page="../common/footerBox.jsp" />
+	</div>
 </body>
 </html>

@@ -177,7 +177,7 @@ public class MemberDAOImpl implements MemberDAO {
 					.getConnection()
 					.createStatement()
 					.executeUpdate(String.format(
-							MemberQuery.DELETE_MEMBER.toString(),member.getUserid()));
+							MemberQuery.DELETE_MEMBER.toString(),member.getUserid(),member.getPassword()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

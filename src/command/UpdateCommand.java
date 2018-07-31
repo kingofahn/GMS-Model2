@@ -3,6 +3,7 @@ package command;
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
+import enums.Domain;
 import service.MemberServiceImpl;
 
 public class UpdateCommand extends Command {
@@ -18,13 +19,19 @@ public class UpdateCommand extends Command {
 	
 	@Override
 	public void execute() {
+		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		case MEMBER :
 			System.out.println("update 들어옴!!!");
 			MemberBean mem = new MemberBean();
-			mem.setUserid(request.getParameter("userid"));
+			mem.setUserid(((MemberBean)request.getSession().getAttribute("user")).getUserid());
 			mem.setPassword(request.getParameter("password"));
 			mem.setTeamid(request.getParameter("teamid"));
 			mem.setRoll(request.getParameter("roll"));
 			MemberServiceImpl.getInstance().updateMemberInformation(mem);
 			System.out.println("update 성공!!");
+			break;
+		default : 
+			break;
+		}
 	}
 }

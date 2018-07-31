@@ -13,7 +13,7 @@ public class CreateCommand extends Command {
 		setAction(request.getParameter("action"));
 		setPage(request.getParameter("page"));
 		execute();  // this.execute() 인데 this가 생략됨
-		System.out.println("CreateCommand Domain.valueOf(getDomain().toUpperCase()) : " + Domain.valueOf(getDomain().toUpperCase()));
+		/*System.out.println("CreateCommand Domain.valueOf(getDomain().toUpperCase()) : " + Domain.valueOf(getDomain().toUpperCase()));*/
 	}
 
 	@Override

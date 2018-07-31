@@ -35,12 +35,11 @@ div#title{
 	display:block;
 }
 
-
 table#mypage-table{
     width:50%;
     height:45%;
     text-align: center;
-    font-size: 2.0em;
+    font-size: 1.0em;
     border: 1px solid black;
 }
 
@@ -83,10 +82,6 @@ div#login-box a:active{  /* 지나가면 효과를 줘라  */
 	text-decoration:none; /* a tag 밑줄이 없어짐 */
 }
 
-
-
-
-
 div#header h1{ /* overriding  */
 	color : #fff;
 	padding: 5px 0; /*좌우는 0으로 적용 */
@@ -100,7 +95,7 @@ div#header h1{ /* overriding  */
 div#content{
 	padding:15px 30px 15px 30px; /*12시 3시 6시 9시  */
 	background-color : #008000;
-	min-height:400px; /*최소 높이 */
+	min-height:500px; /*최소 높이 */
 }
 
 div#content-box{
@@ -154,18 +149,3 @@ div#footer{
 }
 
 table,th,td{border:1px solid gray}
-
-/* .width-60pt{width:60%}
-.width-full{width:100%}
-.height-full{height:100%}
-.margin-auto{margine 0 auto}
-.height-500{height:500px}
-.height-1000{height:1000px}
-.height-1500{height:1500px}
-main
-#width_height-full{width:100%;height:100%}
-admin_login, user_login
-#login_box{width:250px; margin: 150px auto}
-#login_style{border:1px solid black}
-
- */

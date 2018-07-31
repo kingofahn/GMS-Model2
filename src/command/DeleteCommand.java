@@ -14,7 +14,6 @@ public class DeleteCommand extends Command {
 				.substring(1,
 						request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
 		execute();
 	}
 	
@@ -22,10 +21,11 @@ public class DeleteCommand extends Command {
 		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
 		case MEMBER :
 			MemberBean mem = new MemberBean();
-			mem.setUserid(request.getParameter("userid"));
+			mem.setUserid(((MemberBean)request.getSession().getAttribute("user")).getUserid());
 			mem.setPassword(request.getParameter("password"));
 			if(MemberServiceImpl.getInstance().login(mem)) {
-				MemberServiceImpl.getInstance().deleteMemberInformation(mem);				
+				MemberServiceImpl.getInstance().deleteMemberInformation(mem);
+				request.getSession().invalidate();
 			} else {
 				System.out.println("Error");
 			}

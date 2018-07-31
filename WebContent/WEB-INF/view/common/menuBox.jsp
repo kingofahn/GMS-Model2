@@ -9,7 +9,9 @@
 <script>
 document.getElementById('moveHome').addEventListener('click',
 		function() {
-		router.move({context : '${ctx}'});
+		router.move({context : '${ctx}',
+					domain : 'common'
+					});
 		});
 document.getElementById('moveAbout').addEventListener('click',
 		function() {

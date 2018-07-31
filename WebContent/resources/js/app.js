@@ -44,7 +44,6 @@ var member = (()=> {
        if(x.substring(7,8) === '1'){
            this._gender = 'man';
        }else{
-           alert(x.substring(7,8));
            this._gender = 'woman';
 	       }
 	   }

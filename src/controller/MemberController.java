@@ -46,15 +46,11 @@ public class MemberController extends HttpServlet {
 			break;
 		case LOGIN :
 			System.out.println("================컨트롤러 login 진입================");
-			if(request.getAttribute("match").equals("TRUE")) {
-				request.getSession()
-						.setAttribute("user", 
-								request.getAttribute("user"));
-				Carrier.forward(request, response);
-			} else {
-				Carrier.redirect(request, response,
-						"/member.do?action=move&page=userLoginForm");
-			}
+			if(request.getAttribute("match").equals("TRUE")){
+                Carrier.forward(request, response);
+            }else {
+                Carrier.redirect(request, response, "/member.do?action=move&page=userLoginForm");
+            }
 			System.out.println("================컨트롤러 login 종료================");
 			break;
 		case RETRIEVE :
@@ -63,7 +59,7 @@ public class MemberController extends HttpServlet {
 			mem = ((RetrieveCommand) Sentry.cmd).getMember();
 			System.out.println(mem);
 			System.out.println("================RETRIEVE 종료 : =================");
-			Carrier.redirect(request, response,"");
+			/*Carrier.redirect(request, response,"");*/
 			break;
 		case LIST :
 			System.out.println("================컨트롤러 LIST case 진입================");
@@ -71,7 +67,7 @@ public class MemberController extends HttpServlet {
 			lst = ((ListCommand) Sentry.cmd).getMembers();
 			System.out.println(lst);
 			System.out.println("================list 종료 : =================");
-			Carrier.redirect(request, response,"");
+			/*Carrier.redirect(request, response,"");*/
 			break;
 		case SEARCH :
 			System.out.println("================컨트롤러 SEARCH case 진입================");
@@ -79,7 +75,7 @@ public class MemberController extends HttpServlet {
 			lst = ((SearchCommand) Sentry.cmd).getMembers();
 			System.out.println(lst);
 			System.out.println("================SEARCH 종료 : =================");
-			Carrier.redirect(request, response,"");
+			/*Carrier.redirect(request, response,"");*/
 			break;
 		case COUNT :
 			System.out.println("================컨트롤러 Count case 진입================");

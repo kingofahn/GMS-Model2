@@ -10,18 +10,30 @@
 <script>
 document.getElementById('moveHome').addEventListener('click',
 		function() {
-		router.move(['${ctx}','common','','']);
+		router.move({context : '${ctx}',
+					domain : 'common'
+					});
 		});
+		
 document.getElementById('moveMemberlist').addEventListener('click',
 		function() {
-		router.move(['${ctx}','member','move','memberlist']);
+		router.move({context :'${ctx}',
+					domain : 'member',
+					action : 'move',
+					page : 'memberlist'});
 		});
 document.getElementById('moveSearchidform').addEventListener('click',
 		function() {
-		router.move(['${ctx}','member','move','searchIDForm']);
+		router.move({context : '${ctx}',
+					domain : 'member',
+					action : 'move',
+					page : 'searchIDForm'});
 		});
 document.getElementById('moveSearchteamform').addEventListener('click',
 		function() {
-		router.move(['${ctx}','member','move','searchTeamForm']);
+		router.move({context : '${ctx}',
+					domain : 'member',
+					action : 'move',
+					page : 'searchTeamForm'});
 		});
 </script>

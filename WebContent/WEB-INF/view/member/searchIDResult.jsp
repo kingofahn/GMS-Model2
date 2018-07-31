@@ -2,12 +2,15 @@
 <% 	String ctx = application.getContextPath(); %>
 <%@ page import = "service.*" %>
 <%@ page import = "domain.*" %>
-<head>
-	<meta charset="UTF-8" />
-	<title> Search ID Result</title>
-	<link rel="stylesheet" href="${css}/style.css"/>
-</head>
+<!doctype html>
+<html lang="en">
+<jsp:include page="../common/head.jsp" />
 <body>
+	<div id="wrapper">
+	<div id="header">
+	<jsp:include page="../common/titleBox.jsp" />
+	<jsp:include page="../common/menuBox.jsp" />
+</div>
 	<% 
 	MemberBean m = MemberServiceImpl.getInstance().findById(request.getParameter("uid"));
 	%>
@@ -29,5 +32,9 @@
 			<td> <%= m.getSsn() %> </td>
 		</tr> 
 	</table>
+		</div>
+	<div id="footer">
+		<jsp:include page="../common/footerBox.jsp" />
+	</div>
 </body>
 </html>

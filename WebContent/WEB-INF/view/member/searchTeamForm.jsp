@@ -1,17 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% 	String ctx = application.getContextPath(); %>
-<head>
-	<meta charset="UTF-8" />
-	<title> Search Team Form</title>
-	<link rel="stylesheet" href="${css}/style.css"/>
-</head>	
+<!doctype html>
+<html lang="en">
+<jsp:include page="../common/head.jsp" />
+
 <body>	
-	<h1> Search BY TEAM ID </h1>
-	<form action= "<%= ctx %>/member.do">
+	<div id="wrapper">
+	<div id="header">
+	<jsp:include page="../common/titleBox.jsp" />
+	<jsp:include page="../common/menuBox.jsp" />
+</div>
+	<div id="content">
+	<form>
 	Team 이름  : <input type="text" name="teamid">
 	<input type="submit" value="전 송" />
 	<input type="hidden" name="action" value="SEARCH" />
 	<input type="hidden" name="page" value="searchTeamResult" />
 </form>
+	</div></div>
+	<div id="footer">
+		<jsp:include page="../common/footerBox.jsp" />
+	</div>
 </body>
 </html>

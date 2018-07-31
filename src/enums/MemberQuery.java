@@ -41,7 +41,8 @@ public enum MemberQuery {
 		case DELETE_MEMBER : 
 			query =
 			"	DELETE FROM MEMBER "
-			+ " WHERE MEM_ID LIKE '%s'";
+			+ " WHERE MEM_ID LIKE '%s'"
+			+ " AND PASSWORD LIKE '%s'";
 			break;		
 		case SELECT_ALL : 
 			query =
