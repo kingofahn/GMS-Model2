@@ -37,6 +37,7 @@
 			</tr> 
 			<% }  %>
 	</table>
+	<form>
 	<input type="hidden" name="action" value="list" />
 	<input type="hidden" name="page" value="joinResult" />
 	</form>

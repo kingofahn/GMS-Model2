@@ -67,8 +67,8 @@
             for(var i in json){
                 var node = document.createElement('input');
                 node.setAttribute('type', 'hidden');
-                node.setAttribute('name', arr[i].name);
-                node.setAttribute('value', arr[i].value);
+                node.setAttribute('name', json[i].name);
+                node.setAttribute('value', json[i].value);
                 form.appendChild(node);
             }
 			member.join(form.ssn.value);

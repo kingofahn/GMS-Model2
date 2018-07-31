@@ -13,7 +13,6 @@ var router = (()=>{
 var service = (()=>{
 	return{
 		nullChecker : x=>{
-			var i = 0;
 			var j = {
 					checker : true,
 					text : 'Please provide your Information!'

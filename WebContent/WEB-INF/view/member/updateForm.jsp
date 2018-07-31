@@ -41,7 +41,7 @@
 					<tr>
 						<td>나이</td>
 						<td>${user.age}</td>
-						<td>역할 (현재역할 : ${user.roll})</td>
+						<td>역할</td>
 						<td><input type="radio" id="roll_1" name="roll"
 							value="leader" /> 팀장 <input type="radio" id="roll_2" name="roll"
 							value="front" /> 프론트개발 <input type="radio" id="roll_3"
@@ -87,7 +87,7 @@
 								form.action = "${ctx}/member.do";
 								form.method = "post"; /* get으로 하면 노출됨 */
 								var node = document.createElement('input');
-								node.innerHTML = '<input type="hidden" name="action" value="delete">'
+								node.innerHTML = '<input type="hidden" name="action" value="update">'
 								form.appendChild(node);
 								form.submit();
 							} else {
