@@ -17,7 +17,7 @@ var service = (()=>{
 					checker : true,
 					text : 'Please provide your Information!'
 					};
-			for (i in x){
+			for (var i in x){
 				if(x[i]===''){
 					j.checker = false;
 				}
@@ -26,6 +26,28 @@ var service = (()=>{
 		}
 	}
 })();
+
+var admin = (()=>{
+	return{
+		check : x=>{
+			var isAdmin = confirm('Are you an administrator?'); // 윈도우의 객체 BOM의 METHOD이다. 
+			if(isAdmin){
+				var password = prompt('Enter your admin Access code!!!');
+				if(password == 1){
+					router.move({
+						context : x,
+						domain : 'admin',
+						action : 'list',
+						page : 'main'});
+					} else{
+						alert('Wrong Access code!!!');
+					}
+				} else{
+					alert('Only administrator can access this function!!!');
+				}
+		}
+	};
+	})();
 
 var member = (()=> {
 	var _name, _userid, _ssn, _password, _gender, _age, _roll, _teamid;

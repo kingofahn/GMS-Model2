@@ -33,7 +33,7 @@
 			form.submit();
 		} else{
 			alert(x.text);			
-		}
+		}x
 	});
 	</script>
 </body></html>

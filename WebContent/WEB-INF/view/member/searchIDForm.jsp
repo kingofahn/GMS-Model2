@@ -9,19 +9,18 @@
 	<jsp:include page="../common/menuBox.jsp" />
 </div>
 	<div id="content">
-	Search BY ID
 	<form id= "findByid">
 	User ID <input type="text" name="userid" />
 	<input type="hidden" name="action" value="RETRIEVE" />
 	<input type="hidden" name="page" value="searchIDResult" />
-	<input id="findByidBtn" type="button" value="전송" />
+	<input id="searchIDFormBtn" type="button" value="전송" />
 	</form>
 	</div></div>
 	<div id="footer">
 		<jsp:include page="../common/footerBox.jsp" />
 	</div>
-<script>		
-
-</script>	
+	<script>		
+		
+	</script>	
 </body>
 </html>

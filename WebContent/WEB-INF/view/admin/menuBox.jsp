@@ -2,12 +2,13 @@
 <div id="menu-box">
 	<ul id="menu">
 		<li><a id="moveHome"> HOME</a></li>
-		<li><a id="moveMemberlist"> 회원목록</a></li>
-		<li><a id="moveSearchidform">회원검색</a></li>
-		<li><a id="moveSearchteamform">팀검색</a></li>
+		<li><a id="moveAdminHome"> ADMIN HOME</a></li>
+		<li><a id="moveSearchidform">SEARCH MEMBER BY ID</a></li>
+		<li><a id="moveSearchteamform">SEARCH MEMBERS BY TEAM ID</a></li>
 	</ul>
 </div>
 <script>
+
 document.getElementById('moveHome').addEventListener('click',
 		function() {
 		router.move({context : '${ctx}',
@@ -15,13 +16,14 @@ document.getElementById('moveHome').addEventListener('click',
 					});
 		});
 		
-document.getElementById('moveMemberlist').addEventListener('click',
+document.getElementById('moveAdminHome').addEventListener('click',
 		function() {
-		router.move({context :'${ctx}',
-					domain : 'member',
-					action : 'move',
-					page : 'memberlist'});
+		router.move({context : '${ctx}',
+					domain : 'admin',
+					action : 'list',
+					page : 'main'});
 		});
+
 document.getElementById('moveSearchidform').addEventListener('click',
 		function() {
 		router.move({context : '${ctx}',
@@ -29,6 +31,7 @@ document.getElementById('moveSearchidform').addEventListener('click',
 					action : 'move',
 					page : 'searchIDForm'});
 		});
+		
 document.getElementById('moveSearchteamform').addEventListener('click',
 		function() {
 		router.move({context : '${ctx}',
@@ -36,4 +39,5 @@ document.getElementById('moveSearchteamform').addEventListener('click',
 					action : 'move',
 					page : 'searchTeamForm'});
 		});
+		
 </script>

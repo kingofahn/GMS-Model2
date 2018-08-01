@@ -20,8 +20,7 @@ public class ListCommand extends Command {
 	}
 	@Override
 	public void execute() {
-		this.members = MemberServiceImpl.getInstance().listMember();
-		/*request.setAttribute("list", MemberServiceImpl.getInstance().listMember());*/
+		request.setAttribute("memberList", MemberServiceImpl.getInstance().listMember());
 		super.execute();
 		System.out.println("**** ListCommand에 execute 실행함!!! ****");
 	}

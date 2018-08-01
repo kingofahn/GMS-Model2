@@ -11,7 +11,6 @@
 </div>
 	<div id="content">
 	<% 	List<MemberBean> lst = MemberServiceImpl.getInstance().listMember(); %>
-	<h1>  Member List</h1>
 	<table> 
 	<tr> 
 		<th>이름 </th>
@@ -34,7 +33,7 @@
 			<td> <%= m.getSsn() %> </td>
 			<td> <%= m.getPassword() %> </td>
 			<td> <%= m.getGender() %> </td>
-			</tr> 
+	</tr> 
 			<% }  %>
 	</table>
 	<form>

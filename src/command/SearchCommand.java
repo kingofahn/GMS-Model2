@@ -1,11 +1,14 @@
 package command;
+
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import domain.MemberBean;
+import enums.Domain;
 import service.MemberServiceImpl;
 
 public class SearchCommand extends Command {
 	List<MemberBean> members;
+
 	public List<MemberBean> getMembers() {
 		return members;
 	}
@@ -20,7 +23,13 @@ public class SearchCommand extends Command {
 
 	@Override
 	public void execute() {
-		this.members = MemberServiceImpl.getInstance().findMemberByTeamName(request.getParameter("teamid"));
-		super.execute();
+		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		case ADMIN:
+			request.setAttribute("members",MemberServiceImpl.getInstance().findMemberByTeamName(request.getParameter("teamid")));
+			super.execute();
+			break;
+		default:
+			break;
+		}
 	}
 }
