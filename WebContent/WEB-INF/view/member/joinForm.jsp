@@ -10,13 +10,12 @@
 	</div>
 	<div id="content">
 		<form id = "joinForm" name="joinForm">
-		Member Join 
-		NAME : <input type="text" name="name" placeholder="이름을  입력해주세요." /> <br>
-		ID : <input type="text" name="userid" placeholder="ID를 입력해주세요." /> <input id="idCheckBtn" type="button" value="중복확인" ><br>
-		Password : <input type="password" name="password" placeholder="비밀번호를  입력(8~20자)" />	<br>
-		SSN : <input type="text" name="ssn" placeholder="생년월일 입력(ex900115-1)" /><br>
+		NAME : <input type="text" name="name" placeholder="Insert your name" /> <br>
+		ID : <input type="text" name="userid" placeholder="Insert new ID" /> <input id="idCheckBtn" type="button" value="Check" ><br>
+		Password : <input type="password" name="password" placeholder="Insert password(8~20)" />	<br>
+		SSN : <input type="text" name="ssn" placeholder="Insert SSN (ex900115-1)" /><br>
 	
-		소속팀
+		Team
 		<input type="radio" name="teamid" value="none" checked="checked"/> 없음
 		<input type="radio" name="teamid" value="nolja"/> 걍놀자
 		<input type="radio" name="teamid" value="jieunHouse"/> 지은하우스
@@ -24,7 +23,7 @@
 		<input type="radio" name="teamid" value="coddingZzang"/> 코딩짱
 		<br>
 		
-		프로젝트역할
+		Roll
 		<select name="roll" id="roll">
 		<option value="leader">팀장</option>
 		<option value="front">프론트개발</option>
@@ -33,7 +32,7 @@
 		<option value="minfe">민폐</option>
 		</select>
 		<br>
-		수강과목
+		Subject
 		<input type="checkbox" name="subject" value="java" checked="checked"/> Java
 		<input type="checkbox" name="subject" value="clang"/> C언어
 		<input type="checkbox" name="subject" value="JSP"/>	JSP

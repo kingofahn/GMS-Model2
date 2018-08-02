@@ -3,8 +3,6 @@
 	<ul id="menu">
 		<li><a id="moveHome"> HOME</a></li>
 		<li><a id="moveAdminHome"> ADMIN HOME</a></li>
-		<li><a id="moveSearchidform">SEARCH MEMBER BY ID</a></li>
-		<li><a id="moveSearchteamform">SEARCH MEMBERS BY TEAM ID</a></li>
 	</ul>
 </div>
 <script>
@@ -24,20 +22,5 @@ document.getElementById('moveAdminHome').addEventListener('click',
 					page : 'main'});
 		});
 
-document.getElementById('moveSearchidform').addEventListener('click',
-		function() {
-		router.move({context : '${ctx}',
-					domain : 'member',
-					action : 'move',
-					page : 'searchIDForm'});
-		});
-		
-document.getElementById('moveSearchteamform').addEventListener('click',
-		function() {
-		router.move({context : '${ctx}',
-					domain : 'member',
-					action : 'move',
-					page : 'searchTeamForm'});
-		});
-		
+
 </script>

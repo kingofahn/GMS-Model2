@@ -11,8 +11,8 @@
 
 	<div id="content">
 		<form id="userLoginForm" name="userLoginForm">
-		User ID : <input type="text" name="userid" placeholder="ID를 입력해주세요." /><br> 
-		Password : <input type="password" name="password" placeholder="비밀번호를  입력(8~20자)" /> 
+		User ID : <input type="text" name="userid" placeholder="Insert your ID" /><br> 
+		Password : <input type="password" name="password" placeholder="Insert your password" /> 
 		<input id="loginFormBtn" type="button" value="전송" /> 
 		<input type="hidden" name="action" 	value="login" /> 
 	</form>

@@ -7,7 +7,6 @@ import service.MemberServiceImpl;
 
 public class RetrieveCommand extends Command {
 	MemberBean member;
-
 	public MemberBean getMember() {
 		return member;
 	}

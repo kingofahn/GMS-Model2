@@ -13,16 +13,23 @@ var router = (()=>{
 var service = (()=>{
 	return{
 		nullChecker : x=>{
+			var i = 0;
 			var j = {
 					checker : true,
 					text : 'Please provide your Information!'
 					};
-			for (var i in x){
+			for (i in x){
 				if(x[i]===''){
 					j.checker = false;
 				}
 			}
 			return j;
+		},
+		addClass : (dom,cName)=>{
+            var arr = cName.split(" ");
+            if(arr.indexOf(cName) == -1){
+                dom.className += " " + cName;
+		    }
 		}
 	}
 })();
@@ -30,7 +37,8 @@ var service = (()=>{
 var admin = (()=>{
 	return{
 		check : x=>{
-			var isAdmin = confirm('Are you an administrator?'); // 윈도우의 객체 BOM의 METHOD이다. 
+			var isAdmin = confirm('Are you an administrator?'); // 윈도우의 객체 BOM의
+																// METHOD이다.
 			if(isAdmin){
 				var password = prompt('Enter your admin Access code!!!');
 				if(password == 1){
@@ -45,6 +53,45 @@ var admin = (()=>{
 				} else{
 					alert('Only administrator can access this function!!!');
 				}
+		},
+		main : x=>{
+			for(var i of document.querySelectorAll('.username')){
+                service.addClass(i, 'cursor fontColorBlue');
+                i.addEventListener('click', function(){
+                    location.href=x+'/admin.do?action=retrieve&'+'page=memberDetail&userid='+this.getAttribute('id');
+                    //여기서의 this는 x[i]를 호출하는 녀석 
+                });
+            }
+			
+			document.getElementById('searchBtn')
+				.addEventListener('click',function() {
+					location.href=(document.getElementById('searchOption').value==='userid') ?
+						x+'/admin.do?action=RETRIEVE&page=memberDetail&userid='+document.getElementById('searchWord').value
+						:
+						x+'/admin.do?action=SEARCH&page=main&searchOption='+document.getElementById('searchOption').value+'&searchWord='+document.getElementById('searchWord').value		
+						;
+			});
+            service.addClass(
+                    document.getElementById('searchWord'),
+                    'width100px floatRight');
+			service.addClass(
+                    document.getElementById('searchBox'),
+                    'width80pt center');
+			service.addClass(
+					document.getElementById('searchBtn'),
+					'floatRight '); 
+            service.addClass(
+                    document.getElementById('searchOption'),
+                    'floatRight ');    
+            service.addClass(
+                    document.getElementById('contentBoxTab'),
+                    'width90pt center marginTop30px');    
+            service.addClass(
+                    document.getElementById('contentBoxMeta'),
+                    'bgColorYellow ');	
+
+			
+			
 		}
 	};
 	})();

@@ -10,8 +10,9 @@ public class Carrier {
 				request
 				.getRequestDispatcher(Sentry.cmd.getView())
 				.forward(request, response);
+				System.out.println("%%%%"+"Sentry.cmd.getView() 의 내용 :  "+Sentry.cmd.getView()+"%%%%");
+				System.out.println("%%%% forward 종료 %%%%");
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -21,6 +22,8 @@ public class Carrier {
 		System.out.println("%%%% redirect 사용됨!!! %%%%");
 			try {
 				response.sendRedirect(request.getContextPath()+url);/*url :  /member.do?action=move&page=userLoginForm*/
+				System.out.println("%%%%" + "request.getContextPath() 의 내용 : " + request.getContextPath() + "%%%%" );
+				System.out.println("%%%% forward 종료 %%%%");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

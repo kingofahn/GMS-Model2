@@ -12,28 +12,28 @@
 	<div id="content">
 		<table id="mypage-table">  
 		<tr>
-			<th  rowspan='3'>사진 </th> 
-			<th>아이디</th>
+			<th  rowspan='3'>PHOTO </th> 
+			<th>ID</th>
 			<th colspan='2'>${user.userid} </th>
 		</tr>
 		<tr>
-			<th>이름</th>
+			<th>NAME</th>
 			<th colspan='2'>${user.name}</th>
 		</tr>
 		<tr>
-			<th>비밀번호</th>
+			<th>PASSWORD</th>
 			<th colspan='2'>************</th>
 		</tr>
 		<tr>
-			<th>나이</th>
+			<th>AGE</th>
 			<th>${user.age}</th>
-			<th>팀명</th>
+			<th>TEAM</th>
 			<th>${user.teamid}</th>
 		</tr>
 		<tr>
-			<th>성별</th>
+			<th>GENDER</th>
 			<th>${user.gender}</th>
-			<th>역할</th>
+			<th>ROLL</th>
 			<th>${user.roll}</th>
 		</tr>
 	</table>

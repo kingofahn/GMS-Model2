@@ -51,10 +51,9 @@ public enum MemberQuery {
 		case SELECT_SOME : 
 			query =
 			"	SELECT MEM_ID,TEAM_ID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "
-			+ " WHERE TEAM_ID LIKE '%s'   "; 
+			+ " WHERE %s LIKE '%%%s%%'   "; 
 			break;		
 		}
-		
 		return query;
 	}
 }

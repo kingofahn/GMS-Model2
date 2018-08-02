@@ -70,12 +70,14 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public List<MemberBean> selectMemberBySearchWord(String word) {
 		List<MemberBean> lst = new ArrayList<>();
+		System.out.println("word.split[0] : " + word.split("/")[0]);
+		System.out.println("word.split[1] : " + word.split("/")[1]);
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(
 					Vendor.ORACLE, DBConstant.USERNAME,DBConstant.PASSWORD)
 					.getConnection()
 					.createStatement()
-					.executeQuery(String.format(MemberQuery.SELECT_SOME.toString(),word));
+					.executeQuery(String.format(MemberQuery.SELECT_SOME.toString(),word.split("/")[0],word.split("/")[1]));
 			MemberBean mem =null;
 			while(rs.next()) {
 				mem = new MemberBean();
