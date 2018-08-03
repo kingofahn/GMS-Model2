@@ -15,7 +15,8 @@ public class CountCommand extends Command {
 	@Override
 	
 	public void execute() {
-		request.setAttribute("count",MemberServiceImpl.getInstance().memberCount());// 해쉬맵의 구조라서 숫자값을 먹게한다. 
+		request.setAttribute("count",MemberServiceImpl.getInstance().memberCount());// 해쉬맵의 구조라서 숫자값을 먹게한다.
+		System.out.println("CountCommand : " + MemberServiceImpl.getInstance().memberCount());
 		super.execute();
 	}
 }

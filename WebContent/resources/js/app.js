@@ -37,8 +37,7 @@ var service = (()=>{
 var admin = (()=>{
 	return{
 		check : x=>{
-			var isAdmin = confirm('Are you an administrator?'); // 윈도우의 객체 BOM의
-																// METHOD이다.
+			var isAdmin = confirm('Are you an administrator?'); // 윈도우의 객체 BOM의  METHOD이다.
 			if(isAdmin){
 				var password = prompt('Enter your admin Access code!!!');
 				if(password == 1){

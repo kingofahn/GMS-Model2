@@ -1,14 +1,17 @@
 package dao;
 
-import java.sql.*;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import domain.MemberBean;
 import enums.MemberQuery;
 import enums.Vendor;
-import factory.*;
+import factory.DatabaseFactory;
 import pool.DBConstant;
+import template.PstmtQuery;
+import template.QueryTemplate;
 
 public class MemberDAOImpl implements MemberDAO {
 	private static MemberDAO instance = new MemberDAOImpl();
@@ -69,41 +72,20 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public List<MemberBean> selectMemberBySearchWord(String word) {
-		List<MemberBean> lst = new ArrayList<>();
-		System.out.println("word.split[0] : " + word.split("/")[0]);
-		System.out.println("word.split[1] : " + word.split("/")[1]);
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(
-					Vendor.ORACLE, DBConstant.USERNAME,DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeQuery(String.format(MemberQuery.SELECT_SOME.toString(),word.split("/")[0],word.split("/")[1]));
-			MemberBean mem =null;
-			while(rs.next()) {
-				mem = new MemberBean();
-				mem.setUserid(rs.getString("MEM_ID"));
-				mem.setTeamid(rs.getString("TEAM_ID"));
-				mem.setName(rs.getString("NAME"));
-				mem.setAge(rs.getString("AGE"));
-				mem.setRoll(rs.getString("ROLL"));
-				mem.setGender(rs.getString("GENDER"));
-				mem.setPassword(rs.getString("PASSWORD"));
-				mem.setSsn(rs.getString("SSN"));
-				lst.add(mem);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String,Object> map = new HashMap<>();
+		q.play(map);
+		for(Object s : q.getList()) {
+			list.add((MemberBean)s);
 		}
-		return lst;
+		return list;
 	}
+	
 	@Override
 	public int countMember() {
 		int count = 0;
 		try {
-/*			Class.forName(DBConstant.ORACLE_DRIVER);
-			Connection conn = DriverManager.getConnection(DBConstant.CONNECTION_URL, DBConstant.USERNAME, DBConstant.PASSWORD);
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("");*/
 			ResultSet rs =  DatabaseFactory.createDatabase(
 					Vendor.ORACLE, 
 					DBConstant.USERNAME, 
@@ -111,15 +93,13 @@ public class MemberDAOImpl implements MemberDAO {
 					.getConnection()
 					.createStatement()
 					.executeQuery(String.format(MemberQuery.COUNT_MEMBER.toString()));
-						
 			while(rs.next()) {
-				count = rs.getInt("count");
+				count = rs.getInt("COUNT");
+				System.out.println("rs.getInt(COUNT) : " + rs.getInt("COUNT") );
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 		return count;
 	}
 	@Override
@@ -135,7 +115,6 @@ public class MemberDAOImpl implements MemberDAO {
 					.executeQuery(
 							String.format(MemberQuery.FINDBYID.toString(),
 						              id));
-
 			while(rs.next()) {
 				mem = new MemberBean();
 				mem.setUserid(rs.getString("MEM_ID"));

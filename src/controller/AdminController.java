@@ -36,6 +36,7 @@ public class AdminController extends HttpServlet {
 			break;
 		case COUNT :
 			System.out.println("================컨트롤러 Count case 진입================");
+			Carrier.forward(request, response);
 			System.out.println("================COUNT 종료 : =================");
 			break;
 		default : 

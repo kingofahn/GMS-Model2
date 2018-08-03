@@ -30,7 +30,7 @@ public enum MemberQuery {
 			break;
 		case COUNT_MEMBER : 
 			query =
-             "      SELECT COUNT(*) AS count FROM MEMBER";		
+             "      SELECT COUNT(*) COUNT FROM MEMBER";		
 			break;
 		case UPDATE_MEMBER : 
 			query =
