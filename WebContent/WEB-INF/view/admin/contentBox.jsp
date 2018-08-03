@@ -12,7 +12,7 @@
 		<input type="button" id="searchBtn" value="Search" />
 	</div>
 	<table id="contentBoxTab">
-		<tr id="centerBoxMeta">
+		<tr id="contentBoxMeta">
 			<th>ID</th>
 			<th>NAME</th>
 			<th>AGE</th>

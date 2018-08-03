@@ -88,9 +88,7 @@ var admin = (()=>{
                     'width90pt center marginTop30px');    
             service.addClass(
                     document.getElementById('contentBoxMeta'),
-                    'bgColorYellow ');	
-
-			
+                    'bgColorBlue ');	
 			
 		}
 	};
