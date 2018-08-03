@@ -56,8 +56,8 @@ public class MemberDAOImpl implements MemberDAO {
 			MemberBean mem =null;
 			while(rs.next()) {
 				mem = new MemberBean();
-				mem.setUserid(rs.getString("MEM_ID"));
-				mem.setTeamid(rs.getString("TEAM_ID"));
+				mem.setUserid(rs.getString("USERID"));
+				mem.setTeamid(rs.getString("TEAMID"));
 				mem.setName(rs.getString("NAME"));
 				mem.setAge(rs.getString("AGE"));
 				mem.setRoll(rs.getString("ROLL"));
@@ -121,8 +121,8 @@ public class MemberDAOImpl implements MemberDAO {
 						              id));
 			while(rs.next()) {
 				mem = new MemberBean();
-				mem.setUserid(rs.getString("MEM_ID"));
-				mem.setTeamid(rs.getString("TEAM_ID"));
+				mem.setUserid(rs.getString("USERID"));
+				mem.setTeamid(rs.getString("TEAMID"));
 				mem.setName(rs.getString("NAME"));
 				mem.setAge(rs.getString("AGE"));
 				mem.setRoll(rs.getString("ROLL"));
@@ -184,8 +184,8 @@ public class MemberDAOImpl implements MemberDAO {
 			
 			while(rs.next()) {
 				mem = new MemberBean();
-				mem.setUserid(rs.getString("MEM_ID"));
-				mem.setTeamid(rs.getString("TEAM_ID"));
+				mem.setUserid(rs.getString("USERID"));
+				mem.setTeamid(rs.getString("TEAMID"));
 				mem.setName(rs.getString("NAME"));
 				mem.setAge(rs.getString("AGE"));
 				mem.setRoll(rs.getString("ROLL"));

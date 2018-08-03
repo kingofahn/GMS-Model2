@@ -6,7 +6,9 @@
 			<option value="none"> Keyword </option>
 			<option value="userid"> ID </option>
 			<option value="name"> NAME</option>
-			<option value="TEAM_ID">TEAM </option>
+			<option value="teamid">TEAM </option>
+			<option value="roll">ROLL </option>
+			<option value="gender">GENDER </option>
 		</select>
 		<input name="searchWord" id="searchWord" type="text" placeholder="Insert Keyword" />
 		<input type="button" id="searchBtn" value="Search" />
@@ -33,13 +35,11 @@
 		</c:forEach>
 		<tr>
 			<td colspan="6">
-				전체인원 : ${count} 명 
+				전체인원 : ${memberList.size()} 명 
 				<c:forEach begin="1" end="${(count % 5==0)? count / 5 : (count/5)+1}" step="1" var="i">
 					<span> ${i} </span>
 				</c:forEach>
 			</td> 
-			
-			
 		</tr>
 	</table>
 </div>

@@ -7,26 +7,26 @@ public enum MemberQuery {
 		switch(this) {
 		case LOGIN :
 			query = 
-			"      SELECT MEM_ID,"
-			+ "    TEAM_ID,      "
+			"      SELECT USERID,"
+			+ "    TEAMID,      "
 			+ "    NAME,  "
 			+ "    SSN,   "
 			+ "    ROLL,  "
 			+ "    PASSWORD      "
 			+ "    FROM MEMBER          "
-			+ "    WHERE MEM_ID LIKE '%s' AND PASSWORD LIKE '%s'           ";
+			+ "    WHERE USERID LIKE '%s' AND PASSWORD LIKE '%s'           ";
 			break;
 		case INSERT_MEMBER : 
 			query =	
 			"     INSERT INTO MEMBER "
-			+ "    (MEM_ID,TEAM_ID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER)   "
+			+ "    (USERID,TEAMID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER)   "
 			+ "   VALUES ('%s','%s','%s','%s','%s','%s','%s','%s') ";		
 			break;
 		case FINDBYID : 
 			query =
-             "    SELECT MEM_ID,TEAM_ID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER"
+             "    SELECT USERID,TEAMID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER"
            + "    FROM MEMBER          "
-           + "    WHERE MEM_ID LIKE '%s' ";		
+           + "    WHERE USERID LIKE '%s' ";		
 			break;
 		case COUNT_MEMBER : 
 			query =
@@ -35,25 +35,25 @@ public enum MemberQuery {
 		case UPDATE_MEMBER : 
 			query =
              "      UPDATE MEMBER		" 
-			+"		SET PASSWORD = '%s', TEAM_ID = '%s', ROLL = '%s'	" 
-            +"		WHERE MEM_ID LIKE '%s'	";		
+			+"		SET PASSWORD = '%s', TEAMID = '%s', ROLL = '%s'	" 
+            +"		WHERE USERID LIKE '%s'	";		
 			break;
 			// test
 		case DELETE_MEMBER : 
 			query =
 			"	DELETE FROM MEMBER "
-			+ " WHERE MEM_ID LIKE '%s'"
+			+ " WHERE USERID LIKE '%s'"
 			+ " AND PASSWORD LIKE '%s'";
 			break;		
 		case SELECT_ALL : 
 			query =
-			"	SELECT MEM_ID,TEAM_ID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "; 
+			"	SELECT USERID,TEAMID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "; 
 			break;		
-		case SELECT_SOME : 
+/*		case SELECT_SOME : 
 			query =
-			"	SELECT MEM_ID,TEAM_ID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "
+			"	SELECT USERID,TEAMID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "
 			+ " WHERE %s LIKE '%%%s%%'   "; 
-			break;		
+			break;	*/	
 		}
 		return query;
 	}
