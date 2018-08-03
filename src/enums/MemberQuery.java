@@ -38,6 +38,7 @@ public enum MemberQuery {
 			+"		SET PASSWORD = '%s', TEAM_ID = '%s', ROLL = '%s'	" 
             +"		WHERE MEM_ID LIKE '%s'	";		
 			break;
+			// test
 		case DELETE_MEMBER : 
 			query =
 			"	DELETE FROM MEMBER "
