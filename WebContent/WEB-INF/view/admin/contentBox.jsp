@@ -19,6 +19,7 @@
 			<th>GENDER</th>
 			<th>ROLE</th>
 			<th>TEAM</th>
+			
 		</tr>
 		<c:forEach var="user" items="${memberList}" >
 		<tr>
