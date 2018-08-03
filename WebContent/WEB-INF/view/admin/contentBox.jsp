@@ -29,13 +29,17 @@
 			<td>${user.roll}</td>
 			<td>${user.teamid}</td>
 		</tr>
+				
 		</c:forEach>
 		<tr>
 			<td colspan="6">
-				<c:forEach begin="1" end="${(memberList % 5==0)? count / 5 : (count/5)+1}" step="1" var="i">
+				전체인원 : ${count} 명 
+				<c:forEach begin="1" end="${(count % 5==0)? count / 5 : (count/5)+1}" step="1" var="i">
 					<span> ${i} </span>
 				</c:forEach>
-			</td>
+			</td> 
+			
+			
 		</tr>
 	</table>
 </div>

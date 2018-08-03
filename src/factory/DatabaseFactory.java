@@ -30,6 +30,7 @@ public class DatabaseFactory {
 		Map<String,Object> map) {
 		Database db = null;
 		String driver = "", url="";
+		System.out.println("createDatabase2 에서 (Vendor)map.get(vendor) : " + (Vendor)map.get("vendor"));
 		switch((Vendor)map.get("vendor")) {
 		case ORACLE : 
 			driver = DBConstant.ORACLE_DRIVER;

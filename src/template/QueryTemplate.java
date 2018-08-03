@@ -13,13 +13,13 @@ public abstract class QueryTemplate {
 	HashMap<String, Object> map;
 	List<Object> list;
 	PreparedStatement pstmt;
-	public final void play(HashMap<String, Object> map) {
+	public final void play(HashMap<String,Object> map) {
 		this.pstmt = null;
 		this.list = new ArrayList<>();
 		this.map = map;
 		this.map.put("vendor", Vendor.ORACLE);
-		this.map.put("vendor", DBConstant.USERNAME);
-		this.map.put("vendor", DBConstant.PASSWORD);
+		this.map.put("username", DBConstant.USERNAME);
+		this.map.put("password", DBConstant.PASSWORD);
 		initialize();
 		startPlay();
 		endPlay();

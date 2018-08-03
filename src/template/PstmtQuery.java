@@ -11,7 +11,7 @@ public class PstmtQuery extends QueryTemplate {
 	@Override
     void initialize() {
         map.put("sql",
-                String.format("select" + ColumnFinder.find(Domain.MEMBER) 
+                String.format("select " + ColumnFinder.find(Domain.MEMBER) 
                 + " FROM %s " 
                 + " WHERE %s " 
                 + " LIKE ? ",
@@ -25,6 +25,8 @@ public class PstmtQuery extends QueryTemplate {
 					.createDatabase2(map)
 					.getConnection()
 					.prepareStatement((String)map.get("sql"));
+			System.out.println("(String)map.get(\"sql\")" + (String)map.get("sql"));
+			System.out.println("map.get(\"value\").toString() : "+map.get("value").toString());
 			pstmt.setString(1, 
 					"%"+map.get("value").toString()+"%");
 		} catch (SQLException e) {

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import domain.MemberBean;
+import enums.Domain;
 import enums.MemberQuery;
 import enums.Vendor;
 import factory.DatabaseFactory;
@@ -75,6 +76,9 @@ public class MemberDAOImpl implements MemberDAO {
 		QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String,Object> map = new HashMap<>();
+		map.put("column", word.split("/")[0]);
+        map.put("value", word.split("/")[1]);
+        map.put("table", Domain.MEMBER);
 		q.play(map);
 		for(Object s : q.getList()) {
 			list.add((MemberBean)s);
