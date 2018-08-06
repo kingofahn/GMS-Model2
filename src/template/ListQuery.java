@@ -3,40 +3,38 @@ package template;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import domain.MemberBean;
-import enums.Domain;
 import factory.DatabaseFactory;
 
-public class PstmtQuery extends QueryTemplate {
+public class ListQuery extends QueryTemplate {
 
 	@Override
-    void initialize() {
-        map.put("sql",
-                String.format("select " + ColumnFinder.find(Domain.MEMBER) 
-                + " FROM %s " 
-                + " WHERE %s " 
-                + " LIKE ? ",
-                        map.get("table"), map.get("column")));
-    }
-	
+	void initialize() {
+		map.put("sql",
+				String.format(" SELECT T.* " 
+					+ " FROM (SELECT ROWNUM SEQ, M.* "
+					+ " FROM %s M "
+					+ " ORDER BY SEQ DESC) T " 
+					+ " WHERE T.SEQ BETWEEN ? AND ?",
+					map.get("table"),map.get("beginRow"), map.get("endRow")));
+	}
+
 	@Override
 	void startPlay() {
 		try {
-			pstmt = DatabaseFactory
+			pstmt =DatabaseFactory
 					.createDatabase2(map)
 					.getConnection()
-					.prepareStatement((String)map.get("sql"));
-			pstmt.setString(1, 
-					"%"+map.get("value").toString()+"%");
+					.prepareStatement((String) map.get("sql"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	void endPlay() {
 		ResultSet rs;
 		try {
-			rs = pstmt.executeQuery();
+			rs=pstmt.executeQuery();
 			MemberBean mem = null;
 			while(rs.next()) {
 				mem = new MemberBean();
@@ -49,7 +47,7 @@ public class PstmtQuery extends QueryTemplate {
 				mem.setPassword(rs.getString("PASSWORD"));
 				mem.setSsn(rs.getString("SSN"));
 				list.add(mem);
-                }
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

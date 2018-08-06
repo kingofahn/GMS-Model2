@@ -1,7 +1,7 @@
 package enums;
 
 public enum MemberQuery {
-	LOGIN,INSERT_MEMBER,FINDBYID,COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_SOME;
+	LOGIN,INSERT_MEMBER,FINDBYID,COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_SOME, SELECT_LIST;
 	public String toString() {
 		String query = "";
 		switch(this) {
@@ -48,7 +48,15 @@ public enum MemberQuery {
 		case SELECT_ALL : 
 			query =
 			"	SELECT USERID,TEAMID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "; 
-			break;		
+			break;
+/*		case SELECT_LIST : 
+			query =
+					" SELECT T.* " 
+					+ " FROM (SELECT ROWNUM SEQ, M.* "
+					+ " FROM MEMBER M "
+					+ " ORDER BY SEQ DESC) T " 
+					+ " WHERE T.SEQ BETWEEN %s AND %s ";
+			break;	*/
 /*		case SELECT_SOME : 
 			query =
 			"	SELECT USERID,TEAMID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "

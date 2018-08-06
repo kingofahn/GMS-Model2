@@ -22,7 +22,7 @@
 			<th>ROLE</th>
 			<th>TEAM</th>
 		</tr>
-		<c:forEach var="user" items="${memberList}" >
+		<c:forEach var="user" items="${getList}" >
 		<tr>
 			<td>${user.userid}</td>
 			<td><a class="username" id="${user.userid}">${user.name}</a></td>
@@ -34,11 +34,19 @@
 				
 		</c:forEach>
 		<tr>
-			<td colspan="6">
-				전체인원 : ${memberList.size()} 명 
-				<c:forEach begin="1" end="${(count % 5==0)? count / 5 : (count/5)+1}" step="1" var="i">
-					<span> ${i} </span>
-				</c:forEach>
+			<td colspan="6" >
+				<!--  조회 인원 : ${count} 전체인원 : ${memberList.size()} 명 --> 
+				<ul class="pageBox">
+					<c:forEach begin="${beginPage}" 
+					end="${endPage}" step="1" varStatus="i">
+						<li>
+							<a href="#"> ${i.index} </a>	
+						</li>
+					</c:forEach>
+					<c:if test="${count gt 25}">
+						<li>다음▶</li>
+					</c:if>
+				</ul>
 			</td> 
 		</tr>
 	</table>

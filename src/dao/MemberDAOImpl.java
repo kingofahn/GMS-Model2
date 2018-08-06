@@ -1,9 +1,11 @@
 package dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import domain.MemberBean;
 import enums.Domain;
@@ -11,6 +13,7 @@ import enums.MemberQuery;
 import enums.Vendor;
 import factory.DatabaseFactory;
 import pool.DBConstant;
+import template.ListQuery;
 import template.PstmtQuery;
 import template.QueryTemplate;
 
@@ -45,6 +48,66 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	@Override
+	public List<MemberBean> selectMemberBySearchWord(String word) {
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("column", word.split("/")[0]);
+        map.put("value", word.split("/")[1]);
+        map.put("table", Domain.MEMBER);
+		q.play(map);
+		for(Object s : q.getList()) {
+			list.add((MemberBean)s);
+		}
+		return list;
+	}
+	@Override
+	public List<MemberBean> selectList(Map<?, ?> param) {
+		QueryTemplate q = new ListQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("beginRow", param.get("beginRow"));
+        map.put("endRow", param.get("endRow"));
+        map.put("table", Domain.MEMBER);
+        q.play(map);
+        for(Object s: q.getList()) {
+        	list.add((MemberBean)s);
+        }
+		return list;
+	}
+	
+	
+/*	public List<MemberBean> selectList(Map<?, ?> param) {
+		List<MemberBean> lst = new ArrayList<>();
+		try {
+			ResultSet rs = DatabaseFactory.createDatabase(
+					Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+					.getConnection()
+					.createStatement()
+					.executeQuery(String.format(MemberQuery.SELECT_LIST.toString(),param.get("beginRow"),
+																	param.get("endRow")));
+			
+			MemberBean mem =null;
+			while(rs.next()) {
+				mem = new MemberBean();
+				mem.setUserid(rs.getString("USERID"));
+				mem.setTeamid(rs.getString("TEAMID"));
+				mem.setName(rs.getString("NAME"));
+				mem.setAge(rs.getString("AGE"));
+				mem.setRoll(rs.getString("ROLL"));
+				mem.setGender(rs.getString("GENDER"));
+				mem.setPassword(rs.getString("PASSWORD"));
+				mem.setSsn(rs.getString("SSN"));
+				lst.add(mem);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lst;
+	}*/
+	
+	
+	@Override
 	public List<MemberBean> selectAllmemberList() {
 		List<MemberBean> lst = new ArrayList<>();
 		try {
@@ -71,20 +134,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return lst;
 	}
-	@Override
-	public List<MemberBean> selectMemberBySearchWord(String word) {
-		QueryTemplate q = new PstmtQuery();
-		List<MemberBean> list = new ArrayList<>();
-		HashMap<String,Object> map = new HashMap<>();
-		map.put("column", word.split("/")[0]);
-        map.put("value", word.split("/")[1]);
-        map.put("table", Domain.MEMBER);
-		q.play(map);
-		for(Object s : q.getList()) {
-			list.add((MemberBean)s);
-		}
-		return list;
-	}
+
 	
 	@Override
 	public int countMember() {
@@ -98,8 +148,8 @@ public class MemberDAOImpl implements MemberDAO {
 					.createStatement()
 					.executeQuery(String.format(MemberQuery.COUNT_MEMBER.toString()));
 			while(rs.next()) {
-				count = rs.getInt("COUNT");
-				System.out.println("rs.getInt(COUNT) : " + rs.getInt("COUNT") );
+				count = rs.getInt("count");
+				System.out.println("rs.getInt(Count) : " + rs.getInt("count") );
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -199,5 +249,4 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 	return mem;
 	}
-	
 }
