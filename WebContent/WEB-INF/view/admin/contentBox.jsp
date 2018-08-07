@@ -32,6 +32,7 @@
 			<td>${user.teamid}</td>
 		</tr>
 				
+				
 		</c:forEach>
 		<tr>
 			<td colspan="6" >
