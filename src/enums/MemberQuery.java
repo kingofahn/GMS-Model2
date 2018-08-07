@@ -49,14 +49,14 @@ public enum MemberQuery {
 			query =
 			"	SELECT USERID,TEAMID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "; 
 			break;
-/*		case SELECT_LIST : 
+		case SELECT_LIST : 
 			query =
 					" SELECT T.* " 
 					+ " FROM (SELECT ROWNUM SEQ, M.* "
 					+ " FROM MEMBER M "
 					+ " ORDER BY SEQ DESC) T " 
 					+ " WHERE T.SEQ BETWEEN %s AND %s ";
-			break;	*/
+			break;	
 /*		case SELECT_SOME : 
 			query =
 			"	SELECT USERID,TEAMID,NAME,AGE,ROLL,PASSWORD,SSN,GENDER FROM MEMBER "
