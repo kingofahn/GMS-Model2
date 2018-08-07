@@ -57,11 +57,16 @@ var admin = (()=>{
 			for(var i of document.querySelectorAll('.username')){
                 service.addClass(i, 'cursor fontColorBlue');
                 i.addEventListener('click', function(){
-                    location.href=x+'/admin.do?action=retrieve&'+'page=memberDetail&userid='+this.getAttribute('id');
-                    //여기서의 this는 x[i]를 호출하는 녀석 
+                    location.href=x+'/admin.do?action=retrieve&page=memberDetail&userid='+this.getAttribute('id');
                 });
             }
-			
+			for(var j of document.querySelectorAll('.pageNumber')){
+				service.addClass(i, 'cursor fontColorBlue');
+				j.addEventListener('click', function(){
+                    location.href=x+'/admin.do?action=list&page=main&page=main&pageNumber='+this.getAttribute('id');
+                    
+                });
+            }
 			document.getElementById('searchBtn')
 				.addEventListener('click',function() {
 					location.href=(document.getElementById('searchOption').value==='userid') ?
@@ -88,7 +93,6 @@ var admin = (()=>{
             service.addClass(
                     document.getElementById('contentBoxMeta'),
                     'bgColorBlue ');	
-			
 		}
 	};
 	})();

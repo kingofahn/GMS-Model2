@@ -37,14 +37,13 @@
 			<td colspan="6" >
 				<!--  조회 인원 : ${count} 전체인원 : ${memberList.size()} 명 --> 
 				<ul class="pageBox">
-					<c:forEach begin="${beginPage}" 
-					end="${endPage}" step="1" varStatus="i">
+					<c:forEach begin="${beginPage}" end="${endPage}" step="1" varStatus="i" > 
 						<li>
-							<a href="#"> ${i.index} </a>	
-						</li>
+							<a id="${i.index}" class="pageNumber"> ${i.index} </a>
+						</li> 
 					</c:forEach>
-					<c:if test="${count gt 25}">
-						<li>다음▶</li>
+					<c:if test="${existNext}">
+						<li>NEXT▶</li>
 					</c:if>
 				</ul>
 			</td> 

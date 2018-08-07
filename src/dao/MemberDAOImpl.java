@@ -62,7 +62,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return list;
 	}
 	@Override
-	public List<MemberBean> selectList(Map<?, ?> param) {
+/*	public List<MemberBean> selectList(Map<?, ?> param) {
 		QueryTemplate q = new ListQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String,Object> map = new HashMap<>();
@@ -74,10 +74,10 @@ public class MemberDAOImpl implements MemberDAO {
         	list.add((MemberBean)s);
         }
 		return list;
-	}
+	}*/
 	
 	
-/*	public List<MemberBean> selectList(Map<?, ?> param) {
+	public List<MemberBean> selectList(Map<?, ?> param) {
 		List<MemberBean> lst = new ArrayList<>();
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(
@@ -104,7 +104,7 @@ public class MemberDAOImpl implements MemberDAO {
 			e.printStackTrace();
 		}
 		return lst;
-	}*/
+	}
 	
 	
 	@Override
@@ -149,7 +149,6 @@ public class MemberDAOImpl implements MemberDAO {
 					.executeQuery(String.format(MemberQuery.COUNT_MEMBER.toString()));
 			while(rs.next()) {
 				count = rs.getInt("count");
-				System.out.println("rs.getInt(Count) : " + rs.getInt("count") );
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
