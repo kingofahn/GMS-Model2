@@ -8,54 +8,44 @@ import domain.MemberBean;
 
 
 public class MemberServiceImpl implements MemberService {
-
 	private static MemberService instance = new MemberServiceImpl();
 	public static MemberService getInstance() {return instance;}
 	private MemberServiceImpl() {}
 	List<MemberBean> memberList;
-	
-	
 	@Override
-	public void createMember(MemberBean member) {
-		MemberDAOImpl.getInstance().insertMember(member);		
-	}
-	
-	@Override
-	public List<MemberBean> listMember() {
-		return MemberDAOImpl.getInstance().selectAllmemberList();
-	}
-	
-	@Override
-	public List<MemberBean> findMemberByTeamName(String name) {
-		return MemberDAOImpl.getInstance().selectMemberBySearchWord(name);
-	}
-
-	@Override
-	public MemberBean findById(String id) {
-		return  MemberDAOImpl.getInstance().selectFindById(id);
-	}
-	 
-	@Override
-	public int memberCount() {
-		return MemberDAOImpl.getInstance().countMember();
-	}
-
-	@Override
-	public void updateMemberInformation(MemberBean member) {
-		MemberDAOImpl.getInstance().updateMemberInformation(member);		
-	}
-
-	@Override
-	public void deleteMemberInformation(MemberBean member) {
-		MemberDAOImpl.getInstance().deleteMemberInformation(member);
+	public void create(MemberBean bean) {
+		// TODO Auto-generated method stub
+		
 	}
 	@Override
-	public boolean login(MemberBean member) {
-		return(MemberDAOImpl.getInstance().login(member)!=null);
+	public List<MemberBean> search(Map<?, ?> param) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
-	public List<MemberBean> getList(Map<?, ?> param) {
-		return MemberDAOImpl.getInstance().selectList(param);
+	public MemberBean retrieve(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void modify(Map<?, ?> param) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void remove(MemberBean bean) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean login(MemberBean bean) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

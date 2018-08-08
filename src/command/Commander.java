@@ -28,15 +28,11 @@ public class Commander {
 				break;
 			case LIST : 
 				System.out.println("----Commander에 Case의 LIST 진입----");
-				cmd = new ListCommand(request);
+				cmd = new SearchCommand(request);
 				break;
 			case RETRIEVE : 
 				System.out.println("----Commander에 Case의  RETRIEVE 진입----");
 				cmd = new RetrieveCommand(request);
-				break;
-			case SEARCH : 
-				System.out.println("----Commander에 Case의  SEARCH 진입----");
-				cmd = new SearchCommand(request);
 				break;
 			case COUNT : 
 				System.out.println("----Commander에 Case의  COUNT 진입----");

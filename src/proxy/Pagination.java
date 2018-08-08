@@ -14,7 +14,7 @@ public class Pagination implements Proxy {
 		this.pageNumber = (int) o;
 		this.pageSize = 5; // 한페이지의 row의 수는 5
 		this.blockSize = 5; // 1block이 5pageSize
-		this.rowCount = MemberServiceImpl.getInstance().memberCount();
+		this.rowCount = MemberServiceImpl.getInstance().count();
 		this.pageCount = (rowCount % pageSize == 0) ? rowCount / pageSize : rowCount / pageSize + 1;
 		this.blockCount = (pageCount % blockSize == 0) ? pageCount / blockSize : pageCount / blockSize + 1;
 		this.beginRow = pageNumber * pageSize - (pageSize - 1);

@@ -1,5 +1,8 @@
 package command;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
@@ -22,12 +25,13 @@ public class UpdateCommand extends Command {
 		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
 		case MEMBER :
 			System.out.println("update 들어옴!!!");
+			Map<String,Object> map = new HashMap<>();
 			MemberBean mem = new MemberBean();
 			mem.setUserid(((MemberBean)request.getSession().getAttribute("user")).getUserid());
 			mem.setPassword(request.getParameter("password"));
 			mem.setTeamid(request.getParameter("teamid"));
 			mem.setRoll(request.getParameter("roll"));
-			MemberServiceImpl.getInstance().updateMemberInformation(mem);
+			MemberServiceImpl.getInstance().modify(map);
 			System.out.println("update 성공!!");
 			break;
 		default : 

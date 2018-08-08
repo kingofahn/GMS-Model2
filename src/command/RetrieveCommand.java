@@ -25,7 +25,7 @@ public class RetrieveCommand extends Command {
 		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
 		case ADMIN:
 			request.setAttribute("findMember",
-					MemberServiceImpl.getInstance().findById(request.getParameter("userid")));
+					MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
 			super.execute();
 			System.out.println("**** RetrieveCommand에 execute 실행함!!! ****");
 			break;

@@ -24,7 +24,7 @@ public class DeleteCommand extends Command {
 			mem.setUserid(((MemberBean)request.getSession().getAttribute("user")).getUserid());
 			mem.setPassword(request.getParameter("password"));
 			if(MemberServiceImpl.getInstance().login(mem)) {
-				MemberServiceImpl.getInstance().deleteMemberInformation(mem);
+				MemberServiceImpl.getInstance().remove(mem);
 				request.getSession().invalidate();
 			} else {
 				System.out.println("Error");

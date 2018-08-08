@@ -1,39 +1,31 @@
 package command;
-
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import domain.MemberBean;
-import enums.Domain;
+import proxy.PageProxy;
+import proxy.Pagination;
 import service.MemberServiceImpl;
 
 public class SearchCommand extends Command {
-	List<MemberBean> members;
-	public List<MemberBean> getMembers() {
-		return members;
-	}
-
 	public SearchCommand(HttpServletRequest request) {
-		System.out.println("****    SearchCommand 들어옴!!!    ****");
+		System.out.println("****    ListCommand 들어옴!!!    ****");
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
 		setPage(request.getParameter("page"));
 		execute();
 	}
-
 	@Override
 	public void execute() {
-		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
-		case ADMIN:
-			request.setAttribute(
-					"list",MemberServiceImpl.getInstance().findMemberByTeamName(request.getParameter("searchOption")
-																					+"/"+
-																					request.getParameter("searchWord")));
-			super.execute();
-			System.out.println("**** SearchCommand에 execute 실행함!!! ****");
-			break;
-		default:
-			break;
-		}
+        Map<String,Object> paramMap = new HashMap<>();
+        String pageNumber = request.getParameter("pageNumber");
+        PageProxy pxy = new PageProxy();
+        pxy.carryOut((pageNumber==null)? 1: Integer.parseInt(pageNumber));
+        Pagination page = pxy.getPagination();
+        paramMap.put("beginRow", String.valueOf(page.getBeginRow()));
+        paramMap.put("endRow", String.valueOf(page.getEndRow()));
+        request.setAttribute("page", page);
+        request.setAttribute("list", MemberServiceImpl.getInstance().search(paramMap));
+        super.execute();
 	}
-}
+}	
