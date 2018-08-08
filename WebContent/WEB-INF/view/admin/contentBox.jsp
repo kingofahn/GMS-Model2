@@ -36,19 +36,22 @@
 
 		</c:forEach>
 		<tr>
-			<td colspan="6">전체회원수 : ${count}
+			<td colspan="6">전체회원수 : ${page.rowCount}
 				<ul class="pageBox">
-					<c:if test="${existPrev}">
-						<li>◀PREV</li>
+					<c:if test="${page.existPrev}">
+						<li class="pageNumber">◀PREV</li>
 					</c:if>
-					
-					<c:forEach begin="${beginPage}" end="${endPage}" step="1" varStatus="i">
-						<li><a id="${i.index}" class="pageNumber"> ${i.index} </a></li>
+
+					<c:forEach begin="${page.beginPage}" end="${page.endPage}" step="1" varStatus="i">
+						<li>
+							<a id="${i.index}" class="pageNumber"> 
+								${i.index} 
+							</a>
+						</li>
 					</c:forEach>
-					
-					<c:if test="${existNext}">
-						<li> NEXT▶</li>
-					</c:if>
+					<c:if test="${page.existNext}">
+                        <li id="${page.nextBlock}" class="pageNumber">NEXT▶</li>
+                    </c:if>
 				</ul>
 			</td>
 		</tr>

@@ -26,7 +26,7 @@ public class SearchCommand extends Command {
 		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
 		case ADMIN:
 			request.setAttribute(
-					"memberList",MemberServiceImpl.getInstance().findMemberByTeamName(request.getParameter("searchOption")
+					"list",MemberServiceImpl.getInstance().findMemberByTeamName(request.getParameter("searchOption")
 																					+"/"+
 																					request.getParameter("searchWord")));
 			super.execute();

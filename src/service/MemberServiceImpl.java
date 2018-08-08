@@ -24,7 +24,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberBean> listMember() {
 		return MemberDAOImpl.getInstance().selectAllmemberList();
 	}
-
+	
 	@Override
 	public List<MemberBean> findMemberByTeamName(String name) {
 		return MemberDAOImpl.getInstance().selectMemberBySearchWord(name);
@@ -43,13 +43,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void updateMemberInformation(MemberBean member) {
 		MemberDAOImpl.getInstance().updateMemberInformation(member);		
-		
 	}
 
 	@Override
 	public void deleteMemberInformation(MemberBean member) {
 		MemberDAOImpl.getInstance().deleteMemberInformation(member);
-		
 	}
 	@Override
 	public boolean login(MemberBean member) {
