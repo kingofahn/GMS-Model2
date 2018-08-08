@@ -6,7 +6,8 @@ public class Carrier {
 	public static void forward(HttpServletRequest request, 
 		HttpServletResponse response){
 		System.out.println("%%%% forward 사용됨 %%%%");
-			try {
+			try { 
+				
 				request
 				.getRequestDispatcher(Sentry.cmd.getView())
 				.forward(request, response);
