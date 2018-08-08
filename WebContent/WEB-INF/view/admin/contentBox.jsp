@@ -39,7 +39,7 @@
 			<td colspan="6">전체회원수 : ${page.rowCount}
 				<ul class="pageBox">
 					<c:if test="${page.existPrev}">
-						<li class="pageNumber">◀PREV</li>
+						<li id="${page.prevBlock}" class="pageNumber">◀PREV</li>
 					</c:if>
 
 					<c:forEach begin="${page.beginPage}" end="${page.endPage}" step="1" varStatus="i">

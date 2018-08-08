@@ -58,14 +58,20 @@ var admin = (()=>{
 			for(var i of document.querySelectorAll('.username')){
                 service.addClass(i, 'cursor fontColorBlue');
                 i.addEventListener('click', ()=>{
-                    location.href=x+'/admin.do?action=retrieve&page=memberDetail&userid='+this.getAttribute('id');
+                    location.href=x+'/admin.do?action=retrieve&page=memberDetail&userid='
+                    +this.getAttribute('id');
                 });
             }
 			
-			document.getElementById('pageNumber').addEventListener('click',function(){
-                alert("click"+"6");
-                location.href=x+'/admin.do?action=list&page=main&pageNumber='+this.getAttribute('id');
-            });
+			for(var i of document.querySelectorAll('.pageNumber')){
+				service.addClass(
+						i,
+						'cursor fontColorBlue'
+				);	
+			i.addEventListener('click',function(){
+				location.href=x+'/admin.do?action=list&page=main&pageNumber='+this.getAttribute('id');
+			});
+			}			
 			
 			document.getElementById('searchBtn')
 			.addEventListener('click',()=> {
@@ -94,8 +100,6 @@ var admin = (()=>{
 			service.addClass(
 					document.getElementById('searchBtn'),
 					'floatRight '); 
-		
-
 		}
 	};
 	})();

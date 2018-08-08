@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
 	public MemberBean findById(String id) {
 		return  MemberDAOImpl.getInstance().selectFindById(id);
 	}
-//	 
+	 
 	@Override
 	public int memberCount() {
 		return MemberDAOImpl.getInstance().countMember();
