@@ -2,6 +2,8 @@ package command;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+
+import enums.Domain;
 import proxy.PageProxy;
 import proxy.Pagination;
 import service.MemberServiceImpl;
@@ -17,13 +19,18 @@ public class SearchCommand extends Command {
 	}
 	@Override
 	public void execute() {
+		System.out.println("1 : SearchCommand execute() ");
         Map<String,Object> paramMap = new HashMap<>();
         String pageNumber = request.getParameter("pageNumber");
         PageProxy pxy = new PageProxy();
         pxy.carryOut((pageNumber==null)? 1: Integer.parseInt(pageNumber));
         Pagination page = pxy.getPagination();
+        paramMap.put("table", Domain.MEMBER);
         paramMap.put("beginRow", String.valueOf(page.getBeginRow()));
         paramMap.put("endRow", String.valueOf(page.getEndRow()));
+        paramMap.put("rowCount", String.valueOf(page.getRowCount()));
+        paramMap.put("searchOption", request.getParameter("searchOption"));
+        paramMap.put("searchWord", request.getParameter("searchWord"));
         request.setAttribute("page", page);
         request.setAttribute("list", MemberServiceImpl.getInstance().search(paramMap));
         super.execute();

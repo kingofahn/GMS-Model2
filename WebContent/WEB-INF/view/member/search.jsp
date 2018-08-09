@@ -9,9 +9,9 @@
 			<option value="teamid">TEAM</option>
 			<option value="roll">ROLL</option>
 			<option value="gender">GENDER</option>
-		</select> <input name="searchWord" id="searchWord" type="text"
-			placeholder="Insert Keyword" /> <input type="button" id="searchBtn"
-			value="Search" />
+		</select> 
+		<input name="searchWord" id="searchWord" type="text" placeholder="Insert Keyword" /> 
+		<input type="button" id="searchBtn" value="Search" />
 	</div>
 	<table id="contentBoxTab">
 		<tr id="contentBoxMeta">
@@ -31,8 +31,6 @@
 				<td>${user.roll}</td>
 				<td>${user.teamid}</td>
 			</tr>
-
-
 		</c:forEach>
 		<tr>
 			<td colspan="6">전체회원수 : ${page.rowCount}

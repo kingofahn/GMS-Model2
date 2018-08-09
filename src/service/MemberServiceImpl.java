@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 import java.util.Map;
 
+import dao.MemberDAO;
 import dao.MemberDAOImpl;
 import domain.MemberBean;
 
@@ -14,38 +15,37 @@ public class MemberServiceImpl implements MemberService {
 	List<MemberBean> memberList;
 	@Override
 	public void add(MemberBean bean) {
-		// TODO Auto-generated method stub
+		MemberDAOImpl.getInstance().insert(bean);
 		
 	}
 	@Override
 	public List<MemberBean> search(Map<?, ?> param) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println( "5  MemberServiceImpl");
+		return MemberDAOImpl.getInstance()
+				.selectSome(param);
 	}
 	@Override
 	public MemberBean retrieve(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return MemberDAOImpl.getInstance()
+				.selectOne(id);
 	}
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return MemberDAOImpl.getInstance()
+				.count();
 	}
 	@Override
 	public void modify(Map<?, ?> param) {
-		// TODO Auto-generated method stub
-		
+		MemberDAOImpl.getInstance().update(param);
 	}
 	@Override
 	public void remove(MemberBean bean) {
-		// TODO Auto-generated method stub
+		MemberDAOImpl.getInstance().delete(bean);
 		
 	}
 	@Override
 	public boolean login(MemberBean bean) {
-		// TODO Auto-generated method stub
-		return false;
+		return (MemberDAOImpl.getInstance().login(bean)!=null);
 	}
 
 }

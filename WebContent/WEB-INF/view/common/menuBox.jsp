@@ -4,7 +4,7 @@
 	<ul id="menu">
 		<li><a id="moveHome" >HOME</a></li>
 		<li><a id="moveMypage">MY PAGE</a> </li>
-		<li><a id="moveAdmin" >ADMIN</a> </li>
+		<li><a id="moveToAdminMain" >ADMIN</a> </li>
 	</ul>
 </div>
 <script>
@@ -23,9 +23,6 @@ document.getElementById('moveMypage').addEventListener('click',
 					page : 'mypage'});
 		});
 		
-document.getElementById('moveAdmin').addEventListener('click',
-		function() {
-		admin.check('${ctx}');
-		});
+
 		
 </script>

@@ -7,7 +7,7 @@ var router = (()=>{
 			+ '.do?action='+x.action
 			+ '&page='+x.page
 		}
-	};  /* 이것이 클로져임, 키값:value 이 것이 JSON임 */
+	};  
 })();
 
 var service = (()=>{
@@ -34,31 +34,42 @@ var service = (()=>{
 	}
 })();
 
-var admin = (()=>{
-	return{
-		check : x=>{
-			var isAdmin = confirm('Are you an administrator?'); // 윈도우의 객체 BOM의
-																// METHOD이다.
+var common = (()=> {
+	return {
+		main : x=>{
+		document.getElementById('moveToAdminMain')
+		.addEventListener('click', ()=>{
+			router.move({
+				context : x,
+				domain : 'admin',
+				action : 'search',
+				page : 'main'});
+/*			var isAdmin = confirm('Are you an administrator?'); 
 			if(isAdmin){
 				var password = prompt('Enter your admin Access code!!!');
 				if(password == 1){
 					router.move({
 						context : x,
 						domain : 'admin',
-						action : 'list',
+						action : 'search',
 						page : 'main'});
 					} else{
 						alert('Wrong Access code!!!');
 					}
 				} else{
 					alert('Only administrator can access this function!!!');
-				}
-		},
+				}*/
+		});
+	}
+};})();
+
+var admin = (()=>{
+	return{
 		main : x=>{
 			for(var i of document.querySelectorAll('.username')){
                 service.addClass(i, 'cursor fontColorBlue');
                 i.addEventListener('click', ()=>{
-                    location.href=x+'/admin.do?action=retrieve&page=memberDetail&userid='
+                    location.href=x+'/admin.do?action=retrieve&page=retrieve&userid='
                     +this.getAttribute('id');
                 });
             }
@@ -66,7 +77,7 @@ var admin = (()=>{
 			for(var i of document.querySelectorAll('.pageNumber')){
 				service.addClass(i,	'cursor fontColorBlue');	
 			i.addEventListener('click',function(){
-				location.href=x+'/admin.do?action=list&page=main&pageNumber='
+				location.href=x+'/admin.do?action=search&page=main&pageNumber='
 				+this.getAttribute('id');
 				});
 			}			
@@ -74,7 +85,7 @@ var admin = (()=>{
 			document.getElementById('searchBtn')
 			.addEventListener('click',()=> {
 				location.href=(document.getElementById('searchOption').value==='userid') ?
-					x+'/admin.do?action=RETRIEVE&page=memberDetail&userid='+document.getElementById('searchWord').value
+					x+'/admin.do?action=RETRIEVE&page=retrieve&userid='+document.getElementById('searchWord').value
 					:
 					x+'/admin.do?action=SEARCH&page=main&searchOption='+document.getElementById('searchOption').value+'&searchWord='+document.getElementById('searchWord').value		
 					;

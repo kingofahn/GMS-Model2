@@ -14,11 +14,11 @@
 		<tr>
 			<th  rowspan='3'>사진 </th> 
 			<th>아이디</th>
-			<th colspan='2'> ${findMember.userid} </th>
+			<th colspan='2'> ${retrieve.userid} </th>
 		</tr>
 		<tr>
 			<th>이름</th>
-			<th colspan='2'>${findMember.name}</th>
+			<th colspan='2'>${retrieve.name}</th>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
@@ -26,15 +26,15 @@
 		</tr>
 		<tr>
 			<th>나이</th>
-			<th>${findMember.age}</th>
+			<th>${retrieve.age}</th>
 			<th>팀명</th>
-			<th>${findMember.teamid}</th>
+			<th>${retrieve.teamid}</th>
 		</tr>
 		<tr>
 			<th>성별</th>
-			<th>${findMember.gender}</th>
+			<th>${retrieve.gender}</th>
 			<th>역할</th>
-			<th>${findMember.roll}</th>
+			<th>${retrieve.roll}</th>
 		</tr>
 	</table>
 	<div id="mypage-bottom">
@@ -51,7 +51,7 @@
 				router.move({context : '${ctx}',
 							domain : 'member',
 							action : 'move', 
-							page : 'updateForm'
+							page : 'modify'
 				});
 			});
 			
@@ -60,7 +60,7 @@
 			router.move({context : '${ctx}',
 				domain : 'member',
 				action : 'move', 
-				page : 'deleteForm'
+				page : 'remove'
 						});
 			});
 	</script>

@@ -40,7 +40,7 @@ public enum MemberQuery {
 			
 		case RETRIEVE : 
 			sql =
-            "select " + ColumnFinder.find(Domain.MEMBER) 
+            "select * " 
             + " FROM MEMBER " 
             + " WHERE USERID " 
             + " LIKE ? ";

@@ -24,7 +24,7 @@ public class RetrieveCommand extends Command {
 	public void execute() {
 		switch (Domain.valueOf(Receiver.cmd.domain.toUpperCase())) {
 		case ADMIN:
-			request.setAttribute("findMember",
+			request.setAttribute("retrieve",
 					MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
 			super.execute();
 			System.out.println("**** RetrieveCommand에 execute 실행함!!! ****");

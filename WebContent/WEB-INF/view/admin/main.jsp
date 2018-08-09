@@ -15,5 +15,10 @@
         <jsp:include page="../common/footerBox.jsp"/>
   	</div> 
 </div>
+
+<script>
+	admin.main('${ctx}');
+</script>
+
 </body>
 </html>

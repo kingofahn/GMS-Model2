@@ -16,6 +16,9 @@
 		<jsp:include page="footerBox.jsp"/> 
 	</div> <!-- footer end -->
 </div> <!-- wrapper end -->
+<script>
+	common.main('${ctx}');
+</script>
 </body>
 </html>
 

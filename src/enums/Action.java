@@ -2,7 +2,7 @@ package enums;
 
 public enum Action {
 	ADD, 
-	SEARCH, RETRIEVE, COUNT, 
+	LIST, SEARCH, RETRIEVE, COUNT, 
 	MODIFY, 
 	REMOVE,
 	MOVE, LOGIN, JOIN

@@ -26,7 +26,10 @@ public class ModifyCommand extends Command {
 		case MEMBER :
 			System.out.println("update 들어옴!!!");
 			Map<String,Object> map = new HashMap<>();
-			MemberBean mem = new MemberBean();
+			map.put("password", request.getParameter("password"));
+			map.put("teamid", request.getParameter("teamid"));
+			map.put("roll", request.getParameter("roll"));
+			
 			/*mem.setUserid(((MemberBean)request.getSession().getAttribute("user")).getUserid());
 			 * mem.put("password",request.getParameter("password"));
 			mem.setPassword(request.getParameter("password"));

@@ -25,10 +25,12 @@ public class CommonController extends HttpServlet {
 					request.getContextPath()+
 					"/resources/"+r.toString().toLowerCase());
 			i++;
-			
-			System.out.println("request.getContextPath()" + request.getContextPath());
-			
 		}
-		request.getRequestDispatcher(Term.WEBPATH.toString()+Term.MAIN.toString()).forward(request, response);
+		
+		request.getRequestDispatcher(Term.WEBPATH.toString()
+						+request.getServletPath()
+						.split("/")[1]
+						.split("\\.")[0]
+						+Term.MAIN.toString()).forward(request, response);
 	}
 }

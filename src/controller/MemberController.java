@@ -21,17 +21,17 @@ public class MemberController extends HttpServlet {
 		case ADD : 
 			System.out.println("================컨트롤러 JOIN case 진입================");
 			Carrier.redirect(request, response,
-					"/member.do?action=move&page=userLoginForm");
+					"/member.do?action=move&page=login");
 			break;
 		case SEARCH : case RETRIEVE : 
 			System.out.println("================컨트롤러 JOIN case 진입================");
 			Carrier.redirect(request, response,
-					"/member.do?action=move&page=userLoginForm");
+					"/member.do?action=move&page=login");
 			break;
 		case MODIFY : 
 			System.out.println("================컨트롤러 case 진입================");
 			Carrier.redirect(request, response,
-					"/member.do?action=move&page=userLoginForm");
+					"/member.do?action=move&page=login");
 			break;
 		case REMOVE : 
 			System.out.println("================컨트롤러 case 진입================");
@@ -40,7 +40,7 @@ public class MemberController extends HttpServlet {
 		case JOIN : 
 			System.out.println("================컨트롤러 JOIN case 진입================");
 			Carrier.redirect(request, response,
-					"/member.do?action=move&page=userLoginForm");
+					"/member.do?action=move&page=login");
 			break;
 		case LOGIN :
 			System.out.println("================컨트롤러 login 진입================");
