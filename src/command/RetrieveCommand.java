@@ -22,7 +22,7 @@ public class RetrieveCommand extends Command {
 
 	@Override
 	public void execute() {
-		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch (Domain.valueOf(Receiver.cmd.domain.toUpperCase())) {
 		case ADMIN:
 			request.setAttribute("findMember",
 					MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));

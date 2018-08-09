@@ -13,7 +13,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberServiceImpl() {}
 	List<MemberBean> memberList;
 	@Override
-	public void create(MemberBean bean) {
+	public void add(MemberBean bean) {
 		// TODO Auto-generated method stub
 		
 	}

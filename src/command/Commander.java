@@ -6,28 +6,11 @@ public class Commander {
 	public static Command order(HttpServletRequest request){
 			Command cmd =null;
 			switch(Action.valueOf(request.getParameter("action").toUpperCase())) {
-			case MOVE : 
+			case ADD : 
 				System.out.println("----Commander에 Case의  무브진입----");
-				cmd = new MoveCommand(request);
-				break;
-			case JOIN : 
-				System.out.println("----Commander에 Case의  조인진입----");
-				cmd = new CreateCommand(request);
-				break;
-			case DELETE : 
-				System.out.println("----Commander에 Case의  딜리트진입----");
-				cmd = new DeleteCommand(request);
-				break;
-			case UPDATE : 
-				System.out.println("----Commander에 Case의  업데이트진입----");
-				cmd = new UpdateCommand(request);
-				break;
-			case LOGIN : 
-				System.out.println("----Commander에 Case의  로그인진입----");
-				cmd = new LoginCommand(request);
-				break;
-			case LIST : 
-				System.out.println("----Commander에 Case의 LIST 진입----");
+				cmd = new AddCommand(request);
+			case SEARCH : 
+				System.out.println("----Commander에 Case의  RETRIEVE 진입----");
 				cmd = new SearchCommand(request);
 				break;
 			case RETRIEVE : 
@@ -37,6 +20,22 @@ public class Commander {
 			case COUNT : 
 				System.out.println("----Commander에 Case의  COUNT 진입----");
 				cmd = new CountCommand(request);
+				break;
+			case MODIFY : 
+				System.out.println("----Commander에 Case의  업데이트진입----");
+				cmd = new ModifyCommand(request);
+				break;
+			case REMOVE : 
+				System.out.println("----Commander에 Case의  딜리트진입----");
+				cmd = new RemoveCommand(request);
+				break;
+			case LOGIN : 
+				System.out.println("----Commander에 Case의  로그인진입----");
+				cmd = new LoginCommand(request);
+				break;
+			case MOVE : 
+				System.out.println("----Commander에 Case의  무브진입----");
+				cmd = new MoveCommand(request);
 				break;
 			default:
 				break;

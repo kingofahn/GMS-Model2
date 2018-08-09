@@ -64,13 +64,11 @@ var admin = (()=>{
             }
 			
 			for(var i of document.querySelectorAll('.pageNumber')){
-				service.addClass(
-						i,
-						'cursor fontColorBlue'
-				);	
+				service.addClass(i,	'cursor fontColorBlue');	
 			i.addEventListener('click',function(){
-				location.href=x+'/admin.do?action=list&page=main&pageNumber='+this.getAttribute('id');
-			});
+				location.href=x+'/admin.do?action=list&page=main&pageNumber='
+				+this.getAttribute('id');
+				});
 			}			
 			
 			document.getElementById('searchBtn')

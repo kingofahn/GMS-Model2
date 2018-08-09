@@ -6,7 +6,7 @@
 <div id="wrapper">
 	<div id="header">
 	<jsp:include page="../common/titleBox.jsp" />
-	<jsp:include page="menuBox.jsp" />
+	<jsp:include page="../common/menuBox.jsp" />
 	</div>
 
 	<div id="content">

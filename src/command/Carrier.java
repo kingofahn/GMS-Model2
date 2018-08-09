@@ -8,9 +8,9 @@ public class Carrier {
 		System.out.println("%%%% forward 사용됨 %%%%");
 			try {
 				request
-				.getRequestDispatcher(Sentry.cmd.getView())
+				.getRequestDispatcher(Receiver.cmd.getView())
 				.forward(request, response);
-				System.out.println("%%%%"+"Sentry.cmd.getView() 의 내용 :  "+Sentry.cmd.getView()+"%%%%");
+				System.out.println("%%%%"+"Sentry.cmd.getView() 의 내용 :  "+Receiver.cmd.getView()+"%%%%");
 				System.out.println("%%%% forward 종료 %%%%");
 			} catch (Exception e) {
 				e.printStackTrace();

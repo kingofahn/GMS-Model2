@@ -5,15 +5,15 @@
 <body>
 <div id="wrapper">
     <div id="header">
-	        <jsp:include page="../common/titleBox.jsp"/>
-	        <jsp:include page="menuBox.jsp"/>
-	    </div> <!-- header end -->
-	    <div id="content">
-	        <jsp:include page="contentBox.jsp"/>
-	    </div> <!-- content end -->
-	    <div id ="footer">
-	        <jsp:include page="../common/footerBox.jsp"/>
-   		 </div> <!-- footer end -->
+        <jsp:include page="../common/titleBox.jsp"/>
+        <jsp:include page="../common/menuBox.jsp"/>
+    </div> 
+    <div id="content">
+        <jsp:include page="../member/search.jsp"/>
+    </div> 
+    <div id ="footer">
+        <jsp:include page="../common/footerBox.jsp"/>
+  	</div> 
 </div>
 </body>
 </html>
