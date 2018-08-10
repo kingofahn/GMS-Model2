@@ -29,12 +29,6 @@ public class ModifyCommand extends Command {
 			map.put("password", request.getParameter("password"));
 			map.put("teamid", request.getParameter("teamid"));
 			map.put("roll", request.getParameter("roll"));
-			
-			/*mem.setUserid(((MemberBean)request.getSession().getAttribute("user")).getUserid());
-			 * mem.put("password",request.getParameter("password"));
-			mem.setPassword(request.getParameter("password"));
-			mem.setTeamid(request.getParameter("teamid"));
-			mem.setRoll(request.getParameter("roll"));*/
 			MemberServiceImpl.getInstance().modify(map);
 			System.out.println("update 성공!!");
 			break;

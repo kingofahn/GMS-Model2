@@ -1,68 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
-<jsp:include page="../common/head.jsp" />
+	<jsp:include page="../common/head.jsp"/>
 <body>
 <div id="wrapper">
 	<div id="header">
-	<jsp:include page="../common/titleBox.jsp" />
-	<jsp:include page="../common/menuBox.jsp" />
-	</div>
-
+		<jsp:include page="../common/titleBox.jsp"/>
+		<jsp:include page="../common/menuBox.jsp"/>
+	</div> 
 	<div id="content">
-		<table id="mypage-table">  
-		<tr>
-			<th  rowspan='3'>PHOTO </th> 
-			<th>ID</th>
-			<th colspan='2'>${user.userid} </th>
-		</tr>
-		<tr>
-			<th>NAME</th>
-			<th colspan='2'>${user.name}</th>
-		</tr>
-		<tr>
-			<th>PASSWORD</th>
-			<th colspan='2'>************</th>
-		</tr>
-		<tr>
-			<th>AGE</th>
-			<th>${user.age}</th>
-			<th>TEAM</th>
-			<th>${user.teamid}</th>
-		</tr>
-		<tr>
-			<th>GENDER</th>
-			<th>${user.gender}</th>
-			<th>ROLL</th>
-			<th>${user.roll}</th>
-		</tr>
-	</table>
-	<div id="mypage-bottom">
-		 <a id="myPageMoveToUpdate"> UPADATE FORM</a> 
-		 <a id="myPageMoveToDelete"> DELETE FORM </a> 
-	</div>
-	</div></div>
-	<div id="footer">
-		<jsp:include page="../common/footerBox.jsp" />
-	</div>
-	<script>
-	document.getElementById('myPageMoveToUpdate').addEventListener('click',
-			function() {
-				router.move({context : '${ctx}',
-							domain : 'member',
-							action : 'move', 
-							page : 'updateForm'
-				});
-			});
-			
-	document.getElementById('myPageMoveToDelete').addEventListener('click',
-			function() {
-			router.move({context : '${ctx}',
-				domain : 'member',
-				action : 'move', 
-				page : 'deleteForm'
-						});
-			});
+	이동페이지 : ${pagename}
+	<c:choose>
+	    <c:when test="${pagename eq 'add'}">
+	        <jsp:include page="add.jsp"/> 
+	    </c:when>
+	    <c:when test="${pagename eq 'login'}">
+	     	<jsp:include page="login.jsp"/>
+	    </c:when>
+	    <c:when test="${pagename eq 'search'}">
+	       <jsp:include page="search.jsp"/>
+	    </c:when>
+	    <c:otherwise>
+	         <jsp:include page="retrieve.jsp"/>
+	    </c:otherwise>
+	</c:choose>
 
-	</script>
-</body></html>
+	<div id="footer">
+		 <jsp:include page="../common/footerBox.jsp"/>	
+	</div>
+</div></div>
+<script>
+	member.main('${ctx}');
+</script>	
+</body>
+</html>

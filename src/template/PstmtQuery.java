@@ -10,6 +10,10 @@ public class PstmtQuery extends QueryTemplate {
 	@Override
     void initialize() {
 		switch(map.get("flag").toString()) {
+		case "INSERT" :
+			map.put("sql",MemberQuery.INSERT.toString());
+			System.out.println("sql : " + map.get("sql"));
+			break;
 		case "LIST" :
 			if(map.get("searchOption")!=null) {
 				map.put("sql",
@@ -38,6 +42,27 @@ public class PstmtQuery extends QueryTemplate {
 	@Override
 	void startPlay() {
 		switch(map.get("flag").toString()) {
+		case "INSERT" :
+			try {
+				pstmt = DatabaseFactory
+						.createDatabase2(map)
+						.getConnection()
+						.prepareStatement((String) map.get("sql"));
+				pstmt.setString(1, map.get("userid").toString());
+				pstmt.setString(2, map.get("ssn").toString());
+				pstmt.setString(3, map.get("name").toString());
+				pstmt.setString(4, map.get("roll").toString());
+				pstmt.setString(5, map.get("teamid").toString());
+				pstmt.setString(6, map.get("password").toString());
+				pstmt.setString(7, map.get("age").toString());
+				pstmt.setString(8, map.get("gender").toString());
+				pstmt.setString(9, map.get("subject").toString());
+				System.out.println("pstmt.executeUpdate()" + pstmt.executeUpdate());
+				/*pstmt.setString(9, map.get("subject").toString());*/
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+			break;
 		case "LIST" :
 			if(map.get("searchOption")!=null) {
 				try {
@@ -94,12 +119,20 @@ public class PstmtQuery extends QueryTemplate {
 	@Override
 	void endPlay() {
 		ResultSet rs;
+		MemberBean mem = null;
 		switch(map.get("flag").toString()) {
+		case "INSERT":
+			try {
+				pstmt.executeQuery();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+			break;
 		case "LIST":
 			try {
 				System.out.println("10 PstmtQuery.endPlay()");
 				rs = pstmt.executeQuery();
-				MemberBean mem = null;
+				
 				while(rs.next()) {
 					mem = new MemberBean();
 					mem.setUserid(rs.getString("USERID"));
@@ -120,7 +153,6 @@ public class PstmtQuery extends QueryTemplate {
 		case "RETRIEVE" :
 			try {
 				rs = pstmt.executeQuery();
-				MemberBean mem = null;
 				while(rs.next()) {
 					mem = new MemberBean();
 					mem.setUserid(rs.getString("USERID"));

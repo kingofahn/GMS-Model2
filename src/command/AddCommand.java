@@ -30,8 +30,8 @@ public class AddCommand extends Command {
 			mem.setTeamid(request.getParameter("teamid"));
 			mem.setRoll(request.getParameter("roll"));
 			/*mem.setSubject(ParamMap.getValues(request,"subject"));*/
-			MemberServiceImpl.getInstance().add(mem);	
-			System.out.println("회원가입 성공!!");
+			MemberServiceImpl.getInstance().add(mem);
+			System.out.println("mem : " + mem );
 			break;
 		default:
 			break;

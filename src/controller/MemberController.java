@@ -23,10 +23,13 @@ public class MemberController extends HttpServlet {
 			Carrier.redirect(request, response,
 					"/member.do?action=move&page=login");
 			break;
-		case SEARCH : case RETRIEVE : 
+		case SEARCH :
 			System.out.println("================컨트롤러 JOIN case 진입================");
-			Carrier.redirect(request, response,
-					"/member.do?action=move&page=login");
+			Carrier.forward(request, response);
+			break;
+		case RETRIEVE : 
+			System.out.println("================컨트롤러 JOIN case 진입================");
+			Carrier.forward(request, response);
 			break;
 		case MODIFY : 
 			System.out.println("================컨트롤러 case 진입================");
@@ -47,7 +50,7 @@ public class MemberController extends HttpServlet {
 			if(request.getAttribute("match").equals("TRUE")){
                 Carrier.forward(request, response);
             }else {
-                Carrier.redirect(request, response, "/member.do?action=move&page=userLoginForm");
+                Carrier.redirect(request, response, "/member.do?action=move&page=login");
             }
 			System.out.println("================컨트롤러 login 종료================");
 			break;

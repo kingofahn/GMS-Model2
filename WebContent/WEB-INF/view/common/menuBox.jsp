@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="head.jsp" />
 <div id="menu-box">
 	<ul id="menu">
 		<li><a id="moveHome" >HOME</a></li>
@@ -8,21 +7,5 @@
 	</ul>
 </div>
 <script>
-document.getElementById('moveHome').addEventListener('click',
-		function() {
-		router.move({context : '${ctx}',
-					domain : 'common'
-					});
-		});
-		
-document.getElementById('moveMypage').addEventListener('click',
-		function() {
-		router.move({context : '${ctx}',
-					domain : 'member',
-					action : 'move',
-					page : 'mypage'});
-		});
-		
-
-		
+	common.main('${ctx}');	
 </script>

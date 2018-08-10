@@ -15,9 +15,7 @@ public class AdminController extends HttpServlet {
 		Receiver.init(request,response);
 		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())){
 		case RETRIEVE :
-			System.out.println("================컨트롤러 RETRIEVE case 진입================");
-			Carrier.redirect(request, response, "/member.do?action=move&page=retrieve");
-			System.out.println("================컨트롤러 RETRIEVE case 종료================");
+			Carrier.forward(request, response);
 			break;
 		case SEARCH :
 			System.out.println("================컨트롤러 SEARCH case 진입================");

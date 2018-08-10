@@ -1,43 +1,38 @@
 package template;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import domain.MemberBean;
+import enums.MemberQuery;
 import factory.DatabaseFactory;
 
-public class ListQuery extends QueryTemplate {
+public class RetrieveQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
 		map.put("sql",
-				String.format(" SELECT T.* " 
-					+ " FROM (SELECT ROWNUM SEQ, M.* "
-					+ " FROM %s M "
-					+ " ORDER BY SEQ DESC) T " 
-					+ " WHERE T.SEQ BETWEEN ? AND ?",
-					map.get("table"),map.get("beginRow"), map.get("endRow")));
+                String.format(MemberQuery.RETRIEVE.toString()));
 	}
 
 	@Override
 	void startPlay() {
 		try {
-			pstmt =DatabaseFactory
+			pstmt = DatabaseFactory
 					.createDatabase2(map)
 					.getConnection()
 					.prepareStatement((String) map.get("sql"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			pstmt.setString(1, (String)map.get("searchWord"));
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}		
 	}
 
 	@Override
 	void endPlay() {
-		ResultSet rs;
 		try {
-			rs=pstmt.executeQuery();
-			MemberBean mem = null;
+			rs = pstmt.executeQuery();
+			mem = new MemberBean();
 			while(rs.next()) {
-				mem = new MemberBean();
 				mem.setUserid(rs.getString("USERID"));
 				mem.setTeamid(rs.getString("TEAMID"));
 				mem.setName(rs.getString("NAME"));
@@ -46,10 +41,12 @@ public class ListQuery extends QueryTemplate {
 				mem.setGender(rs.getString("GENDER"));
 				mem.setPassword(rs.getString("PASSWORD"));
 				mem.setSsn(rs.getString("SSN"));
-				list.add(mem);
+				mem.setSubject(rs.getString("SUBJECT"));
+				System.out.println("쿼리 리트리버 입장" + mem.getName());
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}		
 	}
+
 }

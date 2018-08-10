@@ -10,8 +10,6 @@ public class Carrier {
 				request
 				.getRequestDispatcher(Receiver.cmd.getView())
 				.forward(request, response);
-				System.out.println("%%%%"+"Sentry.cmd.getView() 의 내용 :  "+Receiver.cmd.getView()+"%%%%");
-				System.out.println("%%%% forward 종료 %%%%");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

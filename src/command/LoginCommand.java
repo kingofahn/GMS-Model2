@@ -10,7 +10,7 @@ public class LoginCommand extends Command {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage("mypage");
+		setPage("retrieve");
 		execute();
 	}
 
@@ -22,7 +22,7 @@ public class LoginCommand extends Command {
 		mem.setPassword(request.getParameter("password"));
 		if (MemberServiceImpl.getInstance().login(mem)) {
 			request.setAttribute("match", "TRUE");
-			request.getSession().setAttribute("user", MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
+			request.getSession().setAttribute("user", MemberServiceImpl.getInstance().retrieve(request.getParameter("searchWord")));
 		} else {
 			request.setAttribute("match", "FALSE");
 		}
