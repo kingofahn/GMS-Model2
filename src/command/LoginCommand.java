@@ -26,5 +26,7 @@ public class LoginCommand extends Command {
 		} else {
 			request.setAttribute("match", "FALSE");
 		}
+		System.out.println("로그인 TRUE FLASE" + request.getAttribute("match"));
+		
 	}
 }

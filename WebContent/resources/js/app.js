@@ -37,39 +37,35 @@ var service = (()=>{
 var common = (()=> {
 	return {
 		main : x=>{
-			document.getElementById('moveLoginForm').addEventListener('click',
+			document.getElementById('moveHome').addEventListener('click',
 					function() {
-						router.move({context : x ,
-									domain : 'member',
-									action : 'move',
-									page : 'login'});
+					router.move({context : x,
+						domain : 'common',
+						action : 'move', 
+						page : 'main'
+								});
 					}),
-			document.getElementById('moveJoinForm').addEventListener('click',
+/*			document.getElementById('moveLoginForm').addEventListener('click',
+					function() {
+						router.move({context : x,
+									domain : 'member',
+									action : 'move', 
+									page : 'login'});
+					}),	*/
+			
+/*			document.getElementById('moveJoinForm').addEventListener('click',
 					function() {
 						router.move({context : x,
 									domain : 'member',
 									action : 'move', 
 									page : 'add'});
-					}),	
-			document.getElementById('moveHome').addEventListener('click',
-					function() {
-					router.move({context : x,
-								domain : 'common'
-								});
-					}),
-			document.getElementById('moveMypage').addEventListener('click',
-					function() {
-					router.move({context : x ,
-								domain : 'member',
-								action : 'move',
-								page : 'retreive'});
-					}),
+					}),	*/
 			document.getElementById('moveToAdminMain').addEventListener('click',
 					function() {
 					router.move({context : x,
 								domain : 'admin',
 								action : 'search',
-								page : 'main'})
+								page : 'search'})
 								
 								/*var isAdmin = confirm('Are you an administrator?'); 
 								if(isAdmin){
@@ -95,11 +91,11 @@ var admin = (()=>{
 		main : x=>{
 			for(var i of document.querySelectorAll('.username')){
                 service.addClass(i, 'cursor fontColorBlue');
-                i.addEventListener('click', ()=>{
-                    location.href=x+'/admin.do?action=retrieve&page=retrieve&searchWord='
+                i.addEventListener('click', function(){
+                    location.href=x+'/member.do?action=retrieve&page=retrieve&searchWord='
                     +this.getAttribute('id');
                 });
-            }
+            };
 			
 			for(var i of document.querySelectorAll('.pageNumber')){
 				service.addClass(i,	'cursor fontColorBlue');	
@@ -107,10 +103,10 @@ var admin = (()=>{
 				location.href=x+'/admin.do?action=search&page=main&pageNumber='
 				+this.getAttribute('id');
 				});
-			}			
+			};
 			
 			document.getElementById('searchBtn')
-			.addEventListener('click',()=> {
+			.addEventListener('click',function() {
 				location.href=(document.getElementById('searchOption').value==='userid') ?
 					x+'/member.do?action=retrieve&page=retrieve&searchWord='+document.getElementById('searchWord').value
 					:
@@ -188,25 +184,20 @@ var member = (()=> {
 			main : x=> {
 				document.getElementById('myPageMoveToUpdate').addEventListener('click',
 						function() {
-					router.move({context : x,
-						domain : 'member',
-						action : 'move', 
-						page : 'modify'
-					});
-				}),			
+						router.move({context : x,
+							domain : 'member',
+							action : 'move', 
+							page : 'modify'
+									});
+						});						
 				document.getElementById('myPageMoveToDelete').addEventListener('click',
 						function() {
-					router.move({context : x,
-						domain : 'member',
-						action : 'move', 
-						page : 'remove'
-					});
-				});
-			},
-			
-			join : x =>{
-				member.setAge(x);
-				member.setGender(x);
+						router.move({context : x,
+							domain : 'member',
+							action : 'move', 
+							page : 'remove'
+									});
+						});
 			}
 	}
 })();

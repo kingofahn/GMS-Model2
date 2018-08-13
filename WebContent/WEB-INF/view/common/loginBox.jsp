@@ -5,5 +5,5 @@
 </div>
 
 <script>
-	admin.main('${ctx}');
+	common.main('${ctx}');
 </script>

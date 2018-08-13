@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<body>
 <div id="content-box">
 	<div id="searchBox">
 		<select name="searchOption" id="searchOption">
@@ -61,4 +60,3 @@
 <script>
 	admin.main('${ctx}');
 </script>
-</body>

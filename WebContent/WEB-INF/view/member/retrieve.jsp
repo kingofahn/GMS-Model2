@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="wrapper">
-	<div id="content">
+	<div id="content-box">
 		<table id="mypage-table">  
 		<tr>
 			<th  rowspan='3'>사진 </th> 
@@ -32,26 +31,8 @@
 		 <a id="myPageMoveToUpdate"> UPADATE FORM</a> 
 		 <a id="myPageMoveToDelete"> DELETE FORM </a> 
 	</div>
-	</div></div>
-	<div id="footer">
-		<jsp:include page="../common/footerBox.jsp" />
+	
 	</div>
 	<script>
-	document.getElementById('myPageMoveToUpdate').addEventListener('click',
-			function() {
-				router.move({context : '${ctx}',
-							domain : 'member',
-							action : 'modify', 
-							page : 'modify'
-				});
-			});
-			
-	document.getElementById('myPageMoveToDelete').addEventListener('click',
-			function() {
-			router.move({context : '${ctx}',
-				domain : 'member',
-				action : 'remove', 
-				page : 'remove'
-						});
-			});
+		member.main('${ctx}')
 	</script>

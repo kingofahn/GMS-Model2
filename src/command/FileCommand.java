@@ -1,9 +1,11 @@
 package command;
+
 import javax.servlet.http.HttpServletRequest;
+
 import service.MemberServiceImpl;
 
-public class RetrieveCommand extends Command {
-	public RetrieveCommand(HttpServletRequest request) {
+public class FileCommand extends Command {
+	public FileCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -13,9 +15,8 @@ public class RetrieveCommand extends Command {
 
 	@Override
 	public void execute() {
-		request.setAttribute("user",
-							MemberServiceImpl.getInstance().retrieve(request.getParameter("searchWord")));
-		System.out.println("리트리브커맨드 입력값 : "+MemberServiceImpl.getInstance().retrieve(request.getParameter("searchWord")).getName());
+		request.setAttribute("pagename", request.getParameter("pagename"));
+		request.setAttribute("user", MemberServiceImpl.getInstance().retrieve(request.getParameter("searchWord")));
 		super.execute();
 	}
 }

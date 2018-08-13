@@ -37,6 +37,9 @@ public class Commander {
 				System.out.println("----Commander에 Case의  MOVE 진입----");
 				cmd = new MoveCommand(request);
 				break;
+			case FILEUPLOAD :  
+				cmd = new MoveCommand(request);
+				break;
 			default:
 				break;
 			}

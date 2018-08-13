@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	<div id="content">
+<div id="contentBox">
 		<form id = "joinForm" name="joinForm">
 		NAME : <input type="text" name="name" placeholder="Insert your name" /> <br>
 		ID : <input type="text" name="userid" placeholder="Insert new ID" /> <input id="idCheckBtn" type="button" value="Check" ><br>
@@ -23,6 +23,7 @@
 		<option value="minfe">민폐</option>
 		</select>
 		<br>
+		
 		Subject
 		<input type="checkbox" name="subject" value="java" checked="checked"/> Java
 		<input type="checkbox" name="subject" value="clang"/> C언어
@@ -48,7 +49,7 @@
 			var form = document.getElementById('joinForm');
 			form.action ="${ctx}/member.do";
 			form.method ="post";  /* get으로 하면 노출됨 */
-			var json = [{name:'action', value:'join'}, 
+			var json = [{name:'action', value:'add'}, 
 						{name:'gender'}, 
 						{name:'age'}];
             for(var i in json){
@@ -58,7 +59,8 @@
                 node.setAttribute('value', json[i].value);
                 form.appendChild(node);
             }
-			member.join(form.ssn.value);
+            member.setAge(x);
+			member.setGender(x);
  			form.gender.value=member.getGender();
 			form.age.value=member.getAge(); 
 			form.submit();
@@ -67,5 +69,3 @@
 		}
 	});
 	</script>
-</body>
-</html>

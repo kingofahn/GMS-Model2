@@ -17,7 +17,7 @@
 </div>
 
 <script>
-	admin.main('${ctx}');
+	member.main('${ctx}');
 </script>
 
 </body>

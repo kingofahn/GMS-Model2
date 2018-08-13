@@ -17,7 +17,7 @@
 				[document.loginForm.userid.value,
 					document.loginForm.password.value]);
 		if(x.checker){
-			var form = document.getElementById('loginForm');
+			var form = document.getElementById('userLoginForm');
 			form.action = "${ctx}/member.do" ;
 			form.method = "post";
 			form.submit();	
@@ -27,4 +27,3 @@
 	});
 	</script>
 </body>
-</html>
