@@ -11,19 +11,15 @@
 	</div>
 </div> 
 	<script>
-	document.getElementById('loginFormBtn')
-	.addEventListener('click',function(){
-		var x = service.nullChecker(
-				[document.loginForm.userid.value,
-					document.loginForm.password.value]);
-		if(x.checker){
-			var form = document.getElementById('userLoginForm');
-			form.action = "${ctx}/member.do" ;
-			form.method = "post";
-			form.submit();	
-		}else{
-			alert(x.text);
-		}
+	var form = document.getElementById("userLoginForm");
+	document.getElementById("loginFormBtn").addEventListener('click',function(){
+			form.action ="${ctx}/member.do";
+			form.method ="post";  /* get으로 하면 노출됨 */
+			var node = document.createElement('input');
+				node.setAttribute('type','hidden');
+				node.setAttribute('name','action')
+				node.setAttribute('value','login')
+				form.appendChild(node);
+			form.submit();
 	});
 	</script>
-</body>

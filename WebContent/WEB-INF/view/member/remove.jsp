@@ -16,7 +16,7 @@
 			var node = document.createElement('input');
 				node.setAttribute('type','hidden');
 				node.setAttribute('name','action')
-				node.setAttribute('value','delete')
+				node.setAttribute('value','remove')
 				form.appendChild(node);
 			form.submit();
 		} else{

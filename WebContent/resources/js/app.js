@@ -37,35 +37,61 @@ var service = (()=>{
 var common = (()=> {
 	return {
 		main : x=>{
-			document.getElementById('moveHome').addEventListener('click',
-					function() {
-					router.move({context : x,
-						domain : 'common',
-						action : 'move', 
-						page : 'main'
-								});
-					}),
-/*			document.getElementById('moveLoginForm').addEventListener('click',
-					function() {
+			if(document.getElementById('moveLoginForm')!=null){
+				document.getElementById('moveLoginForm').addEventListener('click',
+						function() {
 						router.move({context : x,
-									domain : 'member',
-									action : 'move', 
-									page : 'login'});
-					}),	*/
+							domain : 'member',
+							action : 'move', 
+							page : 'login'
+									});
+						});	
+			}; 
 			
-/*			document.getElementById('moveJoinForm').addEventListener('click',
-					function() {
-						router.move({context : x,
-									domain : 'member',
-									action : 'move', 
-									page : 'add'});
-					}),	*/
-			document.getElementById('moveToAdminMain').addEventListener('click',
-					function() {
+			if(document.getElementById('moveLoginForm')!=null){
+				document.getElementById('moveLoginForm').addEventListener('click',
+						function() {
 					router.move({context : x,
-								domain : 'admin',
-								action : 'search',
-								page : 'search'})
+						domain : 'member',
+						action : 'move', 
+						page : 'login'
+					});
+				});	
+			};
+			
+			if(document.getElementById('moveHome')!=null){
+				document.getElementById('moveHome').addEventListener('click',
+						function() {
+						router.move({context : x,
+							domain : 'common',
+							action : 'move', 
+							page : 'main'
+									});
+						});
+			};
+			
+			if(document.getElementById('moveJoinForm')!=null){
+				document.getElementById('moveJoinForm').addEventListener('click',
+						function() {
+						router.move({context : x,
+							domain : 'member',
+							action : 'move', 
+							page : 'add'
+									});
+						});
+			};
+
+			if(document.getElementById('moveToAdminMain')!=null){
+				document.getElementById('moveToAdminMain').addEventListener('click',
+						function() {
+						router.move({context : x,
+									domain : 'admin',
+									action : 'search',
+						});
+				
+				});
+			
+
 								
 								/*var isAdmin = confirm('Are you an administrator?'); 
 								if(isAdmin){
@@ -82,8 +108,8 @@ var common = (()=> {
 									} else{
 										alert('Only administrator can access this function!!!');
 									}*/
-			});
 			}
+		}
 	};})();
 
 var admin = (()=>{
@@ -181,23 +207,35 @@ var member = (()=> {
 			getAge : getAge,
 			getRoll : getRoll,
 			getTeamid : getTeamid,
+			join : x =>{
+				member.setAge(x);
+				member.setGender(x);
+			},
 			main : x=> {
-				document.getElementById('myPageMoveToUpdate').addEventListener('click',
-						function() {
+				
+				
+				
+				if(document.getElementById('myPageMoveToUpdate')!=null){
+					document.getElementById('myPageMoveToUpdate').addEventListener('click',
+							function() {
 						router.move({context : x,
 							domain : 'member',
 							action : 'move', 
 							page : 'modify'
-									});
-						});						
-				document.getElementById('myPageMoveToDelete').addEventListener('click',
-						function() {
+						});
+					});						
+				}
+				
+				if(document.getElementById('myPageMoveToDelete')!=null){
+					document.getElementById('myPageMoveToDelete').addEventListener('click',
+							function() {
 						router.move({context : x,
 							domain : 'member',
 							action : 'move', 
 							page : 'remove'
-									});
 						});
+					});
+				}
 			}
 	}
 })();

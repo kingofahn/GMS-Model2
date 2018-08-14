@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import domain.ImageBean;
 import domain.MemberBean;
 import enums.Vendor;
 import factory.DatabaseFactory;
@@ -23,6 +24,7 @@ public abstract class QueryTemplate {
 	PreparedStatement pstmt;
 	ResultSet rs = null;
 	MemberBean mem;
+	ImageBean bean;
 	
 	public final void play(Map<?,?> param) {
 		this.number = 0;

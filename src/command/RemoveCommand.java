@@ -8,7 +8,6 @@ import service.MemberServiceImpl;
 
 public class RemoveCommand extends Command {
 	public RemoveCommand(HttpServletRequest requset) {
-		System.out.println("DeleteCommand 들어옴!!!");
 		setRequest(requset);
 		setDomain(request.getServletPath()
 				.substring(1,

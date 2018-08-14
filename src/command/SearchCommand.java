@@ -10,7 +10,6 @@ import service.MemberServiceImpl;
 
 public class SearchCommand extends Command {
 	public SearchCommand(HttpServletRequest request) {
-		System.out.println("****    ListCommand 들어옴!!!    ****");
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -19,7 +18,6 @@ public class SearchCommand extends Command {
 	}
 	@Override
 	public void execute() {
-		System.out.println("1 : SearchCommand execute() ");
         Map<String,Object> paramMap = new HashMap<>();
         String pageNumber = request.getParameter("pageNumber");
         PageProxy pxy = new PageProxy();

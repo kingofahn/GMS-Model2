@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Carrier {
 	public static void forward(HttpServletRequest request, 
 		HttpServletResponse response){
-		System.out.println("%%%% forward 사용됨 %%%%");
 			try {
 				request
 				.getRequestDispatcher(Receiver.cmd.getView())
@@ -17,11 +16,8 @@ public class Carrier {
 
 	public static void redirect(HttpServletRequest request, 
 		HttpServletResponse response, String url) {
-		System.out.println("%%%% redirect 사용됨!!! %%%%");
 			try {
 				response.sendRedirect(request.getContextPath()+url);/*url :  /member.do?action=move&page=userLoginForm*/
-				System.out.println("%%%%" + "request.getContextPath() 의 내용 : " + request.getContextPath() + "%%%%" );
-				System.out.println("%%%% forward 종료 %%%%");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

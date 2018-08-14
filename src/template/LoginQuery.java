@@ -21,12 +21,9 @@ public class LoginQuery extends QueryTemplate {
 					.createDatabase2(map)
 					.getConnection()
 					.prepareStatement((String) map.get("sql"));
-			mem = (MemberBean) map.get("bean");
-			pstmt.setString(1,mem.getUserid());
-			pstmt.setString(2,mem.getPassword());
-			System.out.println("sql" + map.get("sql"));
-			System.out.println("mem" + mem);
-			System.out.println("mem(startPlay) : " + mem);
+			o = (MemberBean)map.get("bean");
+			pstmt.setString(1,((MemberBean) o).getUserid());
+			pstmt.setString(2,((MemberBean) o).getPassword());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -34,7 +31,12 @@ public class LoginQuery extends QueryTemplate {
 	@Override
 	void endPlay() {
 		try {
-			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				mem = new MemberBean();
+                mem.setUserid(rs.getString("userid"));
+                mem.setPassword(rs.getString("password"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

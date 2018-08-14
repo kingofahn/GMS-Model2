@@ -7,7 +7,8 @@ public enum MemberQuery {
 	LIST,SEARCH,RETRIEVE,COUNT,
 	UPDATE,
 	DELETE,
-	LOGIN
+	LOGIN, 
+	UPLOAD
 	;
 	public String toString() {
 		String sql = "";
@@ -76,6 +77,13 @@ public enum MemberQuery {
 				+ " FROM MEMBER "
 				+ " WHERE USERID LIKE ? "
 				+ " AND PASSWORD LIKE ? "
+			;
+			break;
+			
+		case UPLOAD :
+			sql = 
+				" INSERT INTO IMAGE(IMG_SEQ,IMG_NAME,EXTENSION, USERID) "
+				+ " VALUES (IMG_SEQ.NEXTVAL,?,?,?) "
 			;
 			break;
 		}

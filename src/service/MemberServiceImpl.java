@@ -2,8 +2,6 @@ package service;
 
 import java.util.List;
 import java.util.Map;
-
-import dao.MemberDAO;
 import dao.MemberDAOImpl;
 import domain.MemberBean;
 
@@ -47,5 +45,4 @@ public class MemberServiceImpl implements MemberService {
 	public boolean login(MemberBean bean) {
 		return (MemberDAOImpl.getInstance().login(bean)!=null);
 	}
-
 }

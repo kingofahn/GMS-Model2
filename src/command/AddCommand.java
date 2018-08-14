@@ -19,7 +19,6 @@ public class AddCommand extends Command {
 	public void execute() {
 		switch (Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-			System.out.println("회원가입에 들어옴!!!");
 			MemberBean mem = new MemberBean();
 			mem.setName(request.getParameter("name"));
 			mem.setUserid(request.getParameter("userid"));
@@ -31,7 +30,6 @@ public class AddCommand extends Command {
 			mem.setRoll(request.getParameter("roll"));
 			/*mem.setSubject(ParamMap.getValues(request,"subject"));*/
 			MemberServiceImpl.getInstance().add(mem);
-			System.out.println("mem : " + mem );
 			break;
 		default:
 			break;

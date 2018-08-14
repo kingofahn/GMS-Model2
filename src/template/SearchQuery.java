@@ -64,6 +64,7 @@ public class SearchQuery extends QueryTemplate {
 				mem.setPassword(rs.getString("PASSWORD"));
 				mem.setSsn(rs.getString("SSN"));
 				mem.setSubject(rs.getString("SUBJECT"));
+				mem.setSubject(rs.getString("SUBJECT"));
 				list.add(mem);
                 }
 		} catch (SQLException e) {

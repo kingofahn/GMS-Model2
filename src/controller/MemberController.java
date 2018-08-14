@@ -18,7 +18,12 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
 import command.Carrier;
 import command.Receiver;
+import domain.ImageBean;
+import domain.MemberBean;
 import enums.Action;
+import enums.Path;
+import service.ImageServiceImpl;
+import service.MemberServiceImpl;
 
 @WebServlet({"/member.do"})  // URL Mapping
 public class MemberController extends HttpServlet {
@@ -26,24 +31,22 @@ public class MemberController extends HttpServlet {
 	protected void service(
 			HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("$$$$$$$$$$$$  MemberController Entered  $$$$$$$$$$$$");
 		Receiver.init(request,response);
+		ImageBean bean =null;
+		MemberBean user = null;
+		String sep=	"";
 		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())){
 		case ADD : 
-			System.out.println("================컨트롤러 JOIN case 진입================");
 			Carrier.redirect(request, response,
 					"/member.do?action=move&page=login");
 			break;
 		case SEARCH :
-			System.out.println("================컨트롤러 JOIN case 진입================");
 			Carrier.forward(request, response);
 			break;
 		case RETRIEVE : 
-			System.out.println("================컨트롤러 JOIN case 진입================");
 			Carrier.forward(request, response);
 			break;
 		case MODIFY : 
-			System.out.println("================컨트롤러 case 진입================");
 			Carrier.redirect(request, response,
 					"/member.do?action=retrieve&page=retrieve");
 			break;
@@ -62,6 +65,8 @@ public class MemberController extends HttpServlet {
 				try {
 					System.out.println("=====[3]====try 내부로 진입");
 					File file = null;
+					bean = new ImageBean();
+					user = new MemberBean();
 					items = upload.parseRequest(
 							new ServletRequestContext(request));
 					System.out.println("=====[4]====items 생성");
@@ -71,44 +76,44 @@ public class MemberController extends HttpServlet {
 						FileItem item = (FileItem)iter.next();
 						if(!item.isFormField()){
 							System.out.println("=====[6]====if 진입");
-							String fieldName = item.getFieldName();
 							String fileName = item.getName();
-							boolean isInMemory = item.isInMemory();
-							long sizeInBytes = item.getSize();
-							file = new File(fileName);
+							file = new File(Path.UPLOAD_PATH + fileName);
 							item.write(file);
+							System.out.println("file" + file);
 							System.out.println("=====[7]====파일업로드 성공 !!!");
+							sep = File.separator;
+							bean.setUserid(((MemberBean)request.getSession().getAttribute("user")).getUserid());
+							bean.setImgname(fileName.substring((fileName.lastIndexOf("\\")+1),fileName.lastIndexOf(".")));
+							bean.setExtension(fileName.substring(fileName.lastIndexOf(".")+1));
+							System.out.println("7-1" + bean.getImgname());
+							System.out.println("7-2" + bean.getExtension());
+							System.out.println("7-3" + bean.getUserid());
+							ImageServiceImpl.getInstance().insert(bean);
 						}else{
 							System.out.println("=====[8]====파일업로드 실패 !!!");
 						}
 					}
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			System.out.println("=====[10]====");
 			Carrier.redirect(request, response, "/member.do?action=retrieve&page=retrieve");
 			break;			
 		case REMOVE : 
-			System.out.println("================컨트롤러 case 진입================");
 			Carrier.redirect(request, response,"");
 			break;
 		case JOIN : 
-			System.out.println("================컨트롤러 JOIN case 진입================");
 			Carrier.redirect(request, response,
 					"/member.do?action=move&page=login");
 			break;
 		case LOGIN :
-			System.out.println("================컨트롤러 login 진입================");
 			if(request.getAttribute("match").equals("TRUE")){
                 Carrier.forward(request, response);
             }else {
                 Carrier.redirect(request, response, "/member.do?action=move&page=login");
             }
-			System.out.println("================컨트롤러 login 종료================");
 			break;
 	    case MOVE : 
-			System.out.println("================컨트롤러  MOVE case 진입================");
 	        Carrier.forward(request, response);
 	        break;
 		default : 

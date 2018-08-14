@@ -16,6 +16,7 @@ public class MemberDAOImpl implements MemberDAO {
 		map = new HashMap<>();
 		q = new AddQuery();
 		map.put("bean", bean);
+		map.put("table", "member");
 		q.play(map);
 	}
 	@Override
@@ -30,7 +31,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public MemberBean selectOne(String id) {
-		HashMap<String, Object> map = new HashMap<>();
+		map = new HashMap<>();
 		q= new RetrieveQuery();
 		map.put("searchWord", id);
 		q.play(map);
@@ -47,12 +48,14 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void update(Map<?, ?> param) {
 		q = new ModifyQuery();
-		q.play();
+		q.play(param);
 	}
 	@Override
 	public void delete(MemberBean bean) {
+		map = new HashMap<>();
 		q = new RemoveQuery();
-		q.play();
+		map.put("bean", bean);
+		q.play(map);
 	}
 	@Override
 	public MemberBean login(MemberBean bean) {
@@ -62,5 +65,4 @@ public class MemberDAOImpl implements MemberDAO {
 		q.play(map);
 		return q.getMem();
 	}
-	
 }

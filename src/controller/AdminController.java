@@ -18,19 +18,13 @@ public class AdminController extends HttpServlet {
 			Carrier.forward(request, response);
 			break;
 		case SEARCH :
-			System.out.println("================컨트롤러 SEARCH case 진입================");
 			Carrier.forward(request, response);
-			System.out.println("================SEARCH 종료 : =================");
 			break;
 	    case MOVE : 
-	    	System.out.println("================Admin 컨트롤러  MOVE case 진입================");
 	        Carrier.forward(request, response);
-	        System.out.println("================Admin 컨트롤러  MOVE case 종료================");
 	        break;
 		case COUNT :
-			System.out.println("================컨트롤러 Count case 진입================");
 			Carrier.forward(request, response);
-			System.out.println("================COUNT 종료 : =================");
 			break;
 		default : 
 			Carrier.redirect(request, response,"");

@@ -2,29 +2,31 @@
 	<div id="content-box">
 		<table id="mypage-table">  
 		<tr>
-			<th  rowspan='3'>사진 </th> 
-			<th>아이디</th>
-			<th colspan='2'> ${user.userid} </th>
+			<td  rowspan='3' colspan='2'>
+			<img alt="" src="${img}/${profile}"> 
+			</td> 
+			<td>아이디</td>
+			<td id="userid"> ${user.userid} </td>
 		</tr>
 		<tr>
-			<th>이름</th>
-			<th colspan='2'>${user.name}</th>
+			<td>이름</td>
+			<td colspan='2'>${user.name}</td>
 		</tr>
 		<tr>
-			<th>비밀번호</th>
-			<th colspan='2'>************</th>
+			<td>비밀번호</td>
+			<td colspan='2'>************</td>
 		</tr>
 		<tr>
-			<th>나이</th>
-			<th>${user.age}</th>
-			<th>팀명</th>
-			<th>${user.teamid}</th>
+			<td>나이</td>
+			<td>${user.age}</td>
+			<td>팀명</td>
+			<td>${user.teamid}</td>
 		</tr>
 		<tr>
-			<th>성별</th>
-			<th>${user.gender}</th>
-			<th>역할</th>
-			<th>${user.roll}</th>
+			<td>성별</td>
+			<td>${user.gender}</td>
+			<td>역할</td>
+			<td>${user.roll}</td>
 		</tr>
 	</table>
 	<div id="mypage-bottom">

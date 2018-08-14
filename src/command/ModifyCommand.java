@@ -24,13 +24,12 @@ public class ModifyCommand extends Command {
 	public void execute() {
 		switch(Domain.valueOf(Receiver.cmd.domain.toUpperCase())) {
 		case MEMBER :
-			System.out.println("update 들어옴!!!");
 			Map<String,Object> map = new HashMap<>();
+			map.put("searchWord", ((MemberBean) request.getSession().getAttribute("user")).getUserid());
 			map.put("password", request.getParameter("password"));
 			map.put("teamid", request.getParameter("teamid"));
 			map.put("roll", request.getParameter("roll"));
 			MemberServiceImpl.getInstance().modify(map);
-			System.out.println("update 성공!!");
 			break;
 		default : 
 			break;

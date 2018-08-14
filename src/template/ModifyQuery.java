@@ -9,7 +9,11 @@ public class ModifyQuery extends QueryTemplate{
 
 	@Override
 	void initialize() {
-		map.put("sql",MemberQuery.UPDATE.toString());
+		String[] arr = {"password", "teamid", "roll"};
+		for(int i=0; i<arr.length; i++) {
+			map.put("sql"+i,
+					String.format(MemberQuery.UPDATE.toString(),map.get(arr[i])));
+		}
 	}
 
 	@Override
@@ -19,6 +23,10 @@ public class ModifyQuery extends QueryTemplate{
 					.createDatabase2(map)
 					.getConnection()
 					.prepareStatement((String) map.get("sql"));
+			pstmt.setString(1,map.get("password").toString());
+			pstmt.setString(2,map.get("searchWord").toString());
+			System.out.println("===[1]==="+map.get("password").toString());
+			System.out.println("===[2]==="+map.get("searchWord").toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

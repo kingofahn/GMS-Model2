@@ -44,7 +44,7 @@
 			</form>
 </div>
 
-<form method="POST" enctype="multipart/form-data" 
+<form method="POST" class="TEST" enctype="multipart/form-data" 
 		action="${ctx}/member.do?action=fileupload&page=retrieve">
   파일업로드: <input type="file" name="upfile"><br/>
   <input type="submit" value="파일업로드"> 
@@ -79,7 +79,7 @@
 								form.action = "${ctx}/member.do";
 								form.method = "post"; /* get으로 하면 노출됨 */
 								var node = document.createElement('input');
-								node.innerHTML = '<input type="hidden" name="action" value="update">'
+								node.innerHTML = '<input type="hidden" name="action" value="modify">'
 								form.appendChild(node);
 								form.submit();
 							} else {
