@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
 import enums.Domain;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 public class ModifyCommand extends Command {
@@ -16,7 +17,6 @@ public class ModifyCommand extends Command {
 				.substring(1,
 						request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
 		execute();
 	}
 	
@@ -25,10 +25,12 @@ public class ModifyCommand extends Command {
 		switch(Domain.valueOf(Receiver.cmd.domain.toUpperCase())) {
 		case MEMBER :
 			Map<String,Object> map = new HashMap<>();
-			map.put("searchWord", ((MemberBean) request.getSession().getAttribute("user")).getUserid());
-			map.put("password", request.getParameter("password"));
-			map.put("teamid", request.getParameter("teamid"));
-			map.put("roll", request.getParameter("roll"));
+			MemberBean mem =  (MemberBean) request.getSession().getAttribute("user");
+			mem.setPassword(request.getParameter("password"));
+			mem.setTeamid(request.getParameter("teamid"));
+			mem.setRoll(request.getParameter("roll"));
+			map.put("user", mem);
+			request.setAttribute("image", ImageServiceImpl.getInstance().retrieve(mem.getUserid()));
 			MemberServiceImpl.getInstance().modify(map);
 			break;
 		default : 

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import domain.ImageBean;
 import domain.MemberBean;
+import enums.ImageQuery;
 import enums.MemberQuery;
 import factory.DatabaseFactory;
 
@@ -13,10 +14,10 @@ public class AddQuery extends QueryTemplate {
 	void initialize() {
 		switch (map.get("table").toString()) {
 		case "member":
-			map.put("sql", MemberQuery.INSERT.toString());
+			map.put("sql", String.format(MemberQuery.INSERT.toString()));
 			break;
 		case "image":
-			map.put("sql", String.format(MemberQuery.UPLOAD.toString()));
+			map.put("sql", String.format(ImageQuery.UPLOAD.toString()));
 			break;
 		default:
 			break;
@@ -28,7 +29,7 @@ public class AddQuery extends QueryTemplate {
 		switch (map.get("table").toString()) {
 		case "member":
 			try {
-				pstmt = DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String) map.get("sql"));
+				pStmtInit();
 				mem = (MemberBean) map.get("bean");
 				pstmt.setString(1, mem.getUserid());
 				pstmt.setString(2, mem.getSsn());
@@ -46,10 +47,10 @@ public class AddQuery extends QueryTemplate {
 		case "image":
 			pStmtInit();
 			try {
-				bean = (ImageBean) map.get("bean");
-				pstmt.setString(1, bean.getImgname());
-				pstmt.setString(2, bean.getExtension());
-				pstmt.setString(3, bean.getUserid());
+				img = (ImageBean) map.get("img");
+				pstmt.setString(1, img.getImgname());
+				pstmt.setString(2, img.getExtension());
+				pstmt.setString(3, img.getUserid());
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

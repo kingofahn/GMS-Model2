@@ -34,6 +34,7 @@ public class MemberDAOImpl implements MemberDAO {
 		map = new HashMap<>();
 		q= new RetrieveQuery();
 		map.put("searchWord", id);
+		map.put("table", "member");
 		q.play(map);
 		return q.getMem();
 		
@@ -47,7 +48,7 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public void update(Map<?, ?> param) {
-		q = new ModifyQuery();
+		q = new UpdateQuery();
 		q.play(param);
 	}
 	@Override

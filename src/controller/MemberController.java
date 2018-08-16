@@ -48,7 +48,7 @@ public class MemberController extends HttpServlet {
 			break;
 		case MODIFY : 
 			Carrier.redirect(request, response,
-					"/member.do?action=retrieve&page=retrieve");
+					"/member.do?action=move&page=retrieve");
 			break;
 		case FILEUPLOAD: 
 			System.out.println("=====[1]====");

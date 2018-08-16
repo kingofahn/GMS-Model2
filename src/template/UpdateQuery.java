@@ -4,21 +4,22 @@ import java.sql.SQLException;
 
 import domain.MemberBean;
 import enums.MemberQuery;
-import factory.DatabaseFactory;
 
-public class RemoveQuery extends QueryTemplate{
+public class UpdateQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
-		map.put("sql",String.format(MemberQuery.DELETE.toString()));
+		map.put("sql", String.format(MemberQuery.UPDATE.toString()));
 	}
 
 	@Override
 	void startPlay() {
-		try {
-			mem = (MemberBean) map.get("bean");
-			pstmt.setString(1, mem.getUserid());
-			pstmt.setString(2, mem.getPassword());
+		 try {
+			mem = (MemberBean) map.get("user");
+			pstmt.setString(1, mem.getPassword());
+			pstmt.setString(2, mem.getTeamid());
+			pstmt.setString(3, mem.getRoll());
+			pstmt.setString(4, mem.getUserid());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -31,7 +32,6 @@ public class RemoveQuery extends QueryTemplate{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 }

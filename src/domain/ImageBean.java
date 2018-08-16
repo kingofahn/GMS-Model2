@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ImageBean {
-	private String imgseq;
+	private int imgseq;
 	private String imgname;
 	private String extension;
 	private String userid;

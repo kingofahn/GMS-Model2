@@ -3,7 +3,7 @@
 		<table id="mypage-table">  
 		<tr>
 			<td  rowspan='3' colspan='2'>
-			<img alt="" src="${img}/${profile}"> 
+			<img src="${img}/upload/${image.imgname}.${image.extension}">
 			</td> 
 			<td>아이디</td>
 			<td id="userid"> ${user.userid} </td>

@@ -7,8 +7,8 @@ import enums.Domain;
 import service.MemberServiceImpl;
 
 public class RemoveCommand extends Command {
-	public RemoveCommand(HttpServletRequest requset) {
-		setRequest(requset);
+	public RemoveCommand(HttpServletRequest request) {
+		setRequest(request);
 		setDomain(request.getServletPath()
 				.substring(1,
 						request.getServletPath().indexOf(".")));

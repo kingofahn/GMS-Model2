@@ -24,10 +24,7 @@ public class SearchQuery extends QueryTemplate {
 	void startPlay() {
 		if(map.get("searchOption")!=null) {
 			try {
-				pstmt = DatabaseFactory
-						.createDatabase2(map)
-						.getConnection()
-						.prepareStatement((String)map.get("sql"));
+				pStmtInit();
 				pstmt.setString(1,"%"+map.get("searchWord").toString()+"%");
 				pstmt.setString(2, map.get("beginRow").toString());
 				pstmt.setString(3, map.get("rowCount").toString());
@@ -36,10 +33,7 @@ public class SearchQuery extends QueryTemplate {
 			}
 		} else {
 			try {
-				pstmt = DatabaseFactory
-						.createDatabase2(map)
-						.getConnection()
-						.prepareStatement((String)map.get("sql"));
+				pStmtInit();
 				pstmt.setString(1, (String)map.get("beginRow").toString());
 				pstmt.setString(2, (String)map.get("endRow").toString());
 			} catch (SQLException e) {
@@ -71,5 +65,4 @@ public class SearchQuery extends QueryTemplate {
 			e.printStackTrace();
 		}		
 	}
-/*!map.containsKey("column")*/	
 }

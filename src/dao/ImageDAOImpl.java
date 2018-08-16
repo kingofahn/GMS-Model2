@@ -5,6 +5,7 @@ import java.util.HashMap;
 import domain.ImageBean;
 import template.AddQuery;
 import template.QueryTemplate;
+import template.RetrieveQuery;
 
 public class ImageDAOImpl implements ImageDAO{
 	private static ImageDAO instance = new  ImageDAOImpl();
@@ -16,7 +17,7 @@ public class ImageDAOImpl implements ImageDAO{
 	public void insert(ImageBean bean) {
 		map = new HashMap<>();
 		q = new AddQuery();
-		map.put("bean", bean);
+		map.put("img", bean);
 		map.put("table", "image");
 		q.play(map);
 	}
@@ -24,6 +25,10 @@ public class ImageDAOImpl implements ImageDAO{
 	@Override
 	public ImageBean selectOne(String id) {
 		map = new HashMap<>();
-		return null;
+		q = new RetrieveQuery();
+		map.put("userid", id);
+		map.put("table", "image");
+		q.play(map);
+		return q.getImg();
 	}
 }

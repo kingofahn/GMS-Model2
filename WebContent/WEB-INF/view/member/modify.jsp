@@ -3,7 +3,9 @@
 			<form id="updateForm" name="updateForm">
 				<table id="mypage-table">
 					<tr>
-						<td rowspan="3" colspan="2"></td>
+						<td rowspan="3" colspan="2">
+						<img src="${img}/upload/${image.imgname}.${image.extension}">
+						</td>
 						<td>ID</td>
 						<td>${user.userid}</td>
 					</tr>
@@ -74,7 +76,7 @@
 							var x = service.nullChecker([
 									document.updateForm.password.value,
 									document.updateForm.teamid.value,
-									document.updateForm.roll.value ]);
+									document.updateForm.roll.value]);
 							if (x.checker) {
 								form.action = "${ctx}/member.do";
 								form.method = "post"; /* get으로 하면 노출됨 */

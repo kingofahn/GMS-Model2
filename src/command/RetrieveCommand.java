@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.ImageBean;
 import domain.MemberBean;
+import service.ImageService;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 public class RetrieveCommand extends Command {
@@ -20,10 +22,9 @@ public class RetrieveCommand extends Command {
 	@Override
 	public void execute() {
 		bean = new ImageBean();
-		user = new MemberBean();
-		request.setAttribute("user",
-							MemberServiceImpl.getInstance().retrieve(request.getParameter("searchWord")));
 		user = MemberServiceImpl.getInstance().retrieve(request.getParameter("searchWord"));
+		request.setAttribute("user",user);
+		request.setAttribute("image", ImageServiceImpl.getInstance().retrieve(request.getParameter("searchWord")));
 		bean.setUserid(user.getUserid());
 		;
 		super.execute();

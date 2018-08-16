@@ -3,6 +3,7 @@ package command;
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 public class LoginCommand extends Command {
@@ -22,7 +23,7 @@ public class LoginCommand extends Command {
 		if (MemberServiceImpl.getInstance().login(mem)) {
 			request.setAttribute("match", "TRUE");
 			request.getSession().setAttribute("user", MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
-			
+			request.setAttribute("image", ImageServiceImpl.getInstance().retrieve(request.getParameter("userid")));
 		} else {
 			request.setAttribute("match", "FALSE");
 		}

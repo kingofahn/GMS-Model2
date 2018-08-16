@@ -1,10 +1,7 @@
 package template;
-
 import java.sql.SQLException;
-
 import domain.MemberBean;
 import enums.MemberQuery;
-import factory.DatabaseFactory;
 
 public class LoginQuery extends QueryTemplate {
 
@@ -17,10 +14,7 @@ public class LoginQuery extends QueryTemplate {
 	@Override
 	void startPlay() {
 		try {
-			pstmt = DatabaseFactory
-					.createDatabase2(map)
-					.getConnection()
-					.prepareStatement((String) map.get("sql"));
+			pStmtInit();
 			o = (MemberBean)map.get("bean");
 			pstmt.setString(1,((MemberBean) o).getUserid());
 			pstmt.setString(2,((MemberBean) o).getPassword());

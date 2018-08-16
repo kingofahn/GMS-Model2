@@ -24,7 +24,7 @@ public abstract class QueryTemplate {
 	PreparedStatement pstmt;
 	ResultSet rs = null;
 	MemberBean mem;
-	ImageBean bean;
+	ImageBean img;
 	
 	public final void play(Map<?,?> param) {
 		this.number = 0;
@@ -33,7 +33,7 @@ public abstract class QueryTemplate {
 		this.map = new HashMap<>();
 		this.pstmt = null;
 		this.mem = null;
-		this.map.put("vendor", Vendor.ORACLE);
+		this.map.put("vendor",Vendor.ORACLE);
 		this.map.put("username", DBConstant.USERNAME);
 		this.map.put("password", DBConstant.PASSWORD);
 		Iterator<?> keys = param.keySet().iterator();
@@ -50,7 +50,7 @@ public abstract class QueryTemplate {
 	public void pStmtInit() {
 		try {
 			this.pstmt = DatabaseFactory
-					.createDatabase2(map)
+					.createDatabase(map)
 					.getConnection()
 					.prepareStatement((String) map.get("sql"));
 		} catch (SQLException e) {

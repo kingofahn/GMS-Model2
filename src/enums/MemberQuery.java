@@ -8,7 +8,6 @@ public enum MemberQuery {
 	UPDATE,
 	DELETE,
 	LOGIN, 
-	UPLOAD
 	;
 	public String toString() {
 		String sql = "";
@@ -55,11 +54,12 @@ public enum MemberQuery {
 
 		case UPDATE : 
 			sql =
-	             "  UPDATE		" 
-				+"	MEMBER SET %s = ? "
-	            +"	WHERE USERID LIKE ?	"
-				;		
-			break;
+				"UPDATE MEMBER "
+				+ "SET PASSWORD = ?, "
+				+ "TEAMID = ?, "
+				+ "ROLL = ? "
+				+ "WHERE USERID LIKE ? ";
+				break;
 			
 		case DELETE : 
 			sql =
@@ -79,19 +79,7 @@ public enum MemberQuery {
 				+ " AND PASSWORD LIKE ? "
 			;
 			break;
-			
-		case UPLOAD :
-			sql = 
-				" INSERT INTO IMAGE(IMG_SEQ,IMG_NAME,EXTENSION, USERID) "
-				+ " VALUES (IMG_SEQ.NEXTVAL,?,?,?) "
-			;
-			break;
 		}
 		return sql;
 	}
 }
-
-
-
-
-

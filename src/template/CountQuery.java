@@ -15,14 +15,7 @@ public class CountQuery extends QueryTemplate {
 
 	@Override
 	void startPlay() {
-		try {
-			pstmt = DatabaseFactory
-					.createDatabase2(map)
-					.getConnection()
-					.prepareStatement((String) map.get("sql"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			pStmtInit();
 	}
 
 	@Override
