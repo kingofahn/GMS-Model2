@@ -9,8 +9,6 @@ import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 public class RetrieveCommand extends Command {
-	ImageBean bean =null;
-	MemberBean user = null;
 	public RetrieveCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
@@ -21,12 +19,13 @@ public class RetrieveCommand extends Command {
 
 	@Override
 	public void execute() {
-		bean = new ImageBean();
-		user = MemberServiceImpl.getInstance().retrieve(request.getParameter("searchWord"));
-		request.setAttribute("user",user);
-		request.setAttribute("image", ImageServiceImpl.getInstance().retrieve(request.getParameter("searchWord")));
-		bean.setUserid(user.getUserid());
-		;
-		super.execute();
+		if(request.getParameter("searchWord")!=null) {
+			request.setAttribute("user", MemberServiceImpl.getInstance().retrieve(request.getParameter("searchWord")));
+			request.setAttribute("image", ImageServiceImpl.getInstance().retrieve(request.getParameter("searchWord")));
+		} else {
+			request.setAttribute("user", MemberServiceImpl.getInstance().retrieve(request.getParameter("userid")));
+			request.setAttribute("image", ImageServiceImpl.getInstance().retrieve(request.getParameter("userid")));
+		}
+	super.execute();
 	}
 }

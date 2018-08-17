@@ -110,8 +110,11 @@ public class MemberController extends HttpServlet {
 			if(request.getAttribute("match").equals("TRUE")){
                 Carrier.forward(request, response);
             }else {
-                Carrier.redirect(request, response, "/member.do?action=move&page=login");
+            	Carrier.redirect(request, response, "/member.do?action=move&page=login");
             }
+			break;
+		case LOGOUT : 
+			Carrier.redirect(request, response,"");
 			break;
 	    case MOVE : 
 	        Carrier.forward(request, response);

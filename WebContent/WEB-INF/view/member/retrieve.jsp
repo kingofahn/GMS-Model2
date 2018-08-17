@@ -2,8 +2,8 @@
 	<div id="content-box">
 		<table id="mypage-table">  
 		<tr>
-			<td  rowspan='3' colspan='2'>
-			<img src="${img}/upload/${image.imgname}.${image.extension}">
+			<td width="100" height="150" rowspan='3' colspan='2'>
+			<img width="300" height="150" src="${img}/upload/${image.imgname}.${image.extension}">
 			</td> 
 			<td>아이디</td>
 			<td id="userid"> ${user.userid} </td>
@@ -32,6 +32,7 @@
 	<div id="mypage-bottom">
 		 <a id="myPageMoveToUpdate"> UPADATE FORM</a> 
 		 <a id="myPageMoveToDelete"> DELETE FORM </a> 
+		 <a id="logout">LOGOUT</a>
 	</div>
 	
 	</div>

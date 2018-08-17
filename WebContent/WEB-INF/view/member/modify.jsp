@@ -5,6 +5,8 @@
 					<tr>
 						<td rowspan="3" colspan="2">
 						<img src="${img}/upload/${image.imgname}.${image.extension}">
+						${image.imgname}
+						${image.extension}
 						</td>
 						<td>ID</td>
 						<td>${user.userid}</td>

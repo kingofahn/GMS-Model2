@@ -18,19 +18,21 @@ public class SearchCommand extends Command {
 	}
 	@Override
 	public void execute() {
-        Map<String,Object> paramMap = new HashMap<>();
+        Map<String,Object> map = new HashMap<>();
         String pageNumber = request.getParameter("pageNumber");
         PageProxy pxy = new PageProxy();
-        pxy.carryOut((pageNumber==null)? 1: Integer.parseInt(pageNumber));
+        map.put("pageNumber", (pageNumber==null)? 1: Integer.parseInt(pageNumber));
+        map.put("searchOption", request.getParameter("searchOption"));
+        map.put("searchWord", request.getParameter("searchWord"));
+        map.put("rowCount", (request.getParameter("searchOption")==null)? MemberServiceImpl.getInstance().count() : MemberServiceImpl.getInstance().count(map));
+        pxy.carryOut(map);
         Pagination page = pxy.getPagination();
-        paramMap.put("table", Domain.MEMBER);
-        paramMap.put("beginRow", String.valueOf(page.getBeginRow()));
-        paramMap.put("endRow", String.valueOf(page.getEndRow()));
-        paramMap.put("rowCount", String.valueOf(page.getRowCount()));
-        paramMap.put("searchOption", request.getParameter("searchOption"));
-        paramMap.put("searchWord", request.getParameter("searchWord"));
+        map.put("table", Domain.MEMBER);
+        map.put("beginRow", String.valueOf(page.getBeginRow()));
+        map.put("endRow", String.valueOf(page.getEndRow()));
+        map.put("rowCount", String.valueOf(page.getRowCount()));
         request.setAttribute("page", page);
-        request.setAttribute("list", MemberServiceImpl.getInstance().search(paramMap));
+        request.setAttribute("list", MemberServiceImpl.getInstance().search(map));
         super.execute();
 	}
 }	

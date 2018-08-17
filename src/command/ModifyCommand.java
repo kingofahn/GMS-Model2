@@ -26,11 +26,11 @@ public class ModifyCommand extends Command {
 		case MEMBER :
 			Map<String,Object> map = new HashMap<>();
 			MemberBean mem =  (MemberBean) request.getSession().getAttribute("user");
+			request.setAttribute("image", ImageServiceImpl.getInstance().retrieve(mem.getUserid()));
 			mem.setPassword(request.getParameter("password"));
 			mem.setTeamid(request.getParameter("teamid"));
 			mem.setRoll(request.getParameter("roll"));
 			map.put("user", mem);
-			request.setAttribute("image", ImageServiceImpl.getInstance().retrieve(mem.getUserid()));
 			MemberServiceImpl.getInstance().modify(map);
 			break;
 		default : 

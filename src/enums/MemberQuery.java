@@ -7,7 +7,7 @@ public enum MemberQuery {
 	LIST,SEARCH,RETRIEVE,COUNT,
 	UPDATE,
 	DELETE,
-	LOGIN, 
+	LOGIN, CONDITIONCOUNT, 
 	;
 	public String toString() {
 		String sql = "";
@@ -50,6 +50,13 @@ public enum MemberQuery {
 			sql =  
 				" SELECT COUNT(*) AS COUNT "
 			    +" FROM MEMBER ";		
+			break;
+			
+		case CONDITIONCOUNT : 
+			sql =  
+			" SELECT COUNT(*) AS COUNT "
+					+" FROM MEMBER "
+					+" WHERE %s LIKE ?";		
 			break;
 
 		case UPDATE : 

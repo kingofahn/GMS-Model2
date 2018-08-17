@@ -26,6 +26,9 @@ public class Commander {
 			case LOGIN : 
 				cmd = new LoginCommand(request);
 				break;
+			case LOGOUT : 
+				cmd = new LogoutCommand(request);
+				break;
 			case MOVE : 
 				cmd = new MoveCommand(request);
 				break;

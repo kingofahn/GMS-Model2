@@ -18,7 +18,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public List<MemberBean> search(Map<?, ?> param) {
-		System.out.println( "5  MemberServiceImpl");
 		return MemberDAOImpl.getInstance()
 				.selectSome(param);
 	}
@@ -33,6 +32,11 @@ public class MemberServiceImpl implements MemberService {
 				.count();
 	}
 	@Override
+	public int count(Map<?, ?> param) {
+		return MemberDAOImpl.getInstance()
+				.count(param);
+	}
+	@Override
 	public void modify(Map<?, ?> param) {
 		MemberDAOImpl.getInstance().update(param);
 	}
@@ -45,4 +49,5 @@ public class MemberServiceImpl implements MemberService {
 	public boolean login(MemberBean bean) {
 		return (MemberDAOImpl.getInstance().login(bean)!=null);
 	}
+
 }

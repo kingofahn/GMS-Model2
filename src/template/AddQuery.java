@@ -29,7 +29,6 @@ public class AddQuery extends QueryTemplate {
 		switch (map.get("table").toString()) {
 		case "member":
 			try {
-				pStmtInit();
 				mem = (MemberBean) map.get("bean");
 				pstmt.setString(1, mem.getUserid());
 				pstmt.setString(2, mem.getSsn());
@@ -45,7 +44,6 @@ public class AddQuery extends QueryTemplate {
 			}
 			break;
 		case "image":
-			pStmtInit();
 			try {
 				img = (ImageBean) map.get("img");
 				pstmt.setString(1, img.getImgname());

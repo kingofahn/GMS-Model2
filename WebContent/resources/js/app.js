@@ -37,6 +37,16 @@ var service = (()=>{
 var common = (()=> {
 	return {
 		main : x=>{
+			if(document.getElementById('logout')!=null){
+				document.getElementById('logout').addEventListener('click',
+						function() {
+					router.move({context : x,
+						domain : 'member',
+						action : 'logout',
+					});
+				});						
+			};
+			
 			if(document.getElementById('moveLoginForm')!=null){
 				document.getElementById('moveLoginForm').addEventListener('click',
 						function() {
@@ -212,9 +222,6 @@ var member = (()=> {
 				member.setGender(x);
 			},
 			main : x=> {
-				
-				
-				
 				if(document.getElementById('myPageMoveToUpdate')!=null){
 					document.getElementById('myPageMoveToUpdate').addEventListener('click',
 							function() {
@@ -224,7 +231,17 @@ var member = (()=> {
 							page : 'modify'
 						});
 					});						
-				}
+				};
+				
+				if(document.getElementById('logout')!=null){
+					document.getElementById('logout').addEventListener('click',
+							function() {
+						router.move({context : x,
+							domain : 'member',
+							action : 'logout',
+						});
+					});						
+				};
 				
 				if(document.getElementById('myPageMoveToDelete')!=null){
 					document.getElementById('myPageMoveToDelete').addEventListener('click',

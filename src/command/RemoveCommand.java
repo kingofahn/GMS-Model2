@@ -22,6 +22,7 @@ public class RemoveCommand extends Command {
 			MemberBean mem = new MemberBean();
 			mem.setUserid(((MemberBean)request.getSession().getAttribute("user")).getUserid());
 			mem.setPassword(request.getParameter("password"));
+			System.out.println("mem : " + mem );
 			if(MemberServiceImpl.getInstance().login(mem)) {
 				MemberServiceImpl.getInstance().remove(mem);
 				request.getSession().invalidate();

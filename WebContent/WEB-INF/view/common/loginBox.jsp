@@ -2,6 +2,7 @@
 <div id="loginBox">
 	<a id="moveLoginForm"> LOGIN </a> 	
 	<a id="moveJoinForm">JOIN</a>
+	<a id="logout">LOGOUT</a>
 </div>
 
 <script>

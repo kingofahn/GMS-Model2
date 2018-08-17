@@ -45,6 +45,13 @@ public class MemberDAOImpl implements MemberDAO {
 		q.play();
 		return q.getNumber();
 	}
+	@Override
+	public int count(Map<?, ?> param) {
+		q = new CountQuery();
+		q.play(param);
+		System.out.println("q.getNumber() : " + q.getNumber());
+		return q.getNumber();
+	}
 	
 	@Override
 	public void update(Map<?, ?> param) {
